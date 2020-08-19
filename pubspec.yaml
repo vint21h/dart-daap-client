@@ -1,0 +1,12 @@
+# daapc
+# pubspec.yaml
+
+
+name: daapc
+version: 0.0.0
+description: >-
+  Dart DAAP (Digital Audio Access Protocol) client library
+homepage: https://github.com/vint21h/daapc/
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
