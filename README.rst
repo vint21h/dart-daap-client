@@ -1,11 +1,11 @@
-.. daapc
+.. daap-client
 .. README.rst
 
 
-A daapc documentation
-============================
+A daap-client documentation
+=====================
 
-    *daacp is a dart DAAP (Digital Audio Access Protocol) client library
+    *daap-client is a DAAP (Digital Audio Access Protocol) client library
 
 .. contents::
 
@@ -20,11 +20,11 @@ Usage
 
 Licensing
 ---------
-daapc uses the MIT license. Please check the MIT-LICENSE file for more details.
+daap-client uses the MIT license. Please check the MIT-LICENSE file for more details.
 
 Contacts
 --------
-**Project Website**: https://github.com/vint21h/daapc/
+**Project Website**: https://github.com/vint21h/daap-client/
 
 **Author**: Alexei Andrushievich <vint21h@vint21h.pp.ua>
 
