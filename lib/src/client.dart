@@ -54,9 +54,9 @@ class DaapClient {
       host: this.host,
       port: this.port,
     );
-    await this._getContentCodes();
-    await this._getServerInfo();
-    await this._login();
+    await this.getContentCodes();
+    await this.getServerInfo();
+    await this.login();
   }
 
   /// Shared HTTP connection getter.
@@ -86,7 +86,7 @@ class DaapClient {
   }
 
   /// Make a GET HTTP request to DAAP server.
-  Future<Uint8List> _get(String url) async {
+  Future<Uint8List> call(String url) async {
     try {
       var response = await this.connection.get(url, headers: this.headers);
 
@@ -111,23 +111,23 @@ class DaapClient {
   /// Get server content codes.
   ///
   /// Practically required.
-  void _getContentCodes() async {
+  Future<Uint8List> getContentCodes() async {
     var url = this._baseUrl;
     url.replace(path: contentCodesUrlPath);
-    await this._get(url.toString());
+    return await this.call(url.toString());
   }
 
   /// Get server info.
-  void _getServerInfo() async {
+  Future<Uint8List> getServerInfo() async {
     var url = this._baseUrl;
     url.replace(path: serverInfoUrlPath);
-    await this._get(url.toString());
+    return await this.call(url.toString());
   }
 
   /// Login to server.
-  void _login() async {
+  Future<Uint8List> login() async {
     var url = this._baseUrl;
     url.replace(path: loginUrlPath);
-    await this._get(url.toString());
+    return await this.call(url.toString());
   }
 }
