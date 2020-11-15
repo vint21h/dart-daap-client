@@ -34,10 +34,10 @@ class DaapClient {
   /// to indicate this client is connected to the server with authorization.
   @override
   String toString() {
-    if (this._password == null) {
+    if (this._password != null) {
       return "<DaapClient: {host: ${this.host}, port: ${this.port}, password: ${"*" * this._password.length}}>";
     } else {
-      return "<DaapClient: {host: ${this.host}, port: ${this.port}>";
+      return "<DaapClient: {host: ${this.host}, port: ${this.port}}>";
     }
   }
 

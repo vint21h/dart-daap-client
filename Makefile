@@ -3,11 +3,15 @@
 
 
 .ONESHELL:
-PHONY: dartfmt help
+PHONY: dartfmt test help
 
 
 dartfmt:
 	dartfmt -w .
+
+
+test:
+	pub run test $(TESTS)
 
 
 help:
@@ -15,3 +19,5 @@ help:
 	@echo "        Show this help."
 	@echo "    dartfmt:"
 	@echo "        Reformats all Dart files."
+	@echo "    test:"
+	@echo "        Run tests, can specify tests with 'TESTS' argument."
