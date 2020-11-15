@@ -1,8 +1,11 @@
 // daap-client
 // test/client_test.dart
 
-import "package:daapc/daapc.dart";
 import "package:test/test.dart";
+import "package:http/http.dart";
+import "package:http_auth/http_auth.dart";
+
+import "package:daapc/daapc.dart";
 
 void main() {
   group(DaapClient, () {
@@ -50,6 +53,14 @@ void main() {
       client.headers;
 
       expect(client.headers, expected);
+    });
+    test("'connection' getter must return HTTP client class instance", () {
+      final client = DaapClient("127.0.0.1");
+      expect(client.connection, isA<Client>());
+    });
+    test("'connection' getter must return HTTP client class instance with basic authorization", () {
+      final client = DaapClient("127.0.0.1", password: "password");
+      expect(client.connection, isA<BasicAuthClient>());
     });
   });
 }
