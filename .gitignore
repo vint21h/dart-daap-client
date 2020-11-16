@@ -28,3 +28,6 @@
 .packages
 build/
 pubspec.lock
+test/.*
+coverage
+coverage_badge.svg

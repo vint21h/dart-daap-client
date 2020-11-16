@@ -87,5 +87,38 @@ void main() {
       expect(client.call("http://127.0.0.1:3689/content-codes"),
           throwsA(TypeMatcher<DaapAuthRequiredException>()));
     }, tags: ["network"]);
+    test(
+        "'call' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
+        () {
+      final client = DaapClient("127.0.0.1");
+
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(httpStatusForbidden, "403 Forbidden");
+
+      expect(client.call("http://127.0.0.1:3689/content-codes"),
+          throwsA(TypeMatcher<DaapAuthenticationFailureException>()));
+    }, tags: ["network"]);
+    test(
+        "'call' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
+        () {
+      final client = DaapClient("127.0.0.1");
+
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(httpStatusServiceUnavailable, "503 Service Unavailable");
+
+      expect(client.call("http://127.0.0.1:3689/content-codes"),
+          throwsA(TypeMatcher<DaapTooManyConnectionsException>()));
+    }, tags: ["network"]);
+    test(
+        "'call' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
+        () {
+      final client = DaapClient("127.0.0.1");
+
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(500, "500 Internal Server Error");
+
+      expect(client.call("http://127.0.0.1:3689/content-codes"),
+          throwsA(TypeMatcher<DaapException>()));
+    }, tags: ["network"]);
   });
 }
