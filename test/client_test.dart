@@ -28,7 +28,7 @@ void main() {
       final client = DaapClient("127.0.0.1");
 
       expect(client.toString(), "<DaapClient: {host: 127.0.0.1, port: 3689}>");
-        }, tags: ["internal"]);
+    }, tags: ["internal"]);
     test(
         "'toString' method must return formatted string with connection config with secured password",
         () {
@@ -36,7 +36,7 @@ void main() {
 
       expect(client.toString(),
           "<DaapClient: {host: 127.0.0.1, port: 3689, password: ********}>");
-        }, tags: ["internal"]);
+    }, tags: ["internal"]);
     test("'headers' method must return dynamic request headers", () {
       final Map<String, String> expected = {
         "Client-DAAP-Version": "3.0",
@@ -64,7 +64,7 @@ void main() {
       client.headers;
 
       expect(client.headers, expected);
-        }, tags: ["internal"]);
+    }, tags: ["internal"]);
     test("'connection' getter must return HTTP client class instance", () {
       final client = DaapClient("127.0.0.1");
 
@@ -76,6 +76,14 @@ void main() {
       final client = DaapClient("127.0.0.1", password: "password");
       expect(client.connection, isA<BasicAuthClient>());
     }, tags: ["internal"]);
+    test("'call' method must return HTTP GET request result data", () async {
+      final client = DaapClient("127.0.0.1");
+
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(httpStatusOk, "");
+
+      expect(await client.call("http://127.0.0.1:3689/content-codes"), []);
+    }, tags: ["network"]);
     test(
         "'call' method must raise 'DaapAuthRequiredException' when making GET HTTP request to server (authentication required case)",
         () {
