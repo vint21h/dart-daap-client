@@ -1,13 +1,7 @@
 // daap-client
 // lib/src/constants.dart
 
-/// DMAP code.
-class DmapCode {
-  String name;
-  int type;
-
-  DmapCode(this.name, this.type);
-}
+import "objects.dart";
 
 /// DMAP data types.
 final int byte = 1;

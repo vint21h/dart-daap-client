@@ -8,6 +8,7 @@ import "package:http_auth/http_auth.dart";
 
 import "constants.dart";
 import "exceptions.dart";
+import "objects.dart";
 
 /// DAAP client.
 class DaapClient {
@@ -54,6 +55,7 @@ class DaapClient {
       host: this.host,
       port: this.port,
     );
+
     await this.getContentCodes();
     await this.getServerInfo();
     await this.login();
@@ -113,21 +115,21 @@ class DaapClient {
   /// Practically required.
   Future<Uint8List> getContentCodes() async {
     var url = this._baseUrl;
-    url.replace(path: contentCodesUrlPath);
+    url = url.replace(path: contentCodesUrlPath);
     return await this.call(url.toString());
   }
 
   /// Get server info.
   Future<Uint8List> getServerInfo() async {
     var url = this._baseUrl;
-    url.replace(path: serverInfoUrlPath);
+    url = url.replace(path: serverInfoUrlPath);
     return await this.call(url.toString());
   }
 
   /// Login to server.
   Future<Uint8List> login() async {
     var url = this._baseUrl;
-    url.replace(path: loginUrlPath);
+    url = url.replace(path: loginUrlPath);
     return await this.call(url.toString());
   }
 }

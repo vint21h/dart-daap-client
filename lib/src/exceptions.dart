@@ -20,3 +20,8 @@ class DaapTooManyConnectionsException implements Exception {
 class DaapException implements Exception {
   String errMsg() => "DaapClient: making request error.";
 }
+
+/// DAAP client decode data exception.
+class DaapDecodeException implements Exception {
+  String errMsg() => "DaapClient: decode data error.";
+}
