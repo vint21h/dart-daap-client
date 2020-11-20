@@ -126,6 +126,10 @@ class DaapObject {
         chunk = rawData.sublist(chunkStart, chunkEnd);
         chunkStart = chunkEnd;
         chunkEnd = chunkEnd + this.getDataLength(chunk) + 8;
+        print(this.getDataLength(chunk));
+        print(chunk);
+        print(chunkStart);
+        print(chunkEnd);
         this._value__container.add(DaapObject(chunk));
       }
     }
@@ -148,7 +152,7 @@ class DaapObject {
   /// Get DAAP object data length.
   int getDataLength(Uint8List data) {
     return ByteData.view(data.sublist(4, 8).buffer)
-        .getInt32(0); // bytes 5-8 is length of object data
+        .getInt32(0, Endian.big); // bytes 5-8 is length of object data
   }
 
   /// Get DAAP object value raw data.
