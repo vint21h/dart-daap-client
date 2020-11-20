@@ -14,17 +14,7 @@ class DmapCode {
   int type;
 
   /// DMAP code object constructor.
-  ///
-  /// Trows "DaapDecodeException" for unknown code.
-  DmapCode(String code, String name, int type) {
-    if (dmapCodeTypes.containsKey(code)) {
-      this.code = code;
-      this.name = name;
-      this.type = type;
-    } else {
-      throw DaapDecodeException();
-    }
-  }
+  DmapCode(this.code, this.name, this.type);
 
   /// Creates DMAP code class string representation.
   @override

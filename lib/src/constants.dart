@@ -4,33 +4,33 @@
 import "objects.dart";
 
 /// DMAP data types.
-const int byte = 1;
-const int unsignedByte = 2;
-const int short = 3;
-const int unsignedShort = 4;
-const int integer = 5;
-const int unsignedInteger = 6;
-const int long = 7;
-const int unsignedLong = 8;
-const int string = 9;
-const int timestamp = 10;
-const int version = 11;
-const int container = 12;
+const int byte = 1; // Int8
+const int unsignedByte = 2; // Uint8
+const int short = 3; // Int16
+const int unsignedShort = 4; // Uint16
+const int integer = 5; // Int32
+const int unsignedInteger = 6; // Int32
+const int long = 7; // Int64
+const int unsignedLong = 8; // Uint64
+const int string = 9; // String
+const int timestamp = 10; // double
+const int version = 11; // Uint32
+const int container = 12; // List<DmapObject>
 
 /// DMAP data types mapping (according to protocol).
 const Map<int, String> dmapDataTypes = {
-  byte: "b",
-  unsignedByte: "ub",
-  short: "h",
-  unsignedShort: "uh",
-  integer: "i",
-  unsignedInteger: "ui",
-  long: "l",
-  unsignedLong: "ul",
-  string: "s",
-  timestamp: "t",
-  version: "v",
-  container: "c",
+  byte: "b", // Int8
+  unsignedByte: "ub", // Uint8
+  short: "h", // Int16
+  unsignedShort: "uh", // Uint16
+  integer: "i", // Int32
+  unsignedInteger: "ui", // Int32
+  long: "l", // Int64
+  unsignedLong: "ul", // Uint64
+  string: "s", // String
+  timestamp: "t", // double
+  version: "v", // Uint32
+  container: "c", // List<DmapObject>
 };
 
 /// DMAP data types mapping (human readable).
@@ -46,7 +46,7 @@ const Map<int, String> dmapDataTypesNames = {
   string: "string", // String
   timestamp: "timestamp", // double
   version: "version", // Uint32
-  container: "container",
+  container: "container", // List<DmapObject>
 };
 
 /// DMAP code types mapping.
