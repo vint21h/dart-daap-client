@@ -38,7 +38,7 @@ class DaapObject {
   String _value__string;
   double _value__timestamp;
   int _value__version;
-  List<DaapObject> _value__container;
+  List<DaapObject> _value__container = [];
 
   /// DAAP object constructor.
   DaapObject(Uint8List data) {
@@ -118,7 +118,17 @@ class DaapObject {
       this._value__timestamp = ByteData.view(rawData.buffer).getFloat32(0);
     } else if (this.code.type == version) {
       this._value__version = ByteData.view(rawData.buffer).getUint32(0);
-    } else if (this.code.type == container) {}
+    } else if (this.code.type == container) {
+      int chunkStart = 0;
+      Uint8List chunk = rawData;
+      int chunkEnd = this.getDataLength(chunk) + 8;
+      while (chunkEnd < this.dataLength) {
+        chunk = rawData.sublist(chunkStart, chunkEnd);
+        chunkStart = chunkEnd;
+        chunkEnd = chunkEnd + this.getDataLength(chunk) + 8;
+        this._value__container.add(DaapObject(chunk));
+      }
+    }
   }
 
   /// Get DAAP object DMAP code from data.

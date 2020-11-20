@@ -1,14 +1,15 @@
 // daap-client
 // lib/src/client.dart
 
-import "dart:typed_data";
 import "dart:io";
+import "dart:typed_data";
 
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
 
 import "constants.dart";
 import "exceptions.dart";
+import "objects.dart";
 
 /// DAAP client.
 class DaapClient {
