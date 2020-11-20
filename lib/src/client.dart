@@ -2,13 +2,13 @@
 // lib/src/client.dart
 
 import "dart:typed_data";
+import "dart:io";
 
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
 
 import "constants.dart";
 import "exceptions.dart";
-import "objects.dart";
 
 /// DAAP client.
 class DaapClient {
@@ -56,8 +56,8 @@ class DaapClient {
       port: this.port,
     );
 
-    await this.getContentCodes();
     await this.getServerInfo();
+    await this.getContentCodes();
     await this.login();
   }
 
@@ -88,19 +88,19 @@ class DaapClient {
   }
 
   /// Make a GET HTTP request to DAAP server.
-  Future<Uint8List> call(String url) async {
+  Future<Uint8List> request(String url) async {
     try {
       var response = await this.connection.get(url, headers: this.headers);
 
-      if (response.statusCode == httpStatusUnauthorized) {
+      if (response.statusCode == HttpStatus.unauthorized) {
         throw DaapAuthRequiredException();
-      } else if (response.statusCode == httpStatusForbidden) {
+      } else if (response.statusCode == HttpStatus.forbidden) {
         throw DaapAuthenticationFailureException();
-      } else if (response.statusCode == httpStatusServiceUnavailable) {
+      } else if (response.statusCode == HttpStatus.serviceUnavailable) {
         throw DaapTooManyConnectionsException();
-      } else if (response.statusCode == httpStatusNoContent) {
+      } else if (response.statusCode == HttpStatus.noContent) {
         return null;
-      } else if (response.statusCode != httpStatusOk) {
+      } else if (response.statusCode != HttpStatus.ok) {
         throw DaapException();
       } else {
         return response.bodyBytes;
@@ -116,20 +116,20 @@ class DaapClient {
   Future<Uint8List> getContentCodes() async {
     var url = this._baseUrl;
     url = url.replace(path: contentCodesUrlPath);
-    return await this.call(url.toString());
+    return await this.request(url.toString());
   }
 
   /// Get server info.
   Future<Uint8List> getServerInfo() async {
     var url = this._baseUrl;
     url = url.replace(path: serverInfoUrlPath);
-    return await this.call(url.toString());
+    return await this.request(url.toString());
   }
 
   /// Login to server.
   Future<Uint8List> login() async {
     var url = this._baseUrl;
     url = url.replace(path: loginUrlPath);
-    return await this.call(url.toString());
+    return await this.request(url.toString());
   }
 }

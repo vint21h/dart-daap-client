@@ -4,21 +4,21 @@
 import "objects.dart";
 
 /// DMAP data types.
-final int byte = 1;
-final int unsignedByte = 2;
-final int short = 3;
-final int unsignedShort = 4;
-final int integer = 5;
-final int unsignedInteger = 6;
-final int long = 7;
-final int unsignedLong = 8;
-final int string = 9;
-final int timestamp = 10;
-final int version = 11;
-final int container = 12;
+const int byte = 1;
+const int unsignedByte = 2;
+const int short = 3;
+const int unsignedShort = 4;
+const int integer = 5;
+const int unsignedInteger = 6;
+const int long = 7;
+const int unsignedLong = 8;
+const int string = 9;
+const int timestamp = 10;
+const int version = 11;
+const int container = 12;
 
 /// DMAP data types mapping.
-final Map<int, String> dmapDataTypes = {
+const Map<int, String> dmapDataTypes = {
   byte: "b",
   unsignedByte: "ub",
   short: "h",
@@ -34,7 +34,7 @@ final Map<int, String> dmapDataTypes = {
 };
 
 /// DMAP code types mapping.
-final Map dmapCodeTypes = {
+final Map<String, DmapCode> dmapCodeTypes = {
   "abal": DmapCode("daap.browsealbumlisting", container),
   "abar": DmapCode("daap.browseartistlisting", container),
   "abcp": DmapCode("daap.browsecomposerlisting", container),
@@ -182,14 +182,7 @@ final Map<String, String> requestHeaders = {
   "Accept": "application/x-dmap-tagged",
 };
 
-/// HTTP status codes.
-final int httpStatusOk = 200;
-final int httpStatusUnauthorized = 401;
-final int httpStatusForbidden = 403;
-final int httpStatusServiceUnavailable = 503;
-final int httpStatusNoContent = 204;
-
 /// URLs
-final String contentCodesUrlPath = "content-codes";
-final String loginUrlPath = "login";
-final String serverInfoUrlPath = "server-info";
+const String contentCodesUrlPath = "content-codes";
+const String loginUrlPath = "login";
+const String serverInfoUrlPath = "server-info";

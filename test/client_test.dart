@@ -1,8 +1,8 @@
 // daap-client
 // test/client_test.dart
 
+import "dart:io";
 import "package:daapc/daapc.dart";
-import "package:daapc/src/constants.dart";
 import "package:daapc/src/exceptions.dart";
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
@@ -76,56 +76,56 @@ void main() {
       final client = DaapClient("127.0.0.1", password: "password");
       expect(client.connection, isA<BasicAuthClient>());
     }, tags: ["internal"]);
-    test("'call' method must return HTTP GET request result data", () async {
+    test("'request' method must return HTTP GET request result data", () async {
       final client = DaapClient("127.0.0.1");
 
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(httpStatusOk, "");
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, "");
 
-      expect(await client.call("http://127.0.0.1:3689/content-codes"), []);
+      expect(await client.request("http://127.0.0.1:3689/server-info"), []);
     }, tags: ["network"]);
     test(
-        "'call' method must raise 'DaapAuthRequiredException' when making GET HTTP request to server (authentication required case)",
+        "'request' method must raise 'DaapAuthRequiredException' when making GET HTTP request to server (authentication required case)",
         () {
       final client = DaapClient("127.0.0.1");
 
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(httpStatusUnauthorized, "401 Unauthorized");
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.unauthorized, "401 Unauthorized");
 
-      expect(client.call("http://127.0.0.1:3689/content-codes"),
+      expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(TypeMatcher<DaapAuthRequiredException>()));
     }, tags: ["network"]);
     test(
-        "'call' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
+        "'request' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
         () {
       final client = DaapClient("127.0.0.1");
 
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(httpStatusForbidden, "403 Forbidden");
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.forbidden, "403 Forbidden");
 
-      expect(client.call("http://127.0.0.1:3689/content-codes"),
+      expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(TypeMatcher<DaapAuthenticationFailureException>()));
     }, tags: ["network"]);
     test(
-        "'call' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
+        "'request' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
         () {
       final client = DaapClient("127.0.0.1");
 
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(httpStatusServiceUnavailable, "503 Service Unavailable");
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.serviceUnavailable, "503 Service Unavailable");
 
-      expect(client.call("http://127.0.0.1:3689/content-codes"),
+      expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(TypeMatcher<DaapTooManyConnectionsException>()));
     }, tags: ["network"]);
     test(
-        "'call' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
+        "'request' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
         () {
       final client = DaapClient("127.0.0.1");
 
-      nock("http://127.0.0.1:3689/content-codes").get("")
+      nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(500, "500 Internal Server Error");
 
-      expect(client.call("http://127.0.0.1:3689/content-codes"),
+      expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(TypeMatcher<DaapException>()));
     }, tags: ["network"]);
   });
