@@ -9,22 +9,26 @@ import "exceptions.dart";
 
 /// DMAP code.
 class DmapCode {
+  String code;
   String name;
   int type;
 
-  DmapCode(this.name, this.type);
+  // TODO: add code check.
+  DmapCode(this.code, this.name, this.type);
 
   /// Creates DMAP code class string representation.
   @override
   String toString() {
-    return "<DmapCode: {name: '${this.name}', type: '${dmapDataTypes[this.type]}'}>";
+    return "<DmapCode: {code: '${this.code}', name: '${this.name}', type: '${dmapDataTypesNames[this.type]} (${dmapDataTypes[this.type]})'}>";
   }
 }
 
 /// DAAP object.
 class DaapObject {
+  // TODO: write tests!!1
   DmapCode code;
   int dataLength;
+  Uint8List rawData;
 
   // DAAP object value representation in corresponding data types.
   int _value__byte;
@@ -94,7 +98,7 @@ class DaapObject {
 
     this.code = this.getCode(data);
     this.dataLength = this.getDataLength(data);
-    Uint8List rawData = this.getRawData(data);
+    this.rawData = this.getRawData(data);
 
     if (this.code.type == byte) {
       this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
@@ -120,17 +124,10 @@ class DaapObject {
       this._value__version = ByteData.view(rawData.buffer).getUint32(0);
     } else if (this.code.type == container) {
       int chunkStart = 0;
-      Uint8List chunk = rawData;
-      int chunkEnd = this.getDataLength(chunk) + 8;
-      while (chunkEnd < this.dataLength) {
-        chunk = rawData.sublist(chunkStart, chunkEnd);
-        chunkStart = chunkEnd;
-        chunkEnd = chunkEnd + this.getDataLength(chunk) + 8;
-        print(this.getDataLength(chunk));
-        print(chunk);
-        print(chunkStart);
-        print(chunkEnd);
-        this._value__container.add(DaapObject(chunk));
+      while (chunkStart + 8 < this.dataLength) {
+        DaapObject obj = DaapObject(this.rawData.sublist(chunkStart));
+        chunkStart = chunkStart + obj.rawData.lengthInBytes + 8;
+        this._value__container.add(obj);
       }
     }
   }

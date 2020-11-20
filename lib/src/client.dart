@@ -57,10 +57,9 @@ class DaapClient {
       port: this.port,
     );
 
-    print(DaapObject(await this.getServerInfo()));
-    // await this.getServerInfo();
-    // await this.getContentCodes();
-    // await this.login();
+    await this.getServerInfo();
+    await this.getContentCodes();
+    await this.login();
   }
 
   /// Shared HTTP connection getter.
