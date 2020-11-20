@@ -202,3 +202,5 @@ final Map<String, String> requestHeaders = {
 const String contentCodesUrlPath = "content-codes";
 const String loginUrlPath = "login";
 const String serverInfoUrlPath = "server-info";
+const String databasesUrlPath = "databases";
+const String logoutUrlPath = "logout";
