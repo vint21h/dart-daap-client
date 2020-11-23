@@ -9,7 +9,6 @@ import "package:http_auth/http_auth.dart";
 
 import "constants.dart";
 import "exceptions.dart";
-import "objects.dart";
 
 /// DAAP client.
 class DaapClient {
@@ -131,6 +130,13 @@ class DaapClient {
   Future<Uint8List> login() async {
     var url = this._baseUrl;
     url = url.replace(path: loginUrlPath);
+    return await this.request(url.toString());
+  }
+
+  /// Logout from server.
+  Future<Uint8List> logout() async {
+    var url = this._baseUrl;
+    url = url.replace(path: logoutUrlPath);
     return await this.request(url.toString());
   }
 }

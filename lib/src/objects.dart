@@ -98,7 +98,8 @@ class DaapObject {
 
     this.code = this.getCode(data);
     this.dataLength = this.getDataLength(data);
-    this.rawData = this.getRawData(data);
+    this.rawData = data.sublist(
+        8, 8 + this.getDataLength(data)); // skip code + data length offset
 
     if (this.code.type == byte) {
       this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
@@ -125,8 +126,11 @@ class DaapObject {
     } else if (this.code.type == container) {
       int chunkStart = 0;
       while (chunkStart + 8 < this.dataLength) {
+        // including code + data length offset
         DaapObject obj = DaapObject(this.rawData.sublist(chunkStart));
-        chunkStart = chunkStart + obj.rawData.lengthInBytes + 8;
+        chunkStart = chunkStart +
+            obj.rawData.lengthInBytes +
+            8; // including code + data length offset
         this._value__container.add(obj);
       }
     }
@@ -149,11 +153,6 @@ class DaapObject {
   /// Get DAAP object data length.
   int getDataLength(Uint8List data) {
     return ByteData.view(data.sublist(4, 8).buffer)
-        .getInt32(0, Endian.big); // bytes 5-8 is length of object data
-  }
-
-  /// Get DAAP object value raw data.
-  Uint8List getRawData(Uint8List data) {
-    return data.sublist(8, 8 + this.getDataLength(data));
+        .getInt32(0, Endian.big); // bytes 5...8 is length of object data
   }
 }
