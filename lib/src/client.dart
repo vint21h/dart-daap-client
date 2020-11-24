@@ -4,6 +4,7 @@
 import "dart:io";
 import "dart:typed_data";
 
+import 'package:daapc/src/objects.dart';
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
 
@@ -18,6 +19,10 @@ class DaapClient {
   Client _connection;
   Uri _baseUrl;
   int requestId = 0;
+
+  DaapObject serverInfo;
+  DaapObject contentCodes;
+  DaapObject sessionInfo;
 
   /// DAAP client constructor.
   ///
@@ -56,9 +61,9 @@ class DaapClient {
       port: this.port,
     );
 
-    await this.getServerInfo();
-    await this.getContentCodes();
-    await this.login();
+    this.serverInfo = DaapObject(await this.getServerInfo());
+    this.contentCodes = DaapObject(await this.getContentCodes());
+    this.sessionInfo = DaapObject(await this.login());
   }
 
   /// Shared HTTP connection getter.

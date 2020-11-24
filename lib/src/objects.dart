@@ -9,17 +9,24 @@ import "exceptions.dart";
 
 /// DMAP code.
 class DmapCode {
-  String code;
-  String name;
-  int type;
+  String _code;
+  String _name;
+  int _type;
 
   /// DMAP code object constructor.
-  DmapCode(this.code, this.name, this.type);
+  DmapCode(String code, String name, int type) {
+    this._code = code;
+    this._name = name;
+    this._type = type;
+  }
+
+  // DMAP code ype getter.
+  int get type => _type;
 
   /// Creates DMAP code class string representation.
   @override
   String toString() {
-    return "<DmapCode: {code: '${this.code}', name: '${this.name}', type: '${dmapDataTypesNames[this.type]} (${dmapDataTypes[this.type]})'}>";
+    return "<DmapCode: {code: '${this._code}', name: '${this._name}', type: '${dmapDataTypesNames[this._type]} (${dmapDataTypes[this._type]})'}>";
   }
 }
 
@@ -27,7 +34,7 @@ class DmapCode {
 class DaapObject {
   // TODO: write tests!!1
   DmapCode code;
-  int dataLength;
+  int _dataLength;
   Uint8List rawData;
 
   // DAAP object value representation in corresponding data types.
@@ -52,7 +59,7 @@ class DaapObject {
   /// Creates DAAP object class string representation.
   @override
   String toString() {
-    return "<DaapObject: {code: '${this.code.toString()}', value: '${this.value}'}>";
+    return "<DaapObject: {code: '${this.code.toString()}', value: '${this.value}', length: '${this._dataLength}'}>";
   }
 
   /// DAAP object value getter.
@@ -83,6 +90,8 @@ class DaapObject {
       return this._value__version;
     } else if (this.code.type == container) {
       return this._value__container;
+    } else {
+      throw DaapDecodeException();
     }
   }
 
@@ -97,9 +106,9 @@ class DaapObject {
     }
 
     this.code = this.getCode(data);
-    this.dataLength = this.getDataLength(data);
+    this._dataLength = this.getDataLength(data);
     this.rawData = data.sublist(
-        8, 8 + this.getDataLength(data)); // skip code + data length offset
+        8, 8 + this.getDataLength(data)); // skip (code + data length) offset
 
     if (this.code.type == byte) {
       this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
@@ -125,12 +134,12 @@ class DaapObject {
       this._value__version = ByteData.view(rawData.buffer).getUint32(0);
     } else if (this.code.type == container) {
       int chunkStart = 0;
-      while (chunkStart + 8 < this.dataLength) {
-        // including code + data length offset
+      while (chunkStart + 8 < this._dataLength) {
+        // including (code + data length) offset
         DaapObject obj = DaapObject(this.rawData.sublist(chunkStart));
         chunkStart = chunkStart +
             obj.rawData.lengthInBytes +
-            8; // including code + data length offset
+            8; // including (code + data length) offset
         this._value__container.add(obj);
       }
     }

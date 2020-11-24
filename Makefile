@@ -15,7 +15,7 @@ test:
 
 
 coverage:
-	pub run test_coverage && genhtml -o coverage coverage/lcov.info;\
+	pub run test_coverage --print-test-output && genhtml -o coverage coverage/lcov.info;\
 
 
 help:
