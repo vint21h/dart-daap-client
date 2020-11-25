@@ -112,6 +112,8 @@ class DaapClient {
       }
     } on ClientException {
       throw DaapException();
+    } on SocketException {
+      throw DaapException();
     }
   }
 
