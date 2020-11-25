@@ -22,19 +22,49 @@ void main() {
     }, tags: ["object"]);
   });
   group(DaapObject, () {
-    test("'toString' method must return DAAP object class string representation",
+    test(
+        "'toString' method must return DAAP object class string representation",
         () {
-      final Uint8List data = Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List data =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
       final DaapObject obj = DaapObject(data);
       expect(obj.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["object"]);
-    test("'decode' method must raise 'DaapDecodeException' when data length is less than 8 bytes",
+    test(
+        "'getCode' method must return DMAP code class with type corresponding to type in data",
+        () {
+      final Uint8List data =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final DaapObject obj = DaapObject(data);
+      expect(obj.getCode(data), dmapCodeTypes["msrv"]);
+    }, tags: ["object"]);
+    test(
+        "'getCode' method must raise 'DaapDecodeException' when when found unknown DMAP code",
+        () {
+      final Uint8List data =
+          Uint8List.fromList([116, 101, 115, 116, 0, 0, 0, 0]);
+      try {
+        DaapObject(data);
+      } on DaapDecodeException catch (error) {
+        expect(error, TypeMatcher<DaapDecodeException>());
+        return;
+      }
+      throw Exception("Expected DaapDecodeException");
+    }, tags: ["object"]);
+    test("'getDataLength' method must return DAAP object data length", () {
+      final Uint8List data =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final DaapObject obj = DaapObject(data);
+      expect(obj.getDataLength(data), 0);
+    }, tags: ["object"]);
+    test(
+        "'decode' method must raise 'DaapDecodeException' when data length is less than 8 bytes",
         () {
       final Uint8List data = Uint8List.fromList([109, 115, 114, 118, 0, 0, 0]);
       try {
         DaapObject(data);
-      } on DaapDecodeException catch(error) {
+      } on DaapDecodeException catch (error) {
         expect(error, TypeMatcher<DaapDecodeException>());
         return;
       }
