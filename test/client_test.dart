@@ -93,7 +93,7 @@ void main() {
         ..reply(HttpStatus.unauthorized, "401 Unauthorized");
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(TypeMatcher<DaapAuthRequiredException>()));
+          throwsA(isA<DaapAuthRequiredException>()));
     }, tags: ["network"]);
     test(
         "'request' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
@@ -104,7 +104,7 @@ void main() {
         ..reply(HttpStatus.forbidden, "403 Forbidden");
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(TypeMatcher<DaapAuthenticationFailureException>()));
+          throwsA(isA<DaapAuthenticationFailureException>()));
     }, tags: ["network"]);
     test(
         "'request' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
@@ -115,7 +115,7 @@ void main() {
         ..reply(HttpStatus.serviceUnavailable, "503 Service Unavailable");
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(TypeMatcher<DaapTooManyConnectionsException>()));
+          throwsA(isA<DaapTooManyConnectionsException>()));
     }, tags: ["network"]);
     test(
         "'request' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
@@ -126,7 +126,7 @@ void main() {
         ..reply(500, "500 Internal Server Error");
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(TypeMatcher<DaapException>()));
+          throwsA(isA<DaapException>()));
     }, tags: ["network"]);
   });
 }
