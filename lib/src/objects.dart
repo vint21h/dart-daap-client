@@ -131,6 +131,7 @@ class DaapObject {
     } else if (this.code.type == timestamp) {
       this._value__timestamp = ByteData.view(rawData.buffer).getFloat32(0);
     } else if (this.code.type == version) {
+      // TODO: fix it, it's wrong.
       this._value__version = ByteData.view(rawData.buffer).getUint32(0);
     } else if (this.code.type == container) {
       int chunkStart = 0;

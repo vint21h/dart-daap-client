@@ -21,14 +21,14 @@ void main() {
       final client = DaapClient("127.0.0.1", port: 3668, password: "password");
       expect(client.host, "127.0.0.1");
       expect(client.port, 3668);
-    }, tags: ["internal"]);
+    }, tags: ["client", "internal"]);
     test(
         "'toString' method must return formatted string with connection config",
         () {
       final client = DaapClient("127.0.0.1");
 
       expect(client.toString(), "<DaapClient: {host: 127.0.0.1, port: 3689}>");
-    }, tags: ["internal"]);
+    }, tags: ["client", "internal"]);
     test(
         "'toString' method must return formatted string with connection config with secured password",
         () {
@@ -48,7 +48,7 @@ void main() {
       final client = DaapClient("127.0.0.1");
 
       expect(client.headers, expected);
-    }, tags: ["internal"]);
+    }, tags: ["client", "internal"]);
     test(
         "'headers' method must return dynamic request headers after multiple requests",
         () {
@@ -69,7 +69,7 @@ void main() {
       final client = DaapClient("127.0.0.1");
 
       expect(client.connection, isA<Client>());
-    }, tags: ["internal"]);
+    }, tags: ["client", "internal"]);
     test(
         "'connection' getter must return HTTP client class instance with basic authorization",
         () {
@@ -83,7 +83,7 @@ void main() {
         ..reply(HttpStatus.ok, "");
 
       expect(await client.request("http://127.0.0.1:3689/server-info"), []);
-    }, tags: ["network"]);
+    }, tags: ["client", "network"]);
     test(
         "'request' method must raise 'DaapAuthRequiredException' when making GET HTTP request to server (authentication required case)",
         () {
@@ -94,7 +94,7 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapAuthRequiredException>()));
-    }, tags: ["network"]);
+    }, tags: ["client", "network"]);
     test(
         "'request' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
         () {
@@ -105,7 +105,7 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapAuthenticationFailureException>()));
-    }, tags: ["network"]);
+    }, tags: ["client", "network"]);
     test(
         "'request' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
         () {
@@ -116,7 +116,7 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapTooManyConnectionsException>()));
-    }, tags: ["network"]);
+    }, tags: ["client", "network"]);
     test(
         "'request' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
         () {
@@ -127,6 +127,6 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapException>()));
-    }, tags: ["network"]);
+    }, tags: ["client", "network"]);
   });
 }
