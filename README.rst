@@ -1,11 +1,11 @@
-.. daap-client
+.. dart-daap-client
 .. README.rst
 
 
-A daap-client documentation
-=====================
+A dart-daap-client documentation
+================================
 
-    *daap-client is a DAAP (Digital Audio Access Protocol) client library
+    *dart-daap-client is a Dart DAAP (Digital Audio Access Protocol) client library
 
 .. contents::
 

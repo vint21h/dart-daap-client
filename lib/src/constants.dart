@@ -1,4 +1,4 @@
-// daap-client
+// dart-daap-client
 // lib/src/constants.dart
 
 import "objects.dart";

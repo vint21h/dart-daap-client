@@ -1,4 +1,4 @@
-// daap-client
+// dart-daap-client
 // lib/src/objects.dart
 
 import "dart:convert";

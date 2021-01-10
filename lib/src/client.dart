@@ -1,4 +1,4 @@
-// daap-client
+// dart-daap-client
 // lib/src/client.dart
 
 import "dart:io";

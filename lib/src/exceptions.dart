@@ -1,4 +1,4 @@
-// daap-client
+// dart-daap-client
 // lib/src/exceptions.dart
 
 /// DAAP client auth required exception.

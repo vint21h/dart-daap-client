@@ -1,4 +1,4 @@
-# daap-client
+# dart-daap-client
 # .gitignore
 
 
@@ -28,6 +28,6 @@
 .packages
 build/
 pubspec.lock
-test/.*
+test/.test_coverage.dart
 coverage
 coverage_badge.svg
