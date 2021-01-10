@@ -24,7 +24,7 @@ const Map<int, String> dmapDataTypes = {
   short: "h", // Int16
   unsignedShort: "uh", // Uint16
   integer: "i", // Int32
-  unsignedInteger: "ui", // Int32
+  unsignedInteger: "ui", // Uint32
   long: "l", // Int64
   unsignedLong: "ul", // Uint64
   string: "s", // String
@@ -40,7 +40,7 @@ const Map<int, String> dmapDataTypesNames = {
   short: "short", // Int16
   unsignedShort: "unsigned short", // Uint16
   integer: "integer", // Int32
-  unsignedInteger: "unsigned integer", // Int32
+  unsignedInteger: "unsigned integer", // Uint32
   long: "long", // Int64
   unsignedLong: "unsigned long", // Uint64
   string: "string", // String

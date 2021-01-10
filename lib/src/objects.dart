@@ -48,7 +48,7 @@ class DaapObject {
   int _value__unsignedLong;
   String _value__string;
   double _value__timestamp;
-  int _value__version;
+  String _value__version;
   List<DaapObject> _value__container = [];
 
   /// DAAP object constructor.
@@ -131,8 +131,7 @@ class DaapObject {
     } else if (this.code.type == timestamp) {
       this._value__timestamp = ByteData.view(rawData.buffer).getFloat32(0);
     } else if (this.code.type == version) {
-      // TODO: fix it, it's wrong.
-      this._value__version = ByteData.view(rawData.buffer).getUint32(0);
+      this._value__version = this.getVersion(rawData);
     } else if (this.code.type == container) {
       int chunkStart = 0;
       while (chunkStart + 8 < this._dataLength) {
@@ -164,5 +163,11 @@ class DaapObject {
   int getDataLength(Uint8List data) {
     return ByteData.view(data.sublist(4, 8).buffer)
         .getInt32(0, Endian.big); // bytes 5...8 is length of object data
+  }
+
+  /// Get DAAP protocol version.
+  String getVersion(Uint8List data) {
+    // generally version is two short unsigned integers
+    return "${ByteData.view(data.buffer, 0, 2).getUint16(0)}.${ByteData.view(data.buffer, 2, 2).getUint16(0)}";
   }
 }

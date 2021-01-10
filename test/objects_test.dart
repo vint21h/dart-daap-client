@@ -58,6 +58,12 @@ void main() {
       final DaapObject obj = DaapObject(data);
       expect(obj.getDataLength(data), 0);
     }, tags: ["objects", "object"]);
+    test("'getVersion' method must return DAAP protocol version", () {
+      final Uint8List data =
+          Uint8List.fromList([97, 112, 114, 111, 0, 0, 0, 4, 0, 3, 0, 0]);
+      final DaapObject obj = DaapObject(data);
+      expect(obj.getVersion(Uint8List.fromList([0, 3, 0, 0])), "3.0");
+    }, tags: ["objects", "object"]);
     test("'value' getter must return DAAP object 'byte' type value", () {
       final Uint8List data =
           Uint8List.fromList([109, 115, 97, 117, 0, 0, 0, 1, 0]);
@@ -107,6 +113,12 @@ void main() {
           Uint8List.fromList([109, 115, 116, 99, 0, 0, 0, 4, 65, 32, 0, 0]);
       final DaapObject obj = DaapObject(data);
       expect(obj.value, 10.0);
+    }, tags: ["objects", "object"]);
+    test("'value' getter must return DAAP object 'version' type value", () {
+      final Uint8List data =
+          Uint8List.fromList([97, 112, 114, 111, 0, 0, 0, 4, 0, 3, 0, 0]);
+      final DaapObject obj = DaapObject(data);
+      expect(obj.value, "3.0");
     }, tags: ["objects", "object"]);
     test("'value' getter must return DAAP object 'container' type value", () {
       final Uint8List data = Uint8List.fromList([
