@@ -5,7 +5,7 @@
 A dart-daap-client documentation
 ================================
 
-    *dart-daap-client is a Dart DAAP (Digital Audio Access Protocol) client library
+    *dart-daap-client is a Dart DAAP (Digital Audio Access Protocol) client library*
 
 .. contents::
 
@@ -24,7 +24,7 @@ daap-client uses the MIT license. Please check the MIT-LICENSE file for more det
 
 Contacts
 --------
-**Project Website**: https://github.com/vint21h/daap-client/
+**Project Website**: https://github.com/vint21h/dart-daap-client/
 
 **Author**: Alexei Andrushievich <vint21h@vint21h.pp.ua>
 

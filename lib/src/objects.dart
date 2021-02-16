@@ -20,7 +20,7 @@ class DmapCode {
     this._type = type;
   }
 
-  // DMAP code ype getter.
+  // DMAP code type getter.
   int get type => _type;
 
   /// Creates DMAP code class string representation.
@@ -90,6 +90,33 @@ class DaapObject {
       return this._value__version;
     } else if (this.code.type == container) {
       return this._value__container;
+    } else {
+      throw DaapDecodeException();
+    }
+  }
+
+  /// Search appropriate object value by code name in object tree.
+  ///
+  /// Throws "DaapDecodeException" in case of unknown code.
+  dynamic getAtom(String code) {
+    if (dmapCodeTypes.containsKey(code)) {
+      DmapCode dmapCode = dmapCodeTypes[code];
+      if (this.code == dmapCode) {
+        if (this.code.type == container) {
+          return this;
+        }
+        return this.value;
+      }
+      // check children
+      if ((this.code.type == container) && this.value.length > 0) {
+        for (var object in this.value) {
+          var value = object.getAtom(code);
+          if (value != null) {
+            return value;
+          }
+        }
+      }
+      return null;
     } else {
       throw DaapDecodeException();
     }

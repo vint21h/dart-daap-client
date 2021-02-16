@@ -21,14 +21,14 @@ void main() {
       final client = DaapClient("127.0.0.1", port: 3668, password: "password");
       expect(client.host, "127.0.0.1");
       expect(client.port, 3668);
-    }, tags: ["client", "internal"]);
+    }, tags: ["client", "DaapClient"]);
     test(
         "'toString' method must return formatted string with connection config",
         () {
       final client = DaapClient("127.0.0.1");
 
       expect(client.toString(), "<DaapClient: {host: 127.0.0.1, port: 3689}>");
-    }, tags: ["client", "internal"]);
+    }, tags: ["client", "DaapClient", "toString"]);
     test(
         "'toString' method must return formatted string with connection config with secured password",
         () {
@@ -36,7 +36,7 @@ void main() {
 
       expect(client.toString(),
           "<DaapClient: {host: 127.0.0.1, port: 3689, password: ********}>");
-    }, tags: ["internal"]);
+    }, tags: ["client", "DaapClient", "toString"]);
     test("'headers' method must return dynamic request headers", () {
       final Map<String, String> expected = {
         "Client-DAAP-Version": "3.0",
@@ -48,7 +48,7 @@ void main() {
       final client = DaapClient("127.0.0.1");
 
       expect(client.headers, expected);
-    }, tags: ["client", "internal"]);
+    }, tags: ["client", "DaapClient", "headers"]);
     test(
         "'headers' method must return dynamic request headers after multiple requests",
         () {
@@ -64,18 +64,18 @@ void main() {
       client.headers;
 
       expect(client.headers, expected);
-    }, tags: ["internal"]);
+    }, tags: ["client", "DaapClient", "headers"]);
     test("'connection' getter must return HTTP client class instance", () {
       final client = DaapClient("127.0.0.1");
 
       expect(client.connection, isA<Client>());
-    }, tags: ["client", "internal"]);
+    }, tags: ["client", "DaapClient", "connection"]);
     test(
         "'connection' getter must return HTTP client class instance with basic authorization",
         () {
       final client = DaapClient("127.0.0.1", password: "password");
       expect(client.connection, isA<BasicAuthClient>());
-    }, tags: ["internal"]);
+    }, tags: ["client", "DaapClient", "connection"]);
     test("'request' method must return HTTP GET request result data", () async {
       final client = DaapClient("127.0.0.1");
 
@@ -83,7 +83,7 @@ void main() {
         ..reply(HttpStatus.ok, "");
 
       expect(await client.request("http://127.0.0.1:3689/server-info"), []);
-    }, tags: ["client", "network"]);
+    }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapAuthRequiredException' when making GET HTTP request to server (authentication required case)",
         () {
@@ -94,7 +94,7 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapAuthRequiredException>()));
-    }, tags: ["client", "network"]);
+    }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
         () {
@@ -105,7 +105,7 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapAuthenticationFailureException>()));
-    }, tags: ["client", "network"]);
+    }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
         () {
@@ -116,7 +116,7 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapTooManyConnectionsException>()));
-    }, tags: ["client", "network"]);
+    }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
         () {
@@ -127,6 +127,6 @@ void main() {
 
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapException>()));
-    }, tags: ["client", "network"]);
+    }, tags: ["client", "DaapClient", "request"]);
   });
 }

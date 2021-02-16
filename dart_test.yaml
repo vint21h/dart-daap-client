@@ -3,9 +3,19 @@
 
 
 tags:
+  toString:
   client:
-  internal:
-  network:
+  DaapClient:
+  headers:
+  request:
+  connection:
   objects:
-  code:
-  object:
+  DmapCode:
+  type:
+  DaapObject:
+  getCode:
+  getDataLength:
+  getVersion:
+  value:
+  decode:
+  getAtom:
