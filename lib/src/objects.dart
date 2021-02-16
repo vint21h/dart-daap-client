@@ -47,7 +47,7 @@ class DaapObject {
   int _value__long;
   int _value__unsignedLong;
   String _value__string;
-  double _value__timestamp;
+  DateTime _value__timestamp;
   String _value__version;
   List<DaapObject> _value__container = [];
 
@@ -156,7 +156,7 @@ class DaapObject {
     } else if (this.code.type == string) {
       this._value__string = utf8.decode(rawData);
     } else if (this.code.type == timestamp) {
-      this._value__timestamp = ByteData.view(rawData.buffer).getFloat32(0);
+      this._value__timestamp = this.getTimestamp(rawData);
     } else if (this.code.type == version) {
       this._value__version = this.getVersion(rawData);
     } else if (this.code.type == container) {
@@ -196,5 +196,12 @@ class DaapObject {
   String getVersion(Uint8List data) {
     // generally version is two short unsigned integers
     return "${ByteData.view(data.buffer, 0, 2).getUint16(0)}.${ByteData.view(data.buffer, 2, 2).getUint16(0)}";
+  }
+
+  /// Get DAAP timestamp data type value.
+  DateTime getTimestamp(Uint8List data) {
+    int millisecondsTimestamp =
+        ByteData.view(rawData.buffer).getInt32(0) * 1000;
+    return DateTime.fromMillisecondsSinceEpoch(millisecondsTimestamp).toUtc();
   }
 }

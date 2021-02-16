@@ -110,9 +110,9 @@ void main() {
     }, tags: ["objects", "DaapObject", "value"]);
     test("'value' getter must return DAAP object 'timestamp' type value", () {
       final Uint8List data =
-          Uint8List.fromList([109, 115, 116, 99, 0, 0, 0, 4, 65, 32, 0, 0]);
+          Uint8List.fromList([109, 115, 116, 99, 0, 0, 0, 4, 0, 0, 0, 0]);
       final DaapObject obj = DaapObject(data);
-      expect(obj.value, 10.0);
+      expect(obj.value, DateTime.utc(1970, 1, 1));
     }, tags: ["objects", "DaapObject", "value"]);
     test("'value' getter must return DAAP object 'version' type value", () {
       final Uint8List data =
@@ -212,5 +212,12 @@ void main() {
       }
       throw Exception("Expected DaapDecodeException");
     }, tags: ["objects", "DaapObject", "getAtom"]);
+    test("'getTimestamp' method must return DAAP timestamp", () {
+      final Uint8List data =
+          Uint8List.fromList([109, 115, 116, 99, 0, 0, 0, 4, 0, 0, 0, 0]);
+      final DaapObject obj = DaapObject(data);
+      expect(obj.getTimestamp(Uint8List.fromList([0, 0, 0, 0])),
+          DateTime.utc(1970, 1, 1));
+    }, tags: ["objects", "DaapObject", "getTimestamp"]);
   });
 }
