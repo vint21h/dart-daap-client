@@ -16,10 +16,6 @@ void main() {
       expect(code.toString(),
           "<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>");
     }, tags: ["objects", "DmapCode", "toString"]);
-    test("'type' getter must return DMAP code type property", () {
-      final code = DmapCode("msrv", "dmap.serverinforesponse", container);
-      expect(code.type, container);
-    }, tags: ["objects", "DmapCode", "type"]);
   });
   group(DaapObject, () {
     test(

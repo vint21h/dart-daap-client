@@ -225,7 +225,6 @@ const String contentCodesUrlPath = "content-codes";
 const String databasesUrlPath = "databases";
 const String databaseUrlPath = "databases/{databaseId}/items";
 const String loginUrlPath = "login";
-const String logoutUrlPath = "logout";
 const String playlistsUrlPath = "databases/{databaseId}/containers";
 const String playlistUrlPath =
     "databases/{databaseId}/containers/{playlistId}/items";

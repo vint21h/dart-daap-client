@@ -9,36 +9,26 @@ import "exceptions.dart";
 
 /// DMAP code.
 class DmapCode {
-  String _code;
-  String _name;
-  int _type;
+  String code;
+  String name;
+  int type;
 
   /// DMAP code object constructor.
   DmapCode(String code, String name, int type) {
-    this._code = code;
-    this._name = name;
-    this._type = type;
+    this.code = code;
+    this.name = name;
+    this.type = type;
   }
-
-  // DMAP code type getter.
-  int get type => _type;
-
-  // DMAP code name getter.
-  String get name => _name;
-
-  // DMAP code getter.
-  String get code => _code;
 
   /// Creates DMAP code class string representation.
   @override
   String toString() {
-    return "<DmapCode: {code: '${this._code}', name: '${this._name}', type: '${dmapDataTypesNames[this._type]} (${dmapDataTypes[this._type]})'}>";
+    return "<DmapCode: {code: '${this.code}', name: '${this.name}', type: '${dmapDataTypesNames[this.type]} (${dmapDataTypes[this.type]})'}>";
   }
 }
 
 /// DAAP object.
 class DaapObject {
-  // TODO: write tests!!1
   DmapCode code;
   int _dataLength;
   Uint8List rawData;

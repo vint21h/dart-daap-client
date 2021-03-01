@@ -19,7 +19,7 @@ class DaapClient {
   String _password;
   Client _connection;
   Uri _baseUrl;
-  int requestId = 0;
+  int _requestId = 0;
 
   DaapObject serverInfo;
   DaapObject contentCodes;
@@ -87,9 +87,9 @@ class DaapClient {
   /// Return HTTP connection headers with dynamic request ID.
   Map<String, String> get headers {
     this._headers.update(
-        "Client-DAAP-Request-ID", (dynamic val) => requestId.toString(),
-        ifAbsent: () => requestId.toString());
-    this.requestId++;
+        "Client-DAAP-Request-ID", (dynamic val) => this._requestId.toString(),
+        ifAbsent: () => this._requestId.toString());
+    this._requestId++;
     return this._headers;
   }
 
@@ -138,13 +138,6 @@ class DaapClient {
   Future<DaapObject> login() async {
     var url = this._baseUrl;
     url = url.replace(path: loginUrlPath);
-    return DaapObject(await this.request(url.toString()));
-  }
-
-  /// Logout from server.
-  Future<DaapObject> logout() async {
-    var url = this._baseUrl;
-    url = url.replace(path: logoutUrlPath);
     return DaapObject(await this.request(url.toString()));
   }
 
