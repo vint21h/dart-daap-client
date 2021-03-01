@@ -36,14 +36,14 @@ void main() {
       expect(obj.getCode(data), dmapCodeTypes["msrv"]);
     }, tags: ["objects", "DaapObject", "getCode"]);
     test(
-        "'getCode' method must raise 'DaapDecodeException' when when found unknown DMAP code",
+        "'getCode' method must raise 'DaapDecodeException' when found unknown DMAP code",
         () {
       final Uint8List data =
           Uint8List.fromList([116, 101, 115, 116, 0, 0, 0, 0]);
       try {
         DaapObject(data);
       } on DaapDecodeException catch (error) {
-        expect(error, TypeMatcher<DaapDecodeException>());
+        expect(error, TypeMatcher<DaapDecodeException>().having((error) => error.message, "message", "'test' was not found in actual DMAP codes list."));
         return;
       }
       throw Exception("Expected DaapDecodeException");
@@ -154,7 +154,7 @@ void main() {
       try {
         DaapObject(data);
       } on DaapDecodeException catch (error) {
-        expect(error, TypeMatcher<DaapDecodeException>());
+        expect(error, TypeMatcher<DaapDecodeException>().having((error) => error.message, "message", "Code name length must be at least 8 bytes"));
         return;
       }
       throw Exception("Expected DaapDecodeException");
@@ -203,7 +203,7 @@ void main() {
       try {
         obj.getAtom("test");
       } on DaapDecodeException catch (error) {
-        expect(error, TypeMatcher<DaapDecodeException>());
+        expect(error, TypeMatcher<DaapDecodeException>().having((error) => error.message, "message", "'test' was not found in actual DMAP codes list."));
         return;
       }
       throw Exception("Expected DaapDecodeException");

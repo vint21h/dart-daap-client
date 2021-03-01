@@ -3,4 +3,3 @@
 
 
  - Add logging.
- - Replace some custom exceptions by FormatException with actual message.

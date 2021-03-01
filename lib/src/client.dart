@@ -153,6 +153,7 @@ class DaapClient {
   /// Get database from server.
   ///
   /// :param metaCodes: list of fields codes to obtain in server response.
+  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
   Future<DaapObject> getDatabase(int databaseId, int sessionId,
       {List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
     // TODO: move that code to separate method.
@@ -161,7 +162,7 @@ class DaapClient {
       if (dmapCodeTypes.containsKey(code)) {
         meta.add(dmapCodeTypes[code].name);
       } else {
-        throw DaapDecodeException();
+        throw new DaapEncodeException("'${code}' was not found in actual DMAP codes list.");
       }
     }
 
@@ -180,6 +181,7 @@ class DaapClient {
   /// Get database playlists from server.
   ///
   /// :param metaCodes: list of fields codes to obtain in server response.
+  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
   Future<DaapObject> getPlaylists(int databaseId, int sessionId,
       {List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
     // TODO: move that code to separate method.
@@ -188,7 +190,7 @@ class DaapClient {
       if (dmapCodeTypes.containsKey(code)) {
         meta.add(dmapCodeTypes[code].name);
       } else {
-        throw DaapDecodeException();
+        throw new DaapEncodeException("'${code}' was not found in actual DMAP codes list.");
       }
     }
     var url = this._baseUrl;
@@ -205,6 +207,7 @@ class DaapClient {
   /// Get database playlist from server.
   ///
   /// :param metaCodes: list of fields codes to obtain in server response.
+  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
   Future<DaapObject> getPlaylist(int databaseId, int playlistId, int sessionId,
       {List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
     // TODO: move that code to separate method.
@@ -213,7 +216,7 @@ class DaapClient {
       if (dmapCodeTypes.containsKey(code)) {
         meta.add(dmapCodeTypes[code].name);
       } else {
-        throw DaapDecodeException();
+        throw new DaapEncodeException("'${code}' was not found in actual DMAP codes list.");
       }
     }
 

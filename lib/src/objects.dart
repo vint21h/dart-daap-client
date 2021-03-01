@@ -87,13 +87,13 @@ class DaapObject {
     } else if (this.code.type == container) {
       return this._value__container;
     } else {
-      throw DaapDecodeException();
+      throw new DaapDecodeException("'${this.code.type}' was not found in actual DMAP codes types list.");
     }
   }
 
   /// Search appropriate object value by code name in object tree.
   ///
-  /// Throws "DaapDecodeException" in case of unknown code.
+  /// Throws [DaapDecodeException] in case of unknown code.
   dynamic getAtom(String code) {
     if (dmapCodeTypes.containsKey(code)) {
       DmapCode dmapCode = dmapCodeTypes[code];
@@ -114,18 +114,18 @@ class DaapObject {
       }
       return null;
     } else {
-      throw DaapDecodeException();
+      throw new DaapDecodeException("'${code}' was not found in actual DMAP codes list.");
     }
   }
 
   /// Decodes DAAP server response to DAAP object.
   ///
   /// Gets object code, type and value.
-  /// Throws "DaapDecodeException" in case of broken data.
+  /// Throws [DaapDecodeException] in case of broken data.
   void decode(Uint8List data) {
     if (data.lengthInBytes < 8) {
       // broken data, must contain at least 8 bytes
-      throw DaapDecodeException();
+      throw new DaapDecodeException("Code name length must be at least 8 bytes");
     }
 
     this.code = this.getCode(data);
@@ -171,14 +171,14 @@ class DaapObject {
   /// Get DAAP object DMAP code from data.
   ///
   /// Get and return appropriate DMAP code.
-  /// Throws "DaapDecodeException" in case of unknown code.
+  /// Throws [DaapDecodeException] in case of unknown code.
   DmapCode getCode(Uint8List data) {
     String code =
         utf8.decode(data.sublist(0, 4)); // first 4 bytes is object code
     if (dmapCodeTypes.containsKey(code)) {
       return dmapCodeTypes[code];
     } else {
-      throw DaapDecodeException();
+      throw new DaapDecodeException("'${code}' was not found in actual DMAP codes list.");
     }
   }
 

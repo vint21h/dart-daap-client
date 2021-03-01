@@ -23,5 +23,14 @@ class DaapException implements Exception {
 
 /// DAAP client decode data exception.
 class DaapDecodeException implements Exception {
-  String errMsg() => "DaapClient: decode data error.";
+  final String message;
+  const DaapDecodeException(this.message);
+  String toString() => "DaapClient: decode data error. ${message}";
+}
+
+/// DAAP client encode data exception.
+class DaapEncodeException implements Exception {
+  final String message;
+  const DaapEncodeException(this.message);
+  String toString() => "DaapClient: encode data error. ${message}";
 }

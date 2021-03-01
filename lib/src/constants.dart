@@ -234,7 +234,7 @@ const String updateUrlPath = "update";
 /// Queries meta's defaults
 const List<String> databaseQueryDefaultMetaCodes = [
   "aeNV"
-      "asaa",
+  "asaa",
   "asar",
   "asbr",
   "asbt",
@@ -268,8 +268,8 @@ const List<String> databaseQueryDefaultMetaCodes = [
   "mper",
 ];
 const List<String> playlistsQueryDefaultMetaCodes = [
-  "abpl"
-      "aePP",
+  "abpl",
+  "aePP",
   "aePS",
   "aeSG",
   "aeSP",
