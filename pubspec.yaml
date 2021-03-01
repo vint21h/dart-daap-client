@@ -2,19 +2,22 @@
 # pubspec.yaml
 
 
-name: daapc
-version: 0.0.0
+name: "daapc"
+version: "0.0.0"
 description: >-
   DAAP (Digital Audio Access Protocol) client library
-homepage: https://github.com/vint21h/daap-client/
+homepage: "https://github.com/vint21h/dart-daap-client/"
+repository: "https://github.com/vint21h/dart-daap-client/"
+issue_tracker: "https://github.com/vint21h/dart-daap-client/issues/"
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   http: "0.12.2"
-  fluri: "1.3.0"
   http_auth: "0.3.1"
+  interpolator: "0.0.3"
+dev_dependencies:
   test: "1.15.7"
   nock: "1.1.2"
   test_coverage: "0.5.0"

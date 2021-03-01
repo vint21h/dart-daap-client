@@ -23,6 +23,12 @@ class DmapCode {
   // DMAP code type getter.
   int get type => _type;
 
+  // DMAP code name getter.
+  String get name => _name;
+
+  // DMAP code getter.
+  String get code => _code;
+
   /// Creates DMAP code class string representation.
   @override
   String toString() {

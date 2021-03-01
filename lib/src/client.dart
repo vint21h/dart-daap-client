@@ -4,9 +4,10 @@
 import "dart:io";
 import "dart:typed_data";
 
-import 'package:daapc/src/objects.dart';
+import "package:daapc/src/objects.dart";
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
+import "package:interpolator/interpolator.dart";
 
 import "constants.dart";
 import "exceptions.dart";
@@ -53,7 +54,7 @@ class DaapClient {
   /// Connect to DAAP server.
   ///
   /// Creates base connection URL.
-  /// Get DAAP content codes/server info and login.
+  /// Get DAAP content codes/server info/session info/databases.
   void connect() async {
     this._baseUrl = new Uri(
       scheme: "http",
@@ -61,9 +62,9 @@ class DaapClient {
       port: this.port,
     );
 
-    this.serverInfo = DaapObject(await this.getServerInfo());
-    this.contentCodes = DaapObject(await this.getContentCodes());
-    this.sessionInfo = DaapObject(await this.login());
+    this.serverInfo = await this.getServerInfo();
+    this.contentCodes = await this.getContentCodes();
+    this.sessionInfo = await this.login();
   }
 
   /// Shared HTTP connection getter.
@@ -120,30 +121,119 @@ class DaapClient {
   /// Get server content codes.
   ///
   /// Practically required.
-  Future<Uint8List> getContentCodes() async {
+  Future<DaapObject> getContentCodes() async {
     var url = this._baseUrl;
     url = url.replace(path: contentCodesUrlPath);
-    return await this.request(url.toString());
+    return DaapObject(await this.request(url.toString()));
   }
 
   /// Get server info.
-  Future<Uint8List> getServerInfo() async {
+  Future<DaapObject> getServerInfo() async {
     var url = this._baseUrl;
     url = url.replace(path: serverInfoUrlPath);
-    return await this.request(url.toString());
+    return DaapObject(await this.request(url.toString()));
   }
 
   /// Login to server.
-  Future<Uint8List> login() async {
+  Future<DaapObject> login() async {
     var url = this._baseUrl;
     url = url.replace(path: loginUrlPath);
-    return await this.request(url.toString());
+    return DaapObject(await this.request(url.toString()));
   }
 
   /// Logout from server.
-  Future<Uint8List> logout() async {
+  Future<DaapObject> logout() async {
     var url = this._baseUrl;
     url = url.replace(path: logoutUrlPath);
-    return await this.request(url.toString());
+    return DaapObject(await this.request(url.toString()));
+  }
+
+  /// Get databases from server.
+  Future<DaapObject> getDatabases(int sessionId) async {
+    var url = this._baseUrl;
+    url = url.replace(
+        path: databasesUrlPath,
+        queryParameters: {"session-id": sessionId.toString()});
+    return DaapObject(await this.request(url.toString()));
+  }
+
+  /// Get database from server.
+  ///
+  /// :param metaCodes: list of fields codes to obtain in server response.
+  Future<DaapObject> getDatabase(int databaseId, int sessionId,
+      {List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
+    // TODO: move that code to separate method.
+    var meta = <String>[];
+    for (String code in metaCodes) {
+      if (dmapCodeTypes.containsKey(code)) {
+        meta.add(dmapCodeTypes[code].name);
+      } else {
+        throw DaapDecodeException();
+      }
+    }
+
+    var url = this._baseUrl;
+    url = url.replace(
+        path: Interpolator(databaseUrlPath)(
+            {"databaseId": databaseId.toString()}),
+        queryParameters: {
+          "type": "music",
+          "session-id": sessionId.toString(),
+          "meta": meta.join(",")
+        });
+    return DaapObject(await this.request(url.toString()));
+  }
+
+  /// Get database playlists from server.
+  ///
+  /// :param metaCodes: list of fields codes to obtain in server response.
+  Future<DaapObject> getPlaylists(int databaseId, int sessionId,
+      {List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
+    // TODO: move that code to separate method.
+    var meta = <String>[];
+    for (String code in metaCodes) {
+      if (dmapCodeTypes.containsKey(code)) {
+        meta.add(dmapCodeTypes[code].name);
+      } else {
+        throw DaapDecodeException();
+      }
+    }
+    var url = this._baseUrl;
+    url = url.replace(
+        path: Interpolator(playlistsUrlPath)(
+            {"databaseId": databaseId.toString()}),
+        queryParameters: {
+          "session-id": sessionId.toString(),
+          "meta": meta.join(",")
+        });
+    return DaapObject(await this.request(url.toString()));
+  }
+
+  /// Get database playlist from server.
+  ///
+  /// :param metaCodes: list of fields codes to obtain in server response.
+  Future<DaapObject> getPlaylist(int databaseId, int playlistId, int sessionId,
+      {List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
+    // TODO: move that code to separate method.
+    var meta = <String>[];
+    for (String code in metaCodes) {
+      if (dmapCodeTypes.containsKey(code)) {
+        meta.add(dmapCodeTypes[code].name);
+      } else {
+        throw DaapDecodeException();
+      }
+    }
+
+    var url = this._baseUrl;
+    url = url.replace(
+        path: Interpolator(playlistUrlPath)({
+          "databaseId": databaseId.toString(),
+          "playlistId": playlistId.toString()
+        }),
+        queryParameters: {
+          "session-id": sessionId.toString(),
+          "meta": meta.join(",")
+        });
+    return DaapObject(await this.request(url.toString()));
   }
 }

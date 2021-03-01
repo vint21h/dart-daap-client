@@ -41,7 +41,8 @@ void main() {
       final Map<String, String> expected = {
         "Client-DAAP-Version": "3.0",
         "Client-DAAP-Access-Index": "2",
-        "User-Agent": "daapc/0.0.0 (https://github.com/vint21h/daap-client/)",
+        "User-Agent":
+            "daapc/0.0.0 (https://github.com/vint21h/dart-daap-client/)",
         "Accept": "application/x-dmap-tagged",
         "Client-DAAP-Request-ID": "0",
       };
@@ -55,7 +56,8 @@ void main() {
       final Map<String, String> expected = {
         "Client-DAAP-Version": "3.0",
         "Client-DAAP-Access-Index": "2",
-        "User-Agent": "daapc/0.0.0 (https://github.com/vint21h/daap-client/)",
+        "User-Agent":
+            "daapc/0.0.0 (https://github.com/vint21h/dart-daap-client/)",
         "Accept": "application/x-dmap-tagged",
         "Client-DAAP-Request-ID": "1",
       };
