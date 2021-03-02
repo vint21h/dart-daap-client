@@ -18,19 +18,21 @@ class DaapTooManyConnectionsException implements Exception {
 
 /// DAAP client common exception.
 class DaapException implements Exception {
-  String errMsg() => "DaapClient: making request error.";
+  final String message;
+  const DaapException(this.message);
+  String toString() => "DaapClient: making request error. ${message}";
 }
 
-/// DAAP client decode data exception.
-class DaapDecodeException implements Exception {
+/// DMAP decode data exception.
+class DmapDecodeException implements Exception {
   final String message;
-  const DaapDecodeException(this.message);
-  String toString() => "DaapClient: decode data error. ${message}";
+  const DmapDecodeException(this.message);
+  String toString() => "DmapObject: decode data error. ${message}";
 }
 
-/// DAAP client encode data exception.
-class DaapEncodeException implements Exception {
+/// DMAP encode data exception.
+class DmapEncodeException implements Exception {
   final String message;
-  const DaapEncodeException(this.message);
-  String toString() => "DaapClient: encode data error. ${message}";
+  const DmapEncodeException(this.message);
+  String toString() => "DmapObject: encode data error. ${message}";
 }

@@ -112,14 +112,14 @@ class DaapClient {
       } else if (response.statusCode == HttpStatus.noContent) {
         return null;
       } else if (response.statusCode != HttpStatus.ok) {
-        throw DaapException();
+        throw DaapException("Response status: '${response.statusCode}'");
       } else {
         return response.bodyBytes;
       }
     } on ClientException {
-      throw DaapException();
+      throw DaapException("Client error.");
     } on SocketException {
-      throw DaapException();
+      throw DaapException("Socket error.");
     }
   }
 
@@ -202,18 +202,17 @@ class DaapClient {
 
   /// Create request meta key value from DMAP codes list.
   ///
-  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
+  /// Throws [DmapEncodeException] in case of unknown code in "metaCodes".
   String getRequestMeta(List<String> metaCodes) {
     var meta = <String>[];
     for (String code in metaCodes) {
       if (dmapCodeTypes.containsKey(code)) {
         meta.add(dmapCodeTypes[code].name);
       } else {
-        throw new DaapEncodeException(
+        throw new DmapEncodeException(
             "'${code}' was not found in actual DMAP codes list.");
       }
     }
-
     return meta.join(",");
   }
 }

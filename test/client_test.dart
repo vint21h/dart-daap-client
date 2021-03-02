@@ -94,8 +94,12 @@ void main() {
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.unauthorized, "401 Unauthorized");
 
-      expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(isA<DaapAuthRequiredException>()));
+      expect(
+          client.request("http://127.0.0.1:3689/server-info"),
+          throwsA(isA<DaapAuthRequiredException>().having(
+              (error) => error.errMsg(),
+              "message",
+              "DaapClient: auth required.")));
     }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
@@ -105,8 +109,12 @@ void main() {
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.forbidden, "403 Forbidden");
 
-      expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(isA<DaapAuthenticationFailureException>()));
+      expect(
+          client.request("http://127.0.0.1:3689/server-info"),
+          throwsA(isA<DaapAuthenticationFailureException>().having(
+              (error) => error.errMsg(),
+              "message",
+              "DaapClient: authentication failure.")));
     }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
@@ -116,8 +124,12 @@ void main() {
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.serviceUnavailable, "503 Service Unavailable");
 
-      expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(isA<DaapTooManyConnectionsException>()));
+      expect(
+          client.request("http://127.0.0.1:3689/server-info"),
+          throwsA(isA<DaapTooManyConnectionsException>().having(
+              (error) => error.errMsg(),
+              "message",
+              "DaapClient: too many connections.")));
     }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
@@ -127,8 +139,12 @@ void main() {
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(500, "500 Internal Server Error");
 
-      expect(client.request("http://127.0.0.1:3689/server-info"),
-          throwsA(isA<DaapException>()));
+      expect(
+          client.request("http://127.0.0.1:3689/server-info"),
+          throwsA(isA<DaapException>().having(
+              (error) => error.toString(),
+              "message",
+              "DaapClient: making request error. Response status: '500'")));
     }, tags: ["client", "DaapClient", "request"]);
     test("'getRequestMeta' method must return request meta key value", () {
       final client = DaapClient("127.0.0.1");
@@ -137,22 +153,22 @@ void main() {
           "daap.songalbumartist,daap.songartist");
     }, tags: ["client", "DaapClient", "getRequestMeta"]);
     test(
-        "'getRequestMeta' method must raise 'DaapEncodeException' in case of unknown code",
+        "'getRequestMeta' method must raise 'DmapEncodeException' in case of unknown code",
         () {
       final client = DaapClient("127.0.0.1");
 
       try {
         client.getRequestMeta(["test"]);
-      } on DaapEncodeException catch (error) {
+      } on DmapEncodeException catch (error) {
         expect(
             error,
-            TypeMatcher<DaapEncodeException>().having(
+            TypeMatcher<DmapEncodeException>().having(
                 (error) => error.toString(),
                 "message",
-                "DaapClient: encode data error. 'test' was not found in actual DMAP codes list."));
+                "DmapObject: encode data error. 'test' was not found in actual DMAP codes list."));
         return;
       }
-      throw Exception("Expected DaapDecodeException");
+      throw Exception("Expected DmapDecodeException");
     }, tags: ["client", "DaapClient", "getRequestMeta"]);
   });
 }

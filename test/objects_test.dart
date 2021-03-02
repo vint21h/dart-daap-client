@@ -36,22 +36,22 @@ void main() {
       expect(obj.getCode(data), dmapCodeTypes["msrv"]);
     }, tags: ["objects", "DaapObject", "getCode"]);
     test(
-        "'getCode' method must raise 'DaapDecodeException' when found unknown DMAP code",
+        "'getCode' method must raise 'DmapDecodeException' when found unknown DMAP code",
         () {
       final Uint8List data =
           Uint8List.fromList([116, 101, 115, 116, 0, 0, 0, 0]);
       try {
         DaapObject(data);
-      } on DaapDecodeException catch (error) {
+      } on DmapDecodeException catch (error) {
         expect(
             error,
-            TypeMatcher<DaapDecodeException>().having(
+            TypeMatcher<DmapDecodeException>().having(
                 (error) => error.toString(),
                 "message",
-                "DaapClient: decode data error. 'test' was not found in actual DMAP codes list."));
+                "DmapObject: decode data error. 'test' was not found in actual DMAP codes list."));
         return;
       }
-      throw Exception("Expected DaapDecodeException");
+      throw Exception("Expected DmapDecodeException");
     }, tags: ["objects", "DaapObject", "getCode"]);
     test("'getDataLength' method must return DAAP object data length", () {
       final Uint8List data =
@@ -153,21 +153,21 @@ void main() {
           ].toString());
     }, tags: ["objects", "DaapObject", "value"]);
     test(
-        "'decode' method must raise 'DaapDecodeException' when data length is less than 8 bytes",
+        "'decode' method must raise 'DmapDecodeException' when data length is less than 8 bytes",
         () {
       final Uint8List data = Uint8List.fromList([109, 115, 114, 118, 0, 0, 0]);
       try {
         DaapObject(data);
-      } on DaapDecodeException catch (error) {
+      } on DmapDecodeException catch (error) {
         expect(
             error,
-            TypeMatcher<DaapDecodeException>().having(
+            TypeMatcher<DmapDecodeException>().having(
                 (error) => error.toString(),
                 "message",
-                "DaapClient: decode data error. Code name length must be at least 8 bytes"));
+                "DmapObject: decode data error. Code name length must be at least 8 bytes"));
         return;
       }
-      throw Exception("Expected DaapDecodeException");
+      throw Exception("Expected DmapDecodeException");
     }, tags: ["objects", "DaapObject", "decode"]);
     test("'getAtom' method must return DAAP object value found by code name",
         () {
@@ -205,23 +205,23 @@ void main() {
       expect(obj.getAtom("mstt"), 200);
     }, tags: ["objects", "DaapObject", "getAtom"]);
     test(
-        "'getAtom' method must raise 'DaapDecodeException' for unknown DMAP code",
+        "'getAtom' method must raise 'DmapDecodeException' for unknown DMAP code",
         () {
       final Uint8List data =
           Uint8List.fromList([97, 112, 114, 111, 0, 0, 0, 4, 0, 3, 0, 0]);
       final DaapObject obj = DaapObject(data);
       try {
         obj.getAtom("test");
-      } on DaapDecodeException catch (error) {
+      } on DmapDecodeException catch (error) {
         expect(
             error,
-            TypeMatcher<DaapDecodeException>().having(
+            TypeMatcher<DmapDecodeException>().having(
                 (error) => error.toString(),
                 "message",
-                "DaapClient: decode data error. 'test' was not found in actual DMAP codes list."));
+                "DmapObject: decode data error. 'test' was not found in actual DMAP codes list."));
         return;
       }
-      throw Exception("Expected DaapDecodeException");
+      throw Exception("Expected DmapDecodeException");
     }, tags: ["objects", "DaapObject", "getAtom"]);
     test("'getTimestamp' method must return DAAP timestamp", () {
       final Uint8List data =
