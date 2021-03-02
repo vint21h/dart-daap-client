@@ -233,7 +233,7 @@ const String updateUrlPath = "update";
 
 /// Queries meta's defaults
 const List<String> databaseQueryDefaultMetaCodes = [
-  "aeNV"
+  "aeNV",
   "asaa",
   "asar",
   "asbr",

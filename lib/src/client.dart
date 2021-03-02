@@ -94,6 +94,11 @@ class DaapClient {
   }
 
   /// Make a GET HTTP request to DAAP server.
+  ///
+  /// Throws [DaapAuthRequiredException] in case of server auth required.
+  /// Throws [DaapAuthenticationFailureException] in case of wrong credentials provided.
+  /// Throws [DaapTooManyConnectionsException] in case of server overload.
+  /// Throws [DaapException] in case of unexpected response status code or network error.
   Future<Uint8List> request(String url) async {
     try {
       var response = await this.connection.get(url, headers: this.headers);
@@ -151,21 +156,8 @@ class DaapClient {
   }
 
   /// Get database from server.
-  ///
-  /// :param metaCodes: list of fields codes to obtain in server response.
-  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
   Future<DaapObject> getDatabase(int databaseId, int sessionId,
       {List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
-    // TODO: move that code to separate method.
-    var meta = <String>[];
-    for (String code in metaCodes) {
-      if (dmapCodeTypes.containsKey(code)) {
-        meta.add(dmapCodeTypes[code].name);
-      } else {
-        throw new DaapEncodeException("'${code}' was not found in actual DMAP codes list.");
-      }
-    }
-
     var url = this._baseUrl;
     url = url.replace(
         path: Interpolator(databaseUrlPath)(
@@ -173,53 +165,28 @@ class DaapClient {
         queryParameters: {
           "type": "music",
           "session-id": sessionId.toString(),
-          "meta": meta.join(",")
+          "meta": this.getRequestMeta(databaseQueryDefaultMetaCodes),
         });
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database playlists from server.
-  ///
-  /// :param metaCodes: list of fields codes to obtain in server response.
-  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
   Future<DaapObject> getPlaylists(int databaseId, int sessionId,
       {List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
-    // TODO: move that code to separate method.
-    var meta = <String>[];
-    for (String code in metaCodes) {
-      if (dmapCodeTypes.containsKey(code)) {
-        meta.add(dmapCodeTypes[code].name);
-      } else {
-        throw new DaapEncodeException("'${code}' was not found in actual DMAP codes list.");
-      }
-    }
     var url = this._baseUrl;
     url = url.replace(
         path: Interpolator(playlistsUrlPath)(
             {"databaseId": databaseId.toString()}),
         queryParameters: {
           "session-id": sessionId.toString(),
-          "meta": meta.join(",")
+          "meta": this.getRequestMeta(playlistsQueryDefaultMetaCodes),
         });
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database playlist from server.
-  ///
-  /// :param metaCodes: list of fields codes to obtain in server response.
-  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
   Future<DaapObject> getPlaylist(int databaseId, int playlistId, int sessionId,
       {List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
-    // TODO: move that code to separate method.
-    var meta = <String>[];
-    for (String code in metaCodes) {
-      if (dmapCodeTypes.containsKey(code)) {
-        meta.add(dmapCodeTypes[code].name);
-      } else {
-        throw new DaapEncodeException("'${code}' was not found in actual DMAP codes list.");
-      }
-    }
-
     var url = this._baseUrl;
     url = url.replace(
         path: Interpolator(playlistUrlPath)({
@@ -228,8 +195,25 @@ class DaapClient {
         }),
         queryParameters: {
           "session-id": sessionId.toString(),
-          "meta": meta.join(",")
+          "meta": this.getRequestMeta(playlistQueryDefaultMetaCodes),
         });
     return DaapObject(await this.request(url.toString()));
+  }
+
+  /// Create request meta key value from DMAP codes list.
+  ///
+  /// Throws [DaapEncodeException] in case of unknown code in "metaCodes".
+  String getRequestMeta(List<String> metaCodes) {
+    var meta = <String>[];
+    for (String code in metaCodes) {
+      if (dmapCodeTypes.containsKey(code)) {
+        meta.add(dmapCodeTypes[code].name);
+      } else {
+        throw new DaapEncodeException(
+            "'${code}' was not found in actual DMAP codes list.");
+      }
+    }
+
+    return meta.join(",");
   }
 }

@@ -9,6 +9,7 @@ tags:
   headers:
   request:
   connection:
+  getRequestMeta:
   objects:
   DmapCode:
   type:

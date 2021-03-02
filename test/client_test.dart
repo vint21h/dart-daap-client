@@ -63,7 +63,7 @@ void main() {
       };
       final client = DaapClient("127.0.0.1");
 
-      client.headers;
+      client.headers; // increment request ID
 
       expect(client.headers, expected);
     }, tags: ["client", "DaapClient", "headers"]);
@@ -130,5 +130,29 @@ void main() {
       expect(client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapException>()));
     }, tags: ["client", "DaapClient", "request"]);
+    test("'getRequestMeta' method must return request meta key value", () {
+      final client = DaapClient("127.0.0.1");
+
+      expect(client.getRequestMeta(["asaa", "asar"]),
+          "daap.songalbumartist,daap.songartist");
+    }, tags: ["client", "DaapClient", "getRequestMeta"]);
+    test(
+        "'getRequestMeta' method must raise 'DaapEncodeException' in case of unknown code",
+        () {
+      final client = DaapClient("127.0.0.1");
+
+      try {
+        client.getRequestMeta(["test"]);
+      } on DaapEncodeException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapEncodeException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: encode data error. 'test' was not found in actual DMAP codes list."));
+        return;
+      }
+      throw Exception("Expected DaapDecodeException");
+    }, tags: ["client", "DaapClient", "getRequestMeta"]);
   });
 }

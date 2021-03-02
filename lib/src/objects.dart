@@ -87,7 +87,8 @@ class DaapObject {
     } else if (this.code.type == container) {
       return this._value__container;
     } else {
-      throw new DaapDecodeException("'${this.code.type}' was not found in actual DMAP codes types list.");
+      throw new DaapDecodeException(
+          "'${this.code.type}' was not found in actual DMAP codes types list.");
     }
   }
 
@@ -114,7 +115,8 @@ class DaapObject {
       }
       return null;
     } else {
-      throw new DaapDecodeException("'${code}' was not found in actual DMAP codes list.");
+      throw new DaapDecodeException(
+          "'${code}' was not found in actual DMAP codes list.");
     }
   }
 
@@ -125,7 +127,8 @@ class DaapObject {
   void decode(Uint8List data) {
     if (data.lengthInBytes < 8) {
       // broken data, must contain at least 8 bytes
-      throw new DaapDecodeException("Code name length must be at least 8 bytes");
+      throw new DaapDecodeException(
+          "Code name length must be at least 8 bytes");
     }
 
     this.code = this.getCode(data);
@@ -178,7 +181,8 @@ class DaapObject {
     if (dmapCodeTypes.containsKey(code)) {
       return dmapCodeTypes[code];
     } else {
-      throw new DaapDecodeException("'${code}' was not found in actual DMAP codes list.");
+      throw new DaapDecodeException(
+          "'${code}' was not found in actual DMAP codes list.");
     }
   }
 

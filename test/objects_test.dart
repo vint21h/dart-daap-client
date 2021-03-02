@@ -43,7 +43,12 @@ void main() {
       try {
         DaapObject(data);
       } on DaapDecodeException catch (error) {
-        expect(error, TypeMatcher<DaapDecodeException>().having((error) => error.message, "message", "'test' was not found in actual DMAP codes list."));
+        expect(
+            error,
+            TypeMatcher<DaapDecodeException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: decode data error. 'test' was not found in actual DMAP codes list."));
         return;
       }
       throw Exception("Expected DaapDecodeException");
@@ -154,7 +159,12 @@ void main() {
       try {
         DaapObject(data);
       } on DaapDecodeException catch (error) {
-        expect(error, TypeMatcher<DaapDecodeException>().having((error) => error.message, "message", "Code name length must be at least 8 bytes"));
+        expect(
+            error,
+            TypeMatcher<DaapDecodeException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: decode data error. Code name length must be at least 8 bytes"));
         return;
       }
       throw Exception("Expected DaapDecodeException");
@@ -203,7 +213,12 @@ void main() {
       try {
         obj.getAtom("test");
       } on DaapDecodeException catch (error) {
-        expect(error, TypeMatcher<DaapDecodeException>().having((error) => error.message, "message", "'test' was not found in actual DMAP codes list."));
+        expect(
+            error,
+            TypeMatcher<DaapDecodeException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: decode data error. 'test' was not found in actual DMAP codes list."));
         return;
       }
       throw Exception("Expected DaapDecodeException");
