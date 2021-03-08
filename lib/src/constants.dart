@@ -634,8 +634,7 @@ const String playlistUrlPath =
     "databases/{databaseId}/containers/{playlistId}/items";
 const String serverInfoUrlPath = "server-info";
 const String updateUrlPath = "update";
-const String songUrlPath =
-    "databases/{databaseId}/items/{songId}.{songFormat}";
+const String songUrlPath = "databases/{databaseId}/items/{songId}.{songFormat}";
 
 /// Queries meta's defaults.
 const List<String> databaseQueryDefaultMetaCodes = [

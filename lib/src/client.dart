@@ -147,71 +147,111 @@ class DaapClient {
   }
 
   /// Get databases from server.
-  Future<DaapObject> getDatabases(int sessionId) async {
+  ///
+  /// Calling without [sessionId] param is allowed only after [connect] call.
+  Future<DaapObject> getDatabases({int sessionId}) async {
     var url = this._baseUrl;
-    url = url.replace(
-        path: databasesUrlPath,
-        queryParameters: {"session-id": sessionId.toString()});
+    if (sessionId != null) {
+      url = url.replace(
+          path: databasesUrlPath,
+          queryParameters: {"session-id": sessionId.toString()});
+    } else {
+      return await this.getDatabases(
+          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+    }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database from server.
-  Future<DaapObject> getDatabase(int databaseId, int sessionId,
-      {List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
+  ///
+  /// Calling without [sessionId] param is allowed only after [connect] call.
+  Future<DaapObject> getDatabase(int databaseId,
+      {int sessionId,
+      List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
     var url = this._baseUrl;
-    url = url.replace(
-        path: Interpolator(databaseUrlPath)(
-            {"databaseId": databaseId.toString()}),
-        queryParameters: {
-          "type": "music",
-          "session-id": sessionId.toString(),
-          "meta": this.getRequestMeta(databaseQueryDefaultMetaCodes),
-        });
+    if (sessionId != null) {
+      url = url.replace(
+          path: Interpolator(databaseUrlPath)(
+              {"databaseId": databaseId.toString()}),
+          queryParameters: {
+            "type": "music",
+            "session-id": sessionId.toString(),
+            "meta": this.getRequestMeta(databaseQueryDefaultMetaCodes),
+          });
+    } else {
+      return await this.getDatabase(databaseId,
+          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+          metaCodes: metaCodes);
+    }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database playlists from server.
-  Future<DaapObject> getPlaylists(int databaseId, int sessionId,
-      {List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
+  ///
+  /// Calling without [sessionId] param is allowed only after [connect] call.
+  Future<DaapObject> getPlaylists(int databaseId,
+      {int sessionId,
+      List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
     var url = this._baseUrl;
-    url = url.replace(
-        path: Interpolator(playlistsUrlPath)(
-            {"databaseId": databaseId.toString()}),
-        queryParameters: {
-          "session-id": sessionId.toString(),
-          "meta": this.getRequestMeta(playlistsQueryDefaultMetaCodes),
-        });
+    if (sessionId != null) {
+      url = url.replace(
+          path: Interpolator(playlistsUrlPath)(
+              {"databaseId": databaseId.toString()}),
+          queryParameters: {
+            "session-id": sessionId.toString(),
+            "meta": this.getRequestMeta(playlistsQueryDefaultMetaCodes),
+          });
+    } else {
+      return await this.getPlaylists(databaseId,
+          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+          metaCodes: metaCodes);
+    }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database playlist from server.
-  Future<DaapObject> getPlaylist(int databaseId, int playlistId, int sessionId,
-      {List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
+  ///
+  /// Calling without [sessionId] param is allowed only after [connect] call.
+  Future<DaapObject> getPlaylist(int databaseId, int playlistId,
+      {int sessionId,
+      List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
     var url = this._baseUrl;
-    url = url.replace(
-        path: Interpolator(playlistUrlPath)({
-          "databaseId": databaseId.toString(),
-          "playlistId": playlistId.toString()
-        }),
-        queryParameters: {
-          "session-id": sessionId.toString(),
-          "meta": this.getRequestMeta(playlistQueryDefaultMetaCodes),
-        });
+    if (sessionId != null) {
+      url = url.replace(
+          path: Interpolator(playlistUrlPath)({
+            "databaseId": databaseId.toString(),
+            "playlistId": playlistId.toString()
+          }),
+          queryParameters: {
+            "session-id": sessionId.toString(),
+            "meta": this.getRequestMeta(playlistQueryDefaultMetaCodes),
+          });
+    } else {
+      return await this.getPlaylist(databaseId, playlistId,
+          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+          metaCodes: metaCodes);
+    }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get song file/stream from server.
-  Future<Uint8List> getSong(int databaseId, int songId, String songFormat, int sessionId) async {
+  ///
+  /// Calling without [sessionId] param is allowed only after [connect] call.
+  Future<Uint8List> getSong(int databaseId, int songId, String songFormat,
+      {int sessionId}) async {
     var url = this._baseUrl;
-    url = url.replace(
-        path: Interpolator(songUrlPath)({
-          "databaseId": databaseId.toString(),
-          "songId": songId.toString(),
-          "songFormat": songFormat
-        }),
-        queryParameters: {
-          "session-id": sessionId.toString()
-        });
+    if (sessionId != null) {
+      url = url.replace(
+          path: Interpolator(songUrlPath)({
+            "databaseId": databaseId.toString(),
+            "songId": songId.toString(),
+            "songFormat": songFormat
+          }),
+          queryParameters: {"session-id": sessionId.toString()});
+    } else {
+      return await this.getSong(databaseId, songId, songFormat,
+          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+    }
     return await this.request(url.toString());
   }
 

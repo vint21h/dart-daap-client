@@ -16,8 +16,7 @@ void main() {
       expect(code.toString(),
           "<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>");
     }, tags: ["objects", "DmapCode", "toString"]);
-    test("'DmapCode' constructor must initialize object",
-        () {
+    test("'DmapCode' constructor must initialize object", () {
       final code = DmapCode("msrv", "dmap.serverinforesponse", container);
       expect(code.code, "msrv");
       expect(code.name, "dmap.serverinforesponse");
