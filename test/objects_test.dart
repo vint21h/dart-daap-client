@@ -16,6 +16,13 @@ void main() {
       expect(code.toString(),
           "<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>");
     }, tags: ["objects", "DmapCode", "toString"]);
+    test("'DmapCode' constructor must initialize object",
+        () {
+      final code = DmapCode("msrv", "dmap.serverinforesponse", container);
+      expect(code.code, "msrv");
+      expect(code.name, "dmap.serverinforesponse");
+      expect(code.type, 12);
+    }, tags: ["objects", "DmapCode", "toString"]);
   });
   group(DaapObject, () {
     test(

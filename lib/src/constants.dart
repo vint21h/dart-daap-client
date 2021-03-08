@@ -51,11 +51,10 @@ const Map<int, String> dmapDataTypesNames = {
 
 /// DMAP codes.
 ///
-/// Yes, they named not using common named convention because
-/// IMNHO in this domain current convention is better.
-/// All that constants has "DMAP_CODE_" prefix,
+/// Yes, they named used next convention:
+/// has "DMAP_CODE_" prefix,
 /// than following code name with namespace where parts of name space delimited
-/// by "_" and all that parts is in upppercase.
+/// by "_" and all that parts is in uppercase.
 const String DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN = "????";
 const String DMAP_CODE_DAAP_BROWSEALBUMLISTING = "abal";
 const String DMAP_CODE_DAAP_BROWSEARTISTLISTING = "abar";
