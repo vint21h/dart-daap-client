@@ -624,7 +624,7 @@ final Map<String, String> requestHeaders = {
   "Accept": "application/x-dmap-tagged",
 };
 
-/// URLs
+/// URLs.
 const String contentCodesUrlPath = "content-codes";
 const String databasesUrlPath = "databases";
 const String databaseUrlPath = "databases/{databaseId}/items";
@@ -634,8 +634,10 @@ const String playlistUrlPath =
     "databases/{databaseId}/containers/{playlistId}/items";
 const String serverInfoUrlPath = "server-info";
 const String updateUrlPath = "update";
+const String songUrlPath =
+    "databases/{databaseId}/items/{songId}.{songFormat}";
 
-/// Queries meta's defaults
+/// Queries meta's defaults.
 const List<String> databaseQueryDefaultMetaCodes = [
   DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME,
   DMAP_CODE_DAAP_SONGALBUMARTIST,

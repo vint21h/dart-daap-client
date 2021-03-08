@@ -200,6 +200,21 @@ class DaapClient {
     return DaapObject(await this.request(url.toString()));
   }
 
+  /// Get song file/stream from server.
+  Future<Uint8List> getSong(int databaseId, int songId, String songFormat, int sessionId) async {
+    var url = this._baseUrl;
+    url = url.replace(
+        path: Interpolator(songUrlPath)({
+          "databaseId": databaseId.toString(),
+          "songId": songId.toString(),
+          "songFormat": songFormat
+        }),
+        queryParameters: {
+          "session-id": sessionId.toString()
+        });
+    return await this.request(url.toString());
+  }
+
   /// Create request meta key value from DMAP codes list.
   ///
   /// Throws [DmapEncodeException] in case of unknown code in "metaCodes".
