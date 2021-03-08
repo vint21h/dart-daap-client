@@ -4,11 +4,11 @@
 import "dart:io";
 import "dart:typed_data";
 
-import "package:daapc/src/objects.dart";
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
 import "package:interpolator/interpolator.dart";
 
+import "objects.dart";
 import "constants.dart";
 import "exceptions.dart";
 

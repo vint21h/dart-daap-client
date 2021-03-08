@@ -4,20 +4,18 @@
 import "package:test/test.dart";
 import "dart:typed_data";
 
-import "package:daapc/src/objects.dart";
-import "package:daapc/src/constants.dart";
-import "package:daapc/src/exceptions.dart";
+import "package:daapc/daapc.dart";
 
 void main() {
   group(DmapCode, () {
     test("'toString' method must return DMAP code class string representation",
         () {
-      final code = DmapCode("msrv", "dmap.serverinforesponse", container);
+      final code = DmapCode("msrv", "dmap.serverinforesponse", 12);
       expect(code.toString(),
           "<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>");
     }, tags: ["objects", "DmapCode", "toString"]);
     test("'DmapCode' constructor must initialize object", () {
-      final code = DmapCode("msrv", "dmap.serverinforesponse", container);
+      final code = DmapCode("msrv", "dmap.serverinforesponse", 12);
       expect(code.code, "msrv");
       expect(code.name, "dmap.serverinforesponse");
       expect(code.type, 12);

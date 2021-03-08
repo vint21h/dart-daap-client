@@ -31,3 +31,4 @@ pubspec.lock
 test/.test_coverage.dart
 coverage
 coverage_badge.svg
+doc/api/*
