@@ -9,10 +9,8 @@ description: >-
 homepage: "https://github.com/vint21h/dart-daap-client/"
 repository: "https://github.com/vint21h/dart-daap-client/"
 issue_tracker: "https://github.com/vint21h/dart-daap-client/issues/"
-
 environment:
   sdk: ">=2.1.0 <3.0.0"
-
 dependencies:
   http: "0.12.2"
   http_auth: "0.3.1"
