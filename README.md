@@ -8,8 +8,10 @@
 
 * Depend on it:
 ```yaml
-    dependencies:
-      daapc: "0.1.0"
+# pubspec.yaml
+
+dependencies:
+  daapc: "0.1.0"
 ```
 * Install it:
 ```sh
@@ -20,6 +22,8 @@ $ pub get
 
 1. Initialize it:
 ```dart
+// main.dart
+
 import "dart:io" show Platform;
 
 import "package:daapc/daapc.dart";
@@ -33,6 +37,8 @@ void main() async {
 
 2. Connect to server:
 ```dart
+// main.dart
+
 import "dart:io" show Platform;
 
 import "package:daapc/daapc.dart";
@@ -47,7 +53,9 @@ void main() async {
 
 * Get databases list:
 ```dart
-import "dart:io" show Platform;
+// main.dart
+
+import "dart:io" show Platform, stdout;
 
 import "package:daapc/daapc.dart";
 
@@ -56,13 +64,42 @@ void main() async {
   DaapClient client =
       new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  for (var db in dbs.getAtom(DMAP_CODE_DMAP_LISTING).value) {
-    print('${db.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${db.getAtom(DMAP_CODE_DMAP_ITEMNAME)}');
+  dynamic databases = await client.getDatabases();
+  for (var db in databases.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+    stdout.writeln(
+        '${db.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${db.getAtom(DMAP_CODE_DMAP_ITEMNAME)}');
   }
 }
 ```
 ```text
 1: test
+```
+
+* Get database playlists:
+```dart
+// main.dart
+
+import "dart:io" show Platform, stdout;
+
+import "package:daapc/daapc.dart";
+
+void main() async {
+  Map<String, String> envVars = Platform.environment;
+  DaapClient client =
+      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  await client.connect();
+  dynamic playlists = await client.getPlaylists(1);
+  for (var playlist in playlists.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+    stdout.writeln(
+        '${playlist.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${playlist.getAtom(DMAP_CODE_DMAP_ITEMNAME)} (${playlist.getAtom(DMAP_CODE_DMAP_ITEMCOUNT)})');
+  }
+}
+```
+```text
+1: test (0)
+2: My Top Rated (0)
+3: Recently Added (0)
+4: Recently Played (0)
 ```
 
 

@@ -127,6 +127,7 @@ class DaapClient {
   ///
   /// Practically required.
   Future<DaapObject> getContentCodes() async {
+    // TODO: write tests!
     var url = this._baseUrl;
     url = url.replace(path: contentCodesUrlPath);
     return DaapObject(await this.request(url.toString()));
@@ -134,6 +135,7 @@ class DaapClient {
 
   /// Get server info.
   Future<DaapObject> getServerInfo() async {
+    // TODO: write tests!
     var url = this._baseUrl;
     url = url.replace(path: serverInfoUrlPath);
     return DaapObject(await this.request(url.toString()));
@@ -141,6 +143,7 @@ class DaapClient {
 
   /// Login to server.
   Future<DaapObject> login() async {
+    // TODO: write tests!
     var url = this._baseUrl;
     url = url.replace(path: loginUrlPath);
     return DaapObject(await this.request(url.toString()));
@@ -150,12 +153,14 @@ class DaapClient {
   ///
   /// Calling without [sessionId] param is allowed only after [connect] call.
   Future<DaapObject> getDatabases({int sessionId}) async {
+    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
           path: databasesUrlPath,
           queryParameters: {"session-id": sessionId.toString()});
     } else {
+      // TODO: raise improperly configured exception in case of no session info.
       return await this.getDatabases(
           sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
     }
@@ -168,6 +173,7 @@ class DaapClient {
   Future<DaapObject> getDatabase(int databaseId,
       {int sessionId,
       List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
+    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -179,6 +185,7 @@ class DaapClient {
             "meta": this.getRequestMeta(databaseQueryDefaultMetaCodes),
           });
     } else {
+      // TODO: raise improperly configured exception in case of no session info.
       return await this.getDatabase(databaseId,
           sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
           metaCodes: metaCodes);
@@ -192,6 +199,7 @@ class DaapClient {
   Future<DaapObject> getPlaylists(int databaseId,
       {int sessionId,
       List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
+    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -202,6 +210,7 @@ class DaapClient {
             "meta": this.getRequestMeta(playlistsQueryDefaultMetaCodes),
           });
     } else {
+      // TODO: raise improperly configured exception in case of no session info.
       return await this.getPlaylists(databaseId,
           sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
           metaCodes: metaCodes);
@@ -215,6 +224,7 @@ class DaapClient {
   Future<DaapObject> getPlaylist(int databaseId, int playlistId,
       {int sessionId,
       List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
+    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -227,6 +237,7 @@ class DaapClient {
             "meta": this.getRequestMeta(playlistQueryDefaultMetaCodes),
           });
     } else {
+      // TODO: raise improperly configured exception in case of no session info.
       return await this.getPlaylist(databaseId, playlistId,
           sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
           metaCodes: metaCodes);
@@ -239,6 +250,7 @@ class DaapClient {
   /// Calling without [sessionId] param is allowed only after [connect] call.
   Future<Uint8List> getSong(int databaseId, int songId, String songFormat,
       {int sessionId}) async {
+    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -249,6 +261,7 @@ class DaapClient {
           }),
           queryParameters: {"session-id": sessionId.toString()});
     } else {
+      // TODO: raise improperly configured exception in case of no session info.
       return await this.getSong(databaseId, songId, songFormat,
           sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
     }
@@ -257,7 +270,7 @@ class DaapClient {
 
   /// Create request meta key value from DMAP codes list.
   ///
-  /// Throws [DmapEncodeException] in case of unknown code in "metaCodes".
+  /// Throws [DmapEncodeException] in case of unknown code in [metaCodes].
   String getRequestMeta(List<String> metaCodes) {
     var meta = <String>[];
     for (String code in metaCodes) {
