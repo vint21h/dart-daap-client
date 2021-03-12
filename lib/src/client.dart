@@ -54,7 +54,7 @@ class DaapClient {
   /// Connect to DAAP server.
   ///
   /// Creates base connection URL.
-  /// Get DAAP content codes/server info/session info/databases.
+  /// Get DAAP content codes/server info/session info.
   void connect() async {
     this._baseUrl = new Uri(
       scheme: "http",

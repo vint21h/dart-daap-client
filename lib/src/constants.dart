@@ -671,6 +671,7 @@ const List<String> databaseQueryDefaultMetaCodes = [
   DMAP_CODE_DMAP_ITEMKIND,
   DMAP_CODE_DMAP_ITEMNAME,
   DMAP_CODE_DMAP_PERSISTENTID,
+  DMAP_CODE_DAAP_SONGALBUM,
 ];
 const List<String> playlistsQueryDefaultMetaCodes = [
   DMAP_CODE_DAAP_BASEPLAYLIST,
@@ -699,4 +700,5 @@ const List<String> playlistQueryDefaultMetaCodes = [
   DMAP_CODE_DMAP_ITEMID,
   DMAP_CODE_DMAP_ITEMKIND,
   DMAP_CODE_DMAP_ITEMNAME,
+  DMAP_CODE_DAAP_SONGALBUM,
 ];

@@ -36,3 +36,10 @@ class DmapEncodeException implements Exception {
   const DmapEncodeException(this.message);
   String toString() => "DmapObject: encode data error. ${message}";
 }
+
+/// DAAP client improperly configured exception.
+class DaapImproperlyConfiguredException implements Exception {
+  final String message;
+  const DaapImproperlyConfiguredException(this.message);
+  String toString() => "DaapClient: improperly configured. ${message}";
+}
