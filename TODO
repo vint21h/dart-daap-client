@@ -9,3 +9,4 @@
  - Write tests marked as TODOs.
  - Add github actions.
  - Add badges to README.
+ - Add range usage support in getSong client method.

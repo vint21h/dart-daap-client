@@ -31,7 +31,7 @@ import "dart:io" show Platform;
 import "package:daapc/daapc.dart";
 
 /// Just create DAAP client class instance
-/// and supply to it server host and password if it is necessary.
+/// and provide server host and password if it is necessary.
 void main() async {
   Map<String, String> envVars = Platform.environment;
   DaapClient client =
@@ -143,6 +143,11 @@ import "dart:io" show Platform, stdout;
 
 import "package:daapc/daapc.dart";
 
+/// Get playlist songs from the server.
+///
+/// [DaapClient.getPlaylist] method [metaCodes] param used to get
+/// only necessary songs attributes and reduce memory usage.
+/// By default equals to [playlistQueryDefaultMetaCodes].
 void main() async {
   Map<String, String> envVars = Platform.environment;
   DaapClient client =
@@ -182,6 +187,11 @@ import "dart:io" show Platform, stdout;
 
 import "package:daapc/daapc.dart";
 
+/// Get playlist songs from the server.
+///
+/// [DaapClient.getDatabase] method [metaCodes] param used to get
+/// only necessary songs attributes and reduce memory usage.
+/// By default equals to [databaseQueryDefaultMetaCodes].
 void main() async {
   Map<String, String> envVars = Platform.environment;
   DaapClient client =
