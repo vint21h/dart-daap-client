@@ -151,7 +151,8 @@ class DaapClient {
 
   /// Get databases from server.
   ///
-  /// Calling without [sessionId] param is allowed only after [connect] call.
+  /// Throws [DaapImproperlyConfiguredException] in case of calling without
+  /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getDatabases({int sessionId}) async {
     // TODO: write tests!
     var url = this._baseUrl;
@@ -160,16 +161,21 @@ class DaapClient {
           path: databasesUrlPath,
           queryParameters: {"session-id": sessionId.toString()});
     } else {
-      // TODO: raise improperly configured exception in case of no session info.
-      return await this.getDatabases(
-          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+      if (this.sessionInfo != null) {
+        return await this.getDatabases(
+            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+      } else {
+        throw new DaapImproperlyConfiguredException(
+            "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
+      }
     }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database from server.
   ///
-  /// Calling without [sessionId] param is allowed only after [connect] call.
+  /// Throws [DaapImproperlyConfiguredException] in case of calling without
+  /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getDatabase(int databaseId,
       {int sessionId,
       List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
@@ -185,17 +191,22 @@ class DaapClient {
             "meta": this.getRequestMeta(databaseQueryDefaultMetaCodes),
           });
     } else {
-      // TODO: raise improperly configured exception in case of no session info.
-      return await this.getDatabase(databaseId,
-          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
-          metaCodes: metaCodes);
+      if (this.sessionInfo != null) {
+        return await this.getDatabase(databaseId,
+            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+            metaCodes: metaCodes);
+      } else {
+        throw new DaapImproperlyConfiguredException(
+            "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
+      }
     }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database playlists from server.
   ///
-  /// Calling without [sessionId] param is allowed only after [connect] call.
+  /// Throws [DaapImproperlyConfiguredException] in case of calling without
+  /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getPlaylists(int databaseId,
       {int sessionId,
       List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
@@ -210,17 +221,22 @@ class DaapClient {
             "meta": this.getRequestMeta(playlistsQueryDefaultMetaCodes),
           });
     } else {
-      // TODO: raise improperly configured exception in case of no session info.
-      return await this.getPlaylists(databaseId,
-          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
-          metaCodes: metaCodes);
+      if (this.sessionInfo != null) {
+        return await this.getPlaylists(databaseId,
+            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+            metaCodes: metaCodes);
+      } else {
+        throw new DaapImproperlyConfiguredException(
+            "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
+      }
     }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get database playlist from server.
   ///
-  /// Calling without [sessionId] param is allowed only after [connect] call.
+  /// Throws [DaapImproperlyConfiguredException] in case of calling without
+  /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getPlaylist(int databaseId, int playlistId,
       {int sessionId,
       List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
@@ -237,17 +253,22 @@ class DaapClient {
             "meta": this.getRequestMeta(playlistQueryDefaultMetaCodes),
           });
     } else {
-      // TODO: raise improperly configured exception in case of no session info.
-      return await this.getPlaylist(databaseId, playlistId,
-          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
-          metaCodes: metaCodes);
+      if (this.sessionInfo != null) {
+        return await this.getPlaylist(databaseId, playlistId,
+            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+            metaCodes: metaCodes);
+      } else {
+        throw new DaapImproperlyConfiguredException(
+            "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
+      }
     }
     return DaapObject(await this.request(url.toString()));
   }
 
   /// Get song file/stream from server.
   ///
-  /// Calling without [sessionId] param is allowed only after [connect] call.
+  /// Throws [DaapImproperlyConfiguredException] in case of calling without
+  /// supplied [sessionId] before [connect] call.
   Future<Uint8List> getSong(int databaseId, int songId, String songFormat,
       {int sessionId}) async {
     // TODO: write tests!
@@ -261,9 +282,13 @@ class DaapClient {
           }),
           queryParameters: {"session-id": sessionId.toString()});
     } else {
-      // TODO: raise improperly configured exception in case of no session info.
-      return await this.getSong(databaseId, songId, songFormat,
-          sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+      if (this.sessionInfo != null) {
+        return await this.getSong(databaseId, songId, songFormat,
+            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+      } else {
+        throw new DaapImproperlyConfiguredException(
+            "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
+      }
     }
     return await this.request(url.toString());
   }

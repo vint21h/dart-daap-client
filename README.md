@@ -2,7 +2,7 @@
 [//]: # (README.md)
 
 
-# dart-daap-client is a Dart DAAP (Digital Audio Access Protocol) client library
+# dart-daap-client is a Dart [DAAP (Digital Audio Access Protocol)](https://en.wikipedia.org/wiki/DAAP) client library
 
 ## Installation
 
@@ -12,7 +12,7 @@
 
 [...]
 dependencies:
-  daapc: "0.1.0"
+  daapc: "0.0.0"
 [...]
 ```
 * Install it:
@@ -80,8 +80,8 @@ void main() async {
   DaapClient client =
       new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  dynamic databases = await client.getDatabases();
-  for (var db in databases.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  DaapObject databases = await client.getDatabases();
+  for (DaapObject db in databases.getAtom(DMAP_CODE_DMAP_LISTING).value) {
     stdout.writeln(
         '${db.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${db.getAtom(DMAP_CODE_DMAP_ITEMNAME)}');
   }
@@ -116,8 +116,8 @@ void main() async {
   DaapClient client =
       new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  dynamic playlists = await client.getPlaylists(1);
-  for (var playlist in playlists.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  DaapObject playlists = await client.getPlaylists(1);
+  for (DaapObject playlist in playlists.getAtom(DMAP_CODE_DMAP_LISTING).value) {
     stdout.writeln(
         '${playlist.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${playlist.getAtom(DMAP_CODE_DMAP_ITEMNAME)} (${playlist.getAtom(DMAP_CODE_DMAP_ITEMCOUNT)})');
   }
@@ -153,14 +153,14 @@ void main() async {
   DaapClient client =
       new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  dynamic playlist = await client.getPlaylist(1, 1, metaCodes: [
+  DaapObject playlist = await client.getPlaylist(1, 1, metaCodes: [
     DMAP_CODE_DAAP_SONGTRACKNUMBER,
     DMAP_CODE_DMAP_ITEMNAME,
     DMAP_CODE_DAAP_SONGARTIST,
     DMAP_CODE_DAAP_SONGALBUM,
     DMAP_CODE_DAAP_SONGYEAR
   ]);
-  for (var song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
     Duration songTime =
         Duration(milliseconds: song.getAtom(DMAP_CODE_DAAP_SONGTIME));
     stdout.writeln(
@@ -179,7 +179,7 @@ $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart main.dart
 22: Finale / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:4:23.000000
 ```
 
-* Get Database:
+* Get database:
 ```dart
 // main.dart
 
@@ -187,7 +187,7 @@ import "dart:io" show Platform, stdout;
 
 import "package:daapc/daapc.dart";
 
-/// Get playlist songs from the server.
+/// Get database songs from the server.
 ///
 /// [DaapClient.getDatabase] method [metaCodes] param used to get
 /// only necessary songs attributes and reduce memory usage.
@@ -197,14 +197,14 @@ void main() async {
   DaapClient client =
       new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  dynamic playlist = await client.getDatabase(1, metaCodes: [
+  DaapObject database = await client.getDatabase(1, metaCodes: [
     DMAP_CODE_DAAP_SONGTRACKNUMBER,
     DMAP_CODE_DMAP_ITEMNAME,
     DMAP_CODE_DAAP_SONGARTIST,
     DMAP_CODE_DAAP_SONGALBUM,
     DMAP_CODE_DAAP_SONGYEAR
   ]);
-  for (var song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  for (DaapObject song in database.getAtom(DMAP_CODE_DMAP_LISTING).value) {
     Duration songTime =
         Duration(milliseconds: song.getAtom(DMAP_CODE_DAAP_SONGTIME));
     stdout.writeln(
@@ -221,6 +221,62 @@ $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart main.dart
 1: Overture / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:2:28.000000
 [...]
 22: Finale / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:4:23.000000
+```
+
+* Get song:
+```dart
+// main.dart
+
+import "dart:io" show Platform, File;
+
+import "package:daapc/daapc.dart";
+
+/// Recursively download playlist songs with creating
+/// "{artistName}/{albumYear} - {albumName}" formatted
+/// directories structure and name songs files formatted as
+/// "{songNumber}. {songName}.{songFormat}".
+void main() async {
+  Map<String, String> envVars = Platform.environment;
+  DaapClient client =
+      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  await client.connect();
+  DaapObject playlist = await client.getPlaylist(1, 3, metaCodes: [
+    DMAP_CODE_DAAP_SONGTRACKNUMBER,
+    DMAP_CODE_DMAP_ITEMNAME,
+    DMAP_CODE_DAAP_SONGARTIST,
+    DMAP_CODE_DAAP_SONGALBUM,
+    DMAP_CODE_DAAP_SONGYEAR,
+    DMAP_CODE_DMAP_ITEMID,
+    DMAP_CODE_DAAP_SONGFORMAT,
+  ]);
+  for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+    String path =
+        "${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)}/${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)}/${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}. ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)}.${song.getAtom(DMAP_CODE_DAAP_SONGFORMAT)}";
+    new File(path).create(recursive: true).then((File file) async {
+      file.writeAsBytes(await client.getSong(
+          1,
+          song.getAtom(DMAP_CODE_DMAP_ITEMID),
+          song.getAtom(DMAP_CODE_DAAP_SONGFORMAT)));
+    });
+  }
+}
+
+```
+↓
+```sh
+$ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart main.dart
+$ tree
+```
+=
+```text
+.
+├── main.dart
+├── pubspec.yaml
+└── Daft Punk
+    └── 2010 - Tron: Legacy (Original Motion Picture Soundtrack)
+        ├── 1. Overture.mp3
+        ├── [...]
+        └── 22. Finale.mp3
 ```
 
 ## Licensing

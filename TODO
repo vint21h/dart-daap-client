@@ -5,7 +5,7 @@
  - Deal with Apple weird password hashing.
  - Deal with servers which requires capitalized headers.
  - Add logging.
- - Write console client example program.
+ - Mb write console client example program.
  - Write tests marked as TODOs.
  - Add github actions.
  - Add badges to README.
