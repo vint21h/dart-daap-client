@@ -157,6 +157,26 @@ void main() {
           ].toString());
     }, tags: ["objects", "DaapObject", "value"]);
     test(
+        "'value' getter must throw 'DmapDecodeException' for unknown DMAP code type",
+        () {
+      final Uint8List data =
+          Uint8List.fromList([97, 112, 114, 111, 0, 0, 0, 4, 0, 3, 0, 0]);
+      final DaapObject obj = DaapObject(data);
+      obj.code = DmapCode("test", "com.example", 13);
+      try {
+        obj.value;
+      } on DmapDecodeException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DmapDecodeException>().having(
+                (error) => error.toString(),
+                "message",
+                "DmapObject: decode data error. Unknown DMAP code type: '13'."));
+        return;
+      }
+      throw Exception("Expected DmapDecodeException");
+    }, tags: ["objects", "DaapObject", "value"]);
+    test(
         "'decode' method must raise 'DmapDecodeException' when data length is less than 8 bytes",
         () {
       final Uint8List data = Uint8List.fromList([109, 115, 114, 118, 0, 0, 0]);

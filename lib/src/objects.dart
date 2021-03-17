@@ -62,34 +62,34 @@ class DaapObject {
   ///
   /// Return corresponding data type value.
   dynamic get value {
-    if (this.code.type == byte) {
-      return this._value__byte;
-    } else if (this.code.type == unsignedByte) {
-      return this._value__unsignedByte;
-    } else if (this.code.type == short) {
-      return this._value__short;
-    } else if (this.code.type == unsignedShort) {
-      return this._value__unsignedShort;
-    } else if (this.code.type == integer) {
-      return this._value__integer;
-    } else if (this.code.type == unsignedInteger) {
-      return this._value__unsignedInteger;
-    } else if (this.code.type == long) {
-      return this._value__long;
-    } else if (this.code.type == unsignedLong) {
-      return this._value__unsignedLong;
-    } else if (this.code.type == string) {
-      return this._value__string;
-    } else if (this.code.type == timestamp) {
-      return this._value__timestamp;
-    } else if (this.code.type == version) {
-      return this._value__version;
-    } else if (this.code.type == container) {
-      return this._value__container;
-    } else {
-      throw new DmapDecodeException(
-          "'${this.code.type}' was not found in actual DMAP codes types list.");
+    switch (this.code.type) {
+      case byte:
+        return this._value__byte;
+      case unsignedByte:
+        return this._value__unsignedByte;
+      case short:
+        return this._value__short;
+      case unsignedShort:
+        return this._value__unsignedShort;
+      case integer:
+        return this._value__integer;
+      case unsignedInteger:
+        return this._value__unsignedInteger;
+      case long:
+        return this._value__long;
+      case unsignedLong:
+        return this._value__unsignedLong;
+      case string:
+        return this._value__string;
+      case timestamp:
+        return this._value__timestamp;
+      case version:
+        return this._value__version;
+      case container:
+        return this._value__container;
     }
+    throw new DmapDecodeException(
+        "Unknown DMAP code type: '${this.code.type}'.");
   }
 
   /// Search appropriate object value by code name in object tree.
@@ -136,44 +136,58 @@ class DaapObject {
     this.rawData = data.sublist(
         8, 8 + this.getDataLength(data)); // skip (code + data length) offset
 
-    if (this.code.type == byte) {
-      this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
-    } else if (this.code.type == unsignedByte) {
-      this._value__unsignedByte = ByteData.view(rawData.buffer).getUint8(0);
-    } else if (this.code.type == short) {
-      this._value__short = ByteData.view(rawData.buffer).getInt16(0);
-    } else if (this.code.type == unsignedShort) {
-      this._value__unsignedShort = ByteData.view(rawData.buffer).getUint16(0);
-    } else if (this.code.type == integer) {
-      this._value__integer = ByteData.view(rawData.buffer).getInt32(0);
-    } else if (this.code.type == unsignedInteger) {
-      this._value__unsignedInteger = ByteData.view(rawData.buffer).getUint32(0);
-    } else if (this.code.type == long) {
-      this._value__long = ByteData.view(rawData.buffer).getInt64(0);
-    } else if (this.code.type == unsignedLong) {
-      this._value__unsignedLong = ByteData.view(rawData.buffer).getUint64(0);
-    } else if (this.code.type == string) {
-      this._value__string = utf8.decode(rawData);
-    } else if (this.code.type == timestamp) {
-      this._value__timestamp = this.getTimestamp(rawData);
-    } else if (this.code.type == version) {
-      this._value__version = this.getVersion(rawData);
-    } else if (this.code.type == container) {
-      int chunkStart = 0;
-      while (chunkStart + 8 < this._dataLength) {
-        // including (code + data length) offset
-        DaapObject obj = DaapObject(this.rawData.sublist(chunkStart));
-        chunkStart = chunkStart +
-            obj.rawData.lengthInBytes +
-            8; // including (code + data length) offset
-        this._value__container.add(obj);
-      }
+    switch (this.code.type) {
+      case byte:
+        this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
+        break;
+      case unsignedByte:
+        this._value__unsignedByte = ByteData.view(rawData.buffer).getUint8(0);
+        break;
+      case short:
+        this._value__short = ByteData.view(rawData.buffer).getInt16(0);
+        break;
+      case unsignedShort:
+        this._value__unsignedShort = ByteData.view(rawData.buffer).getUint16(0);
+        break;
+      case integer:
+        this._value__integer = ByteData.view(rawData.buffer).getInt32(0);
+        break;
+      case unsignedInteger:
+        this._value__unsignedInteger =
+            ByteData.view(rawData.buffer).getUint32(0);
+        break;
+      case long:
+        this._value__long = ByteData.view(rawData.buffer).getInt64(0);
+        break;
+      case unsignedLong:
+        this._value__unsignedLong = ByteData.view(rawData.buffer).getUint64(0);
+        break;
+      case string:
+        this._value__string = utf8.decode(rawData);
+        break;
+      case timestamp:
+        this._value__timestamp = this.getTimestamp(rawData);
+        break;
+      case version:
+        this._value__version = this.getVersion(rawData);
+        break;
+      case container:
+        int chunkStart = 0;
+        while (chunkStart + 8 < this._dataLength) {
+          // including (code + data length) offset
+          DaapObject obj = DaapObject(this.rawData.sublist(chunkStart));
+          chunkStart = chunkStart +
+              obj.rawData.lengthInBytes +
+              8; // including (code + data length) offset
+          this._value__container.add(obj);
+        }
+        break;
     }
   }
 
   /// Get DAAP object DMAP code from data.
   ///
-  /// Get and return appropriate DMAP code.
+  /// Get and return appropriate DMAP code object.
   /// Throws [DmapDecodeException] in case of unknown code.
   DmapCode getCode(Uint8List data) {
     String code =
