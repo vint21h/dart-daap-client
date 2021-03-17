@@ -9,6 +9,9 @@ tags:
   headers:
   request:
   connection:
+  getServerInfo:
+  getContentCodes:
+  login:
   getRequestMeta:
   objects:
   DmapCode:

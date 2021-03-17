@@ -29,10 +29,17 @@ class DaapClient {
   ///
   /// Sets default port value.
   /// Hides password value.
+  /// Creates base connection URL.
   DaapClient(String host, {int port = 3689, String password}) {
     this.host = host;
     this.port = port;
     this._password = password;
+
+    this._baseUrl = new Uri(
+      scheme: "http",
+      host: this.host,
+      port: this.port,
+    );
   }
 
   /// Creates client class string representation.
@@ -53,15 +60,8 @@ class DaapClient {
 
   /// Connect to DAAP server.
   ///
-  /// Creates base connection URL.
   /// Get DAAP content codes/server info/session info.
   void connect() async {
-    this._baseUrl = new Uri(
-      scheme: "http",
-      host: this.host,
-      port: this.port,
-    );
-
     this.serverInfo = await this.getServerInfo();
     this.contentCodes = await this.getContentCodes();
     this.sessionInfo = await this.login();
@@ -125,9 +125,8 @@ class DaapClient {
 
   /// Get server content codes.
   ///
-  /// Practically required.
+  /// Look useless but practically required.
   Future<DaapObject> getContentCodes() async {
-    // TODO: write tests!
     var url = this._baseUrl;
     url = url.replace(path: contentCodesUrlPath);
     return DaapObject(await this.request(url.toString()));
@@ -135,21 +134,19 @@ class DaapClient {
 
   /// Get server info.
   Future<DaapObject> getServerInfo() async {
-    // TODO: write tests!
     var url = this._baseUrl;
     url = url.replace(path: serverInfoUrlPath);
     return DaapObject(await this.request(url.toString()));
   }
 
-  /// Login to server.
+  /// Login to the server.
   Future<DaapObject> login() async {
-    // TODO: write tests!
     var url = this._baseUrl;
     url = url.replace(path: loginUrlPath);
     return DaapObject(await this.request(url.toString()));
   }
 
-  /// Get databases from server.
+  /// Get databases from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
@@ -172,7 +169,7 @@ class DaapClient {
     return DaapObject(await this.request(url.toString()));
   }
 
-  /// Get database from server.
+  /// Get database from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
@@ -203,7 +200,7 @@ class DaapClient {
     return DaapObject(await this.request(url.toString()));
   }
 
-  /// Get database playlists from server.
+  /// Get database playlists from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
@@ -233,7 +230,7 @@ class DaapClient {
     return DaapObject(await this.request(url.toString()));
   }
 
-  /// Get database playlist from server.
+  /// Get database playlist from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
@@ -265,7 +262,7 @@ class DaapClient {
     return DaapObject(await this.request(url.toString()));
   }
 
-  /// Get song file/stream from server.
+  /// Get song file/stream from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
