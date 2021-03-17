@@ -183,6 +183,32 @@ void main() {
       expect(result.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'mlog', name: 'dmap.loginresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["client", "DaapClient", "login"]);
+    test(
+        "'connect' method must get and store server info, server content codes and login data",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final Uint8List serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List sessionInfoData =
+          Uint8List.fromList([109, 108, 111, 103, 0, 0, 0, 0]);
+
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+
+      expect(client.contentCodes.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'mccr', name: 'dmap.contentcodesresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
+      expect(client.serverInfo.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
+      expect(client.sessionInfo.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'mlog', name: 'dmap.loginresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "login"]);
     test("'getRequestMeta' method must return request meta key value", () {
       final client = DaapClient("127.0.0.1");
 
