@@ -28,14 +28,12 @@ void main() {
         "'toString' method must return formatted string with connection config",
         () {
       final client = DaapClient("127.0.0.1");
-
       expect(client.toString(), "<DaapClient: {host: 127.0.0.1, port: 3689}>");
     }, tags: ["client", "DaapClient", "toString"]);
     test(
         "'toString' method must return formatted string with connection config with secured password",
         () {
       final client = DaapClient("127.0.0.1", password: "password");
-
       expect(client.toString(),
           "<DaapClient: {host: 127.0.0.1, port: 3689, password: ********}>");
     }, tags: ["client", "DaapClient", "toString"]);
@@ -49,7 +47,6 @@ void main() {
         "Client-DAAP-Request-ID": "0",
       };
       final client = DaapClient("127.0.0.1");
-
       expect(client.headers, expected);
     }, tags: ["client", "DaapClient", "headers"]);
     test(
@@ -64,14 +61,11 @@ void main() {
         "Client-DAAP-Request-ID": "1",
       };
       final client = DaapClient("127.0.0.1");
-
       client.headers; // increment request ID
-
       expect(client.headers, expected);
     }, tags: ["client", "DaapClient", "headers"]);
     test("'connection' getter must return HTTP client class instance", () {
       final client = DaapClient("127.0.0.1");
-
       expect(client.connection, isA<Client>());
     }, tags: ["client", "DaapClient", "connection"]);
     test(
@@ -82,20 +76,16 @@ void main() {
     }, tags: ["client", "DaapClient", "connection"]);
     test("'request' method must return HTTP GET request result data", () async {
       final client = DaapClient("127.0.0.1");
-
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.ok, "");
-
       expect(await client.request("http://127.0.0.1:3689/server-info"), []);
     }, tags: ["client", "DaapClient", "request"]);
     test(
         "'request' method must raise 'DaapAuthRequiredException' when making GET HTTP request to server (authentication required case)",
         () {
       final client = DaapClient("127.0.0.1");
-
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.unauthorized, "401 Unauthorized");
-
       expect(
           client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapAuthRequiredException>().having(
@@ -107,10 +97,8 @@ void main() {
         "'request' method must raise 'DaapAuthenticationFailureException' when making GET HTTP request to server (wrong credentials case)",
         () {
       final client = DaapClient("127.0.0.1");
-
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.forbidden, "403 Forbidden");
-
       expect(
           client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapAuthenticationFailureException>().having(
@@ -122,10 +110,8 @@ void main() {
         "'request' method must raise 'DaapTooManyConnectionsException' when making GET HTTP request to server (server overloading case)",
         () {
       final client = DaapClient("127.0.0.1");
-
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.serviceUnavailable, "503 Service Unavailable");
-
       expect(
           client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapTooManyConnectionsException>().having(
@@ -137,10 +123,8 @@ void main() {
         "'request' method must raise 'DaapException' when making GET HTTP request to server (server unexpected response code case)",
         () {
       final client = DaapClient("127.0.0.1");
-
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(500, "500 Internal Server Error");
-
       expect(
           client.request("http://127.0.0.1:3689/server-info"),
           throwsA(isA<DaapException>().having(
@@ -152,11 +136,9 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       final Uint8List data = Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
-
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, data);
       DaapObject result = await client.getContentCodes();
-
       expect(result.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'mccr', name: 'dmap.contentcodesresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["client", "DaapClient", "getContentCodes"]);
@@ -164,11 +146,9 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final Uint8List data =
           Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
-
       nock("http://127.0.0.1:3689/server-info").get("")
         ..reply(HttpStatus.ok, data);
       DaapObject result = await client.getServerInfo();
-
       expect(result.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'msrv', name: 'dmap.serverinforesponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["client", "DaapClient", "getServerInfo"]);
@@ -176,10 +156,8 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final Uint8List data =
           Uint8List.fromList([109, 108, 111, 103, 0, 0, 0, 0]);
-
       nock("http://127.0.0.1:3689/login").get("")..reply(HttpStatus.ok, data);
       DaapObject result = await client.login();
-
       expect(result.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'mlog', name: 'dmap.loginresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["client", "DaapClient", "login"]);
@@ -193,7 +171,6 @@ void main() {
           Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
       final Uint8List sessionInfoData =
           Uint8List.fromList([109, 108, 111, 103, 0, 0, 0, 0]);
-
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -201,7 +178,6 @@ void main() {
       nock("http://127.0.0.1:3689/login").get("")
         ..reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
-
       expect(client.contentCodes.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'mccr', name: 'dmap.contentcodesresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
       expect(client.serverInfo.toString(),
@@ -209,9 +185,178 @@ void main() {
       expect(client.sessionInfo.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'mlog', name: 'dmap.loginresponse', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["client", "DaapClient", "login"]);
+    test("'getDatabases' method must return databases list from the server",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List databasesData =
+          Uint8List.fromList([97, 118, 100, 98, 0, 0, 0, 0]);
+      final Uint8List contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final Uint8List serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List sessionInfoData = Uint8List.fromList([
+        109,
+        108,
+        111,
+        103,
+        0,
+        0,
+        0,
+        24,
+        109,
+        115,
+        116,
+        116,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        200,
+        109,
+        108,
+        105,
+        100,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]);
+      nock("http://127.0.0.1:3689/databases?session-id=0").get("")
+        ..reply(HttpStatus.ok, databasesData);
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+      DaapObject result = await client.getDatabases();
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'avdb', name: 'daap.serverdatabases', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getDatabases"]);
+    test(
+        "'getDatabases' method must return databases list from the server (with sessionId arg case)",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List databasesData =
+          Uint8List.fromList([97, 118, 100, 98, 0, 0, 0, 0]);
+      nock("http://127.0.0.1:3689/databases?session-id=0").get("")
+        ..reply(HttpStatus.ok, databasesData);
+      DaapObject result = await client.getDatabases(sessionId: 0);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'avdb', name: 'daap.serverdatabases', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getDatabases"]);
+    test(
+        "'getDatabases' method must raise 'DaapImproperlyConfiguredException' in case of calling without 'sessionId' param before 'connect' call",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      try {
+        client.getDatabases();
+      } on DaapImproperlyConfiguredException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapImproperlyConfiguredException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: improperly configured. Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server."));
+        return;
+      }
+      throw Exception("Expected DaapImproperlyConfiguredException");
+    }, tags: ["client", "DaapClient", "getDatabases"]);
+    test("'getDatabase' method must return database data from the server",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List databaseData =
+          Uint8List.fromList([97, 100, 98, 115, 0, 0, 0, 0]);
+      final Uint8List contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final Uint8List serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List sessionInfoData = Uint8List.fromList([
+        109,
+        108,
+        111,
+        103,
+        0,
+        0,
+        0,
+        24,
+        109,
+        115,
+        116,
+        116,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        200,
+        109,
+        108,
+        105,
+        100,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]);
+      nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid").get("")
+        ..reply(HttpStatus.ok, databaseData);
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+      DaapObject result = await client.getDatabase(1, metaCodes: ["miid"]);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'adbs', name: 'daap.databasesongs', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getDatabase"]);
+    test(
+        "'getDatabase' method must return database data from the server (with sessionId arg case)",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List databaseData =
+          Uint8List.fromList([97, 100, 98, 115, 0, 0, 0, 0]);
+      nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid").get("")
+        ..reply(HttpStatus.ok, databaseData);
+      DaapObject result = await client.getDatabase(1, sessionId:0, metaCodes: ["miid"]);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'adbs', name: 'daap.databasesongs', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getDatabase"]);
+    test(
+        "'getDatabase' method must raise 'DaapImproperlyConfiguredException' in case of calling without 'sessionId' param before 'connect' call",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      try {
+        client.getDatabases();
+      } on DaapImproperlyConfiguredException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapImproperlyConfiguredException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: improperly configured. Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server."));
+        return;
+      }
+      throw Exception("Expected DaapImproperlyConfiguredException");
+    }, tags: ["client", "DaapClient", "getDatabase"]);
     test("'getRequestMeta' method must return request meta key value", () {
       final client = DaapClient("127.0.0.1");
-
       expect(client.getRequestMeta(["asaa", "asar"]),
           "daap.songalbumartist,daap.songartist");
     }, tags: ["client", "DaapClient", "getRequestMeta"]);
@@ -219,7 +364,6 @@ void main() {
         "'getRequestMeta' method must raise 'DmapEncodeException' in case of unknown code",
         () {
       final client = DaapClient("127.0.0.1");
-
       try {
         client.getRequestMeta(["test"]);
       } on DmapEncodeException catch (error) {

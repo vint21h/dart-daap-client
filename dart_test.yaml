@@ -12,6 +12,8 @@ tags:
   getServerInfo:
   getContentCodes:
   login:
+  getDatabases:
+  getDatabase:
   getRequestMeta:
   objects:
   DmapCode:

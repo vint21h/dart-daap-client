@@ -151,7 +151,6 @@ class DaapClient {
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getDatabases({int sessionId}) async {
-    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -162,6 +161,7 @@ class DaapClient {
         return await this.getDatabases(
             sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
       } else {
+        // TODO: test it.
         throw new DaapImproperlyConfiguredException(
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
@@ -176,7 +176,6 @@ class DaapClient {
   Future<DaapObject> getDatabase(int databaseId,
       {int sessionId,
       List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
-    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -185,7 +184,7 @@ class DaapClient {
           queryParameters: {
             "type": "music",
             "session-id": sessionId.toString(),
-            "meta": this.getRequestMeta(databaseQueryDefaultMetaCodes),
+            "meta": this.getRequestMeta(metaCodes),
           });
     } else {
       if (this.sessionInfo != null) {
@@ -193,6 +192,7 @@ class DaapClient {
             sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
+        // TODO: test it.
         throw new DaapImproperlyConfiguredException(
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
@@ -215,7 +215,7 @@ class DaapClient {
               {"databaseId": databaseId.toString()}),
           queryParameters: {
             "session-id": sessionId.toString(),
-            "meta": this.getRequestMeta(playlistsQueryDefaultMetaCodes),
+            "meta": this.getRequestMeta(metaCodes),
           });
     } else {
       if (this.sessionInfo != null) {
@@ -247,7 +247,7 @@ class DaapClient {
           }),
           queryParameters: {
             "session-id": sessionId.toString(),
-            "meta": this.getRequestMeta(playlistQueryDefaultMetaCodes),
+            "meta": this.getRequestMeta(metaCodes),
           });
     } else {
       if (this.sessionInfo != null) {
