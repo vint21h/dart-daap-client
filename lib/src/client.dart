@@ -207,7 +207,6 @@ class DaapClient {
   Future<DaapObject> getPlaylists(int databaseId,
       {int sessionId,
       List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
-    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -223,6 +222,7 @@ class DaapClient {
             sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
+        // TODO: test it.
         throw new DaapImproperlyConfiguredException(
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
@@ -237,7 +237,6 @@ class DaapClient {
   Future<DaapObject> getPlaylist(int databaseId, int playlistId,
       {int sessionId,
       List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
-    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -255,6 +254,7 @@ class DaapClient {
             sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
+        // TODO: test it.
         throw new DaapImproperlyConfiguredException(
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
@@ -268,7 +268,6 @@ class DaapClient {
   /// supplied [sessionId] before [connect] call.
   Future<Uint8List> getSong(int databaseId, int songId, String songFormat,
       {int sessionId}) async {
-    // TODO: write tests!
     var url = this._baseUrl;
     if (sessionId != null) {
       url = url.replace(
@@ -280,6 +279,7 @@ class DaapClient {
           queryParameters: {"session-id": sessionId.toString()});
     } else {
       if (this.sessionInfo != null) {
+        // TODO: test it.
         return await this.getSong(databaseId, songId, songFormat,
             sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
       } else {

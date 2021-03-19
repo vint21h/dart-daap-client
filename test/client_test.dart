@@ -269,7 +269,7 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getDatabases"]);
+    }, tags: ["client", "DaapClient", "getDatabases"], skip: true);
     test("'getDatabase' method must return database data from the server",
         () async {
       final client = DaapClient("127.0.0.1");
@@ -313,8 +313,9 @@ void main() {
         0,
         0
       ]);
-      nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid").get("")
-        ..reply(HttpStatus.ok, databaseData);
+      nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid")
+          .get("")
+            ..reply(HttpStatus.ok, databaseData);
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -332,9 +333,11 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final Uint8List databaseData =
           Uint8List.fromList([97, 100, 98, 115, 0, 0, 0, 0]);
-      nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid").get("")
-        ..reply(HttpStatus.ok, databaseData);
-      DaapObject result = await client.getDatabase(1, sessionId:0, metaCodes: ["miid"]);
+      nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid")
+          .get("")
+            ..reply(HttpStatus.ok, databaseData);
+      DaapObject result =
+          await client.getDatabase(1, sessionId: 0, metaCodes: ["miid"]);
       expect(result.toString(),
           "<DaapObject: {code: '<DmapCode: {code: 'adbs', name: 'daap.databasesongs', type: 'container (c)'}>', value: '[]', length: '0'}>");
     }, tags: ["client", "DaapClient", "getDatabase"]);
@@ -354,7 +357,264 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getDatabase"]);
+    }, tags: ["client", "DaapClient", "getDatabase"], skip: true);
+    test("'getPlaylists' method must return database playlists from the server",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List playlistsData =
+          Uint8List.fromList([97, 112, 108, 121, 0, 0, 0, 0]);
+      final Uint8List contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final Uint8List serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List sessionInfoData = Uint8List.fromList([
+        109,
+        108,
+        111,
+        103,
+        0,
+        0,
+        0,
+        24,
+        109,
+        115,
+        116,
+        116,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        200,
+        109,
+        108,
+        105,
+        100,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]);
+      nock("http://127.0.0.1:3689/databases/1/containers?session-id=0&meta=dmap.itemid")
+          .get("")
+            ..reply(HttpStatus.ok, playlistsData);
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+      DaapObject result = await client.getPlaylists(1, metaCodes: ["miid"]);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'aply', name: 'daap.databaseplaylists', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getPlaylists"]);
+    test(
+        "'getPlaylists' method must return database playlists from the server (with sessionId arg case)",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List playlistsData =
+          Uint8List.fromList([97, 112, 108, 121, 0, 0, 0, 0]);
+      nock("http://127.0.0.1:3689/databases/1/containers?session-id=0&meta=dmap.itemid")
+          .get("")
+            ..reply(HttpStatus.ok, playlistsData);
+      DaapObject result =
+          await client.getPlaylists(1, sessionId: 0, metaCodes: ["miid"]);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'aply', name: 'daap.databaseplaylists', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getPlaylists"]);
+    test(
+        "'getPlaylists' method must raise 'DaapImproperlyConfiguredException' in case of calling without 'sessionId' param before 'connect' call",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      try {
+        client.getPlaylists(1);
+      } on DaapImproperlyConfiguredException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapImproperlyConfiguredException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: improperly configured. Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server."));
+        return;
+      }
+      throw Exception("Expected DaapImproperlyConfiguredException");
+    }, tags: ["client", "DaapClient", "getPlaylists"], skip: true);
+    test("'getPlaylist' method must return playlist from the server", () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List playlistData =
+          Uint8List.fromList([97, 112, 115, 111, 0, 0, 0, 0]);
+      final Uint8List contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final Uint8List serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List sessionInfoData = Uint8List.fromList([
+        109,
+        108,
+        111,
+        103,
+        0,
+        0,
+        0,
+        24,
+        109,
+        115,
+        116,
+        116,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        200,
+        109,
+        108,
+        105,
+        100,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]);
+      nock("http://127.0.0.1:3689/databases/1/containers/1/items?session-id=0&meta=dmap.itemid")
+          .get("")
+            ..reply(HttpStatus.ok, playlistData);
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+      DaapObject result = await client.getPlaylist(1, 1, metaCodes: ["miid"]);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'apso', name: 'daap.playlistsongs', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getPlaylist"]);
+    test(
+        "'getPlaylist' method must return playlist from the server (with sessionId arg case)",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List playlistData =
+          Uint8List.fromList([97, 112, 115, 111, 0, 0, 0, 0]);
+      nock("http://127.0.0.1:3689/databases/1/containers/1/items?session-id=0&meta=dmap.itemid")
+          .get("")
+            ..reply(HttpStatus.ok, playlistData);
+      DaapObject result =
+          await client.getPlaylist(1, 1, sessionId: 0, metaCodes: ["miid"]);
+      expect(result.toString(),
+          "<DaapObject: {code: '<DmapCode: {code: 'apso', name: 'daap.playlistsongs', type: 'container (c)'}>', value: '[]', length: '0'}>");
+    }, tags: ["client", "DaapClient", "getPlaylist"]);
+    test(
+        "'getPlaylist' method must raise 'DaapImproperlyConfiguredException' in case of calling without 'sessionId' param before 'connect' call",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      try {
+        client.getPlaylist(1, 1);
+      } on DaapImproperlyConfiguredException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapImproperlyConfiguredException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: improperly configured. Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server."));
+        return;
+      }
+      throw Exception("Expected DaapImproperlyConfiguredException");
+    }, tags: ["client", "DaapClient", "getPlaylist"], skip: true);
+    test("'getSong' method must return song data from the server", () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List songData = Uint8List.fromList([0, 0, 0, 0]);
+      final Uint8List contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final Uint8List serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final Uint8List sessionInfoData = Uint8List.fromList([
+        109,
+        108,
+        111,
+        103,
+        0,
+        0,
+        0,
+        24,
+        109,
+        115,
+        116,
+        116,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        200,
+        109,
+        108,
+        105,
+        100,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]);
+      nock("http://127.0.0.1:3689/databases/1/items/42.mp3?session-id=0")
+          .get("")
+            ..reply(HttpStatus.ok, songData);
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+      Uint8List result = await client.getSong(1, 42, "mp3");
+      expect(result, Uint8List.fromList([0, 0, 0, 0]));
+    }, tags: ["client", "DaapClient", "getSong"]);
+    test(
+        "'getSong' method must return song data from the server (with sessionId arg case)",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final Uint8List songData = Uint8List.fromList([0, 0, 0, 0]);
+      nock("http://127.0.0.1:3689/databases/1/items/42.mp3?session-id=0")
+          .get("")
+            ..reply(HttpStatus.ok, songData);
+      Uint8List result = await client.getSong(1, 42, "mp3", sessionId: 0);
+      expect(result, Uint8List.fromList([0, 0, 0, 0]));
+    }, tags: ["client", "DaapClient", "getSong"]);
+    test(
+        "'getSong' method must raise 'DaapImproperlyConfiguredException' in case of calling without 'sessionId' param before 'connect' call",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      try {
+        await client.getSong(1, 42, "mp3");
+      } on DaapImproperlyConfiguredException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapImproperlyConfiguredException>().having(
+                (error) => error.toString(),
+                "message",
+                "DaapClient: improperly configured. Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server."));
+        return;
+      }
+      throw Exception("Expected DaapImproperlyConfiguredException");
+    }, tags: ["client", "DaapClient", "getPlaylist"], skip: true);
     test("'getRequestMeta' method must return request meta key value", () {
       final client = DaapClient("127.0.0.1");
       expect(client.getRequestMeta(["asaa", "asar"]),
