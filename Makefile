@@ -3,7 +3,7 @@
 
 
 .ONESHELL:
-PHONY: dartfmt test coverage help
+PHONY: dartfmt test help
 
 
 dartfmt:
@@ -14,10 +14,6 @@ test:
 	pub run test $(TESTS);\
 
 
-coverage:
-	pub run test_coverage && genhtml -o coverage coverage/lcov.info;\
-
-
 help:
 	@echo "    help:"
 	@echo "        Show this help."
@@ -25,5 +21,3 @@ help:
 	@echo "        Reformats all Dart files."
 	@echo "    test:"
 	@echo "        Run tests, can specify tests with 'TESTS' argument."
-	@echo "    coverage:"
-	@echo "        Collect coverage information from tests."

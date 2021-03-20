@@ -9,9 +9,12 @@ import "exceptions.dart";
 
 /// DMAP code.
 class DmapCode {
-  String code;
-  String name;
-  int type;
+  /// DMAP code
+  String? code;
+  /// DMAP code name
+  String? name;
+  /// DMAP type
+  int? type;
 
   /// DMAP code object constructor.
   DmapCode(String code, String name, int type) {
@@ -23,73 +26,77 @@ class DmapCode {
   /// Creates DMAP code class string representation.
   @override
   String toString() {
-    return "<DmapCode: {code: '${this.code}', name: '${this.name}', type: '${dmapDataTypesNames[this.type]} (${dmapDataTypes[this.type]})'}>";
+    // ignore: lines_longer_than_80_chars
+    return "<DmapCode: {code: '$code', name: '$name', type: '$dmapDataTypesNames[type] ($dmapDataTypes[type])'}>";
   }
 }
 
 /// DAAP object.
 class DaapObject {
-  DmapCode code;
-  int _dataLength;
-  Uint8List rawData;
+  /// DMAP code
+  DmapCode? code;
+  /// object raw data
+  Uint8List? rawData;
+  int? _dataLength;
 
   // DAAP object value representation in corresponding data types.
-  int _value__byte;
-  int _value__unsignedByte;
-  int _value__short;
-  int _value__unsignedShort;
-  int _value__integer;
-  int _value__unsignedInteger;
-  int _value__long;
-  int _value__unsignedLong;
-  String _value__string;
-  DateTime _value__timestamp;
-  String _value__version;
-  List<DaapObject> _value__container = [];
+  int? _value__byte;  // ignore: non_constant_identifier_names
+  int? _value__unsignedByte;  // ignore: non_constant_identifier_names
+  int? _value__short;  // ignore: non_constant_identifier_names
+  int? _value__unsignedShort;  // ignore: non_constant_identifier_names
+  int? _value__integer;  // ignore: non_constant_identifier_names
+  int? _value__unsignedInteger;  // ignore: non_constant_identifier_names
+  int? _value__long;  // ignore: non_constant_identifier_names
+  int? _value__unsignedLong;  // ignore: non_constant_identifier_names
+  String? _value__string;  // ignore: non_constant_identifier_names
+  DateTime? _value__timestamp;  // ignore: non_constant_identifier_names
+  String? _value__version;  // ignore: non_constant_identifier_names
+  List<DaapObject>? _value__container;  // ignore: non_constant_identifier_names
 
   /// DAAP object constructor.
   DaapObject(Uint8List data) {
-    this.decode(data);
+    decode(data);
   }
 
   /// Creates DAAP object class string representation.
   @override
   String toString() {
-    return "<DaapObject: {code: '${this.code.toString()}', value: '${this.value}', length: '${this._dataLength}'}>";
+    // ignore: lines_longer_than_80_chars
+    return "<DaapObject: {code: '$code.toString()', value: '$value', length: '$_dataLength'}>";
   }
 
   /// DAAP object value getter.
   ///
   /// Return corresponding data type value.
   dynamic get value {
-    switch (this.code.type) {
+    switch (code!.type) {
       case byte:
-        return this._value__byte;
+        return _value__byte;
       case unsignedByte:
-        return this._value__unsignedByte;
+        return _value__unsignedByte;
       case short:
-        return this._value__short;
+        return _value__short;
       case unsignedShort:
-        return this._value__unsignedShort;
+        return _value__unsignedShort;
       case integer:
-        return this._value__integer;
+        return _value__integer;
       case unsignedInteger:
-        return this._value__unsignedInteger;
+        return _value__unsignedInteger;
       case long:
-        return this._value__long;
+        return _value__long;
       case unsignedLong:
-        return this._value__unsignedLong;
+        return _value__unsignedLong;
       case string:
-        return this._value__string;
+        return _value__string;
       case timestamp:
-        return this._value__timestamp;
+        return _value__timestamp;
       case version:
-        return this._value__version;
+        return _value__version;
       case container:
-        return this._value__container;
+        return _value__container;
     }
-    throw new DmapDecodeException(
-        "Unknown DMAP code type: '${this.code.type}'.");
+    throw DmapDecodeException(
+        "Unknown DMAP code type: '${code!.type}'.");
   }
 
   /// Search appropriate object value by code name in object tree.
