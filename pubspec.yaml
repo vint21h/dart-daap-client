@@ -12,7 +12,7 @@ issue_tracker: "https://github.com/vint21h/dart-daap-client/issues/"
 environment:
   sdk: ">=2.12.2 <3.0.0"
 dependencies:
-  http: "0.13.0"
+  http: "0.13.1"
   http_auth: "1.0.0"
   interpolator: "0.1.0"
 dev_dependencies:

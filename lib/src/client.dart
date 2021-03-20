@@ -103,7 +103,7 @@ class DaapClient {
   /// Throws [DaapAuthenticationFailureException] in case of wrong credentials provided.
   /// Throws [DaapTooManyConnectionsException] in case of server overload.
   /// Throws [DaapException] in case of unexpected response status code or network error.
-  Future<Uint8List> request(Uri url) async {
+  Future<Uint8List>? request(Uri url) async {
     try {
       var response = await this.connection.get(url, headers: this.headers);
 

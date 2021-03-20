@@ -18,9 +18,9 @@ class DmapCode {
 
   /// DMAP code object constructor.
   DmapCode(String code, String name, int type) {
-    this.code = code;
-    this.name = name;
-    this.type = type;
+    this.code = code;  // ignore: prefer_initializing_formals
+    this.name = name;  // ignore: prefer_initializing_formals
+    this.type = type;  // ignore: prefer_initializing_formals
   }
 
   /// Creates DMAP code class string representation.
@@ -69,34 +69,40 @@ class DaapObject {
   ///
   /// Return corresponding data type value.
   dynamic get value {
-    switch (code!.type) {
-      case byte:
-        return _value__byte;
-      case unsignedByte:
-        return _value__unsignedByte;
-      case short:
-        return _value__short;
-      case unsignedShort:
-        return _value__unsignedShort;
-      case integer:
-        return _value__integer;
-      case unsignedInteger:
-        return _value__unsignedInteger;
-      case long:
-        return _value__long;
-      case unsignedLong:
-        return _value__unsignedLong;
-      case string:
-        return _value__string;
-      case timestamp:
-        return _value__timestamp;
-      case version:
-        return _value__version;
-      case container:
-        return _value__container;
+    if (code != null) {
+      switch (code!.type) {
+        case byte:
+          return _value__byte;
+        case unsignedByte:
+          return _value__unsignedByte;
+        case short:
+          return _value__short;
+        case unsignedShort:
+          return _value__unsignedShort;
+        case integer:
+          return _value__integer;
+        case unsignedInteger:
+          return _value__unsignedInteger;
+        case long:
+          return _value__long;
+        case unsignedLong:
+          return _value__unsignedLong;
+        case string:
+          return _value__string;
+        case timestamp:
+          return _value__timestamp;
+        case version:
+          return _value__version;
+        case container:
+          return _value__container;
+      }
+      throw DmapDecodeException(
+          "Unknown DMAP code type: '${code!.type}'.");
+    } else {
+      throw DmapImproperlyConfiguredException(
+            "Can't get code type. First, try to initialize 'code'.");
+      }
     }
-    throw DmapDecodeException(
-        "Unknown DMAP code type: '${code!.type}'.");
   }
 
   /// Search appropriate object value by code name in object tree.
@@ -104,7 +110,7 @@ class DaapObject {
   /// Throws [DmapDecodeException] in case of unknown code.
   dynamic getAtom(String code) {
     if (dmapCodeTypes.containsKey(code)) {
-      DmapCode dmapCode = dmapCodeTypes[code];
+      var dmapCode = dmapCodeTypes[code]!;
       if (this.code == dmapCode) {
         if (this.code.type == container) {
           return this;
@@ -122,8 +128,8 @@ class DaapObject {
       }
       return null;
     } else {
-      throw new DmapDecodeException(
-          "'${code}' was not found in actual DMAP codes list.");
+      throw DmapDecodeException(
+          "'$code' was not found in actual DMAP codes list.");
     }
   }
 
@@ -134,49 +140,49 @@ class DaapObject {
   void decode(Uint8List data) {
     if (data.lengthInBytes < 8) {
       // broken data, must contain at least 8 bytes
-      throw new DmapDecodeException(
+      throw DmapDecodeException(
           "Code name length must be at least 8 bytes");
     }
 
-    this.code = this.getCode(data);
-    this._dataLength = this.getDataLength(data);
+    this.code = getCode(data);
+    this._dataLength = getDataLength(data);
     this.rawData = data.sublist(
-        8, 8 + this.getDataLength(data)); // skip (code + data length) offset
+        8, 8 + getDataLength(data)); // skip (code + data length) offset
 
-    switch (this.code.type) {
+    switch (this.code!.type) {
       case byte:
-        this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
+        this._value__byte = ByteData.view(this.rawData.buffer).getInt8(0);
         break;
       case unsignedByte:
-        this._value__unsignedByte = ByteData.view(rawData.buffer).getUint8(0);
+        this._value__unsignedByte = ByteData.view(this.rawData.buffer).getUint8(0);
         break;
       case short:
-        this._value__short = ByteData.view(rawData.buffer).getInt16(0);
+        this._value__short = ByteData.view(this.rawData.buffer).getInt16(0);
         break;
       case unsignedShort:
-        this._value__unsignedShort = ByteData.view(rawData.buffer).getUint16(0);
+        this._value__unsignedShort = ByteData.view(this.rawData.buffer).getUint16(0);
         break;
       case integer:
-        this._value__integer = ByteData.view(rawData.buffer).getInt32(0);
+        this._value__integer = ByteData.view(this.rawData.buffer).getInt32(0);
         break;
       case unsignedInteger:
         this._value__unsignedInteger =
-            ByteData.view(rawData.buffer).getUint32(0);
+            ByteData.view(this.rawData.buffer).getUint32(0);
         break;
       case long:
-        this._value__long = ByteData.view(rawData.buffer).getInt64(0);
+        this._value__long = ByteData.view(this.rawData.buffer).getInt64(0);
         break;
       case unsignedLong:
-        this._value__unsignedLong = ByteData.view(rawData.buffer).getUint64(0);
+        this._value__unsignedLong = ByteData.view(this.rawData.buffer).getUint64(0);
         break;
       case string:
-        this._value__string = utf8.decode(rawData);
+        this._value__string = utf8.decode(this.rawData);
         break;
       case timestamp:
-        this._value__timestamp = this.getTimestamp(rawData);
+        this._value__timestamp = this.getTimestamp(this.rawData);
         break;
       case version:
-        this._value__version = this.getVersion(rawData);
+        this._value__version = this.getVersion(this.rawData);
         break;
       case container:
         int chunkStart = 0;
@@ -196,7 +202,7 @@ class DaapObject {
   ///
   /// Get and return appropriate DMAP code object.
   /// Throws [DmapDecodeException] in case of unknown code.
-  DmapCode getCode(Uint8List data) {
+  DmapCode? getCode(Uint8List data) {
     String code =
         utf8.decode(data.sublist(0, 4)); // first 4 bytes is object code
     if (dmapCodeTypes.containsKey(code)) {
@@ -222,7 +228,7 @@ class DaapObject {
   /// Get DAAP timestamp data type value.
   DateTime getTimestamp(Uint8List data) {
     int millisecondsTimestamp =
-        ByteData.view(rawData.buffer).getInt32(0) * 1000;
+        ByteData.view(data.buffer).getInt32(0) * 1000;
     return DateTime.fromMillisecondsSinceEpoch(millisecondsTimestamp).toUtc();
   }
 }
