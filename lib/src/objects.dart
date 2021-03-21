@@ -9,87 +9,97 @@ import "exceptions.dart";
 
 /// DMAP code.
 class DmapCode {
-  String code;
-  String name;
-  int type;
+  /// DMAP code
+  String code = "";
+
+  /// DMAP code name
+  String name = "";
+
+  /// DMAP type
+  int type = 0;
 
   /// DMAP code object constructor.
   DmapCode(String code, String name, int type) {
-    this.code = code;
-    this.name = name;
-    this.type = type;
+    this.code = code; // ignore: prefer_initializing_formals
+    this.name = name; // ignore: prefer_initializing_formals
+    this.type = type; // ignore: prefer_initializing_formals
   }
 
   /// Creates DMAP code class string representation.
   @override
   String toString() {
-    return "<DmapCode: {code: '${this.code}', name: '${this.name}', type: '${dmapDataTypesNames[this.type]} (${dmapDataTypes[this.type]})'}>";
+    // ignore: lines_longer_than_80_chars
+    return "<DmapCode: {code: '$code', name: '$name', type: '${dmapDataTypesNames[type]} (${dmapDataTypes[type]})'}>";
   }
 }
 
 /// DAAP object.
 class DaapObject {
-  DmapCode code;
-  int _dataLength;
-  Uint8List rawData;
+  /// DMAP code
+  DmapCode code = DmapCode("", "", 0);
+
+  /// object raw data
+  Uint8List rawData = Uint8List.fromList([]);
+  int _dataLength = 0;
 
   // DAAP object value representation in corresponding data types.
-  int _value__byte;
-  int _value__unsignedByte;
-  int _value__short;
-  int _value__unsignedShort;
-  int _value__integer;
-  int _value__unsignedInteger;
-  int _value__long;
-  int _value__unsignedLong;
-  String _value__string;
-  DateTime _value__timestamp;
-  String _value__version;
-  List<DaapObject> _value__container = [];
+  int _value__byte = 0; // ignore: non_constant_identifier_names
+  int _value__unsignedByte = 0; // ignore: non_constant_identifier_names
+  int _value__short = 0; // ignore: non_constant_identifier_names
+  int _value__unsignedShort = 0; // ignore: non_constant_identifier_names
+  int _value__integer = 0; // ignore: non_constant_identifier_names
+  int _value__unsignedInteger = 0; // ignore: non_constant_identifier_names
+  int _value__long = 0; // ignore: non_constant_identifier_names
+  int _value__unsignedLong = 0; // ignore: non_constant_identifier_names
+  String _value__string = ""; // ignore: non_constant_identifier_names
+  DateTime? _value__timestamp; // ignore: non_constant_identifier_names
+  String _value__version = ""; // ignore: non_constant_identifier_names
+  List<DaapObject> _value__container =
+      []; // ignore: non_constant_identifier_names, prefer_final_fields
 
   /// DAAP object constructor.
   DaapObject(Uint8List data) {
-    this.decode(data);
+    decode(data);
   }
 
   /// Creates DAAP object class string representation.
   @override
   String toString() {
-    return "<DaapObject: {code: '${this.code.toString()}', value: '${this.value}', length: '${this._dataLength}'}>";
+    // ignore: lines_longer_than_80_chars
+    return "<DaapObject: {code: '${code.toString()}', value: '$value', length: '$_dataLength'}>";
   }
 
   /// DAAP object value getter.
   ///
   /// Return corresponding data type value.
   dynamic get value {
-    switch (this.code.type) {
+    switch (code.type) {
       case byte:
-        return this._value__byte;
+        return _value__byte;
       case unsignedByte:
-        return this._value__unsignedByte;
+        return _value__unsignedByte;
       case short:
-        return this._value__short;
+        return _value__short;
       case unsignedShort:
-        return this._value__unsignedShort;
+        return _value__unsignedShort;
       case integer:
-        return this._value__integer;
+        return _value__integer;
       case unsignedInteger:
-        return this._value__unsignedInteger;
+        return _value__unsignedInteger;
       case long:
-        return this._value__long;
+        return _value__long;
       case unsignedLong:
-        return this._value__unsignedLong;
+        return _value__unsignedLong;
       case string:
-        return this._value__string;
+        return _value__string;
       case timestamp:
-        return this._value__timestamp;
+        return _value__timestamp;
       case version:
-        return this._value__version;
+        return _value__version;
       case container:
-        return this._value__container;
+        return _value__container;
     }
-    throw new DmapDecodeException(
-        "Unknown DMAP code type: '${this.code.type}'.");
+    throw DmapDecodeException("Unknown DMAP code type: '${code.type}'.");
   }
 
   /// Search appropriate object value by code name in object tree.
@@ -97,16 +107,16 @@ class DaapObject {
   /// Throws [DmapDecodeException] in case of unknown code.
   dynamic getAtom(String code) {
     if (dmapCodeTypes.containsKey(code)) {
-      DmapCode dmapCode = dmapCodeTypes[code];
+      var dmapCode = dmapCodeTypes[code]!;
       if (this.code == dmapCode) {
         if (this.code.type == container) {
           return this;
         }
-        return this.value;
+        return value;
       }
       // check children
-      if ((this.code.type == container) && this.value.length > 0) {
-        for (var object in this.value) {
+      if ((this.code.type == container) && value.length > 0) {
+        for (var object in value) {
           var value = object.getAtom(code);
           if (value != null) {
             return value;
@@ -115,8 +125,8 @@ class DaapObject {
       }
       return null;
     } else {
-      throw new DmapDecodeException(
-          "'${code}' was not found in actual DMAP codes list.");
+      throw DmapDecodeException(
+          "'$code' was not found in actual DMAP codes list.");
     }
   }
 
@@ -127,59 +137,57 @@ class DaapObject {
   void decode(Uint8List data) {
     if (data.lengthInBytes < 8) {
       // broken data, must contain at least 8 bytes
-      throw new DmapDecodeException(
-          "Code name length must be at least 8 bytes");
+      throw DmapDecodeException("Code name length must be at least 8 bytes");
     }
 
-    this.code = this.getCode(data);
-    this._dataLength = this.getDataLength(data);
-    this.rawData = data.sublist(
-        8, 8 + this.getDataLength(data)); // skip (code + data length) offset
+    code = getCode(data);
+    _dataLength = getDataLength(data);
+    rawData = data.sublist(
+        8, 8 + getDataLength(data)); // skip (code + data length) offset
 
-    switch (this.code.type) {
+    switch (code.type) {
       case byte:
-        this._value__byte = ByteData.view(rawData.buffer).getInt8(0);
+        _value__byte = ByteData.view(rawData.buffer).getInt8(0);
         break;
       case unsignedByte:
-        this._value__unsignedByte = ByteData.view(rawData.buffer).getUint8(0);
+        _value__unsignedByte = ByteData.view(rawData.buffer).getUint8(0);
         break;
       case short:
-        this._value__short = ByteData.view(rawData.buffer).getInt16(0);
+        _value__short = ByteData.view(rawData.buffer).getInt16(0);
         break;
       case unsignedShort:
-        this._value__unsignedShort = ByteData.view(rawData.buffer).getUint16(0);
+        _value__unsignedShort = ByteData.view(rawData.buffer).getUint16(0);
         break;
       case integer:
-        this._value__integer = ByteData.view(rawData.buffer).getInt32(0);
+        _value__integer = ByteData.view(rawData.buffer).getInt32(0);
         break;
       case unsignedInteger:
-        this._value__unsignedInteger =
-            ByteData.view(rawData.buffer).getUint32(0);
+        _value__unsignedInteger = ByteData.view(rawData.buffer).getUint32(0);
         break;
       case long:
-        this._value__long = ByteData.view(rawData.buffer).getInt64(0);
+        _value__long = ByteData.view(rawData.buffer).getInt64(0);
         break;
       case unsignedLong:
-        this._value__unsignedLong = ByteData.view(rawData.buffer).getUint64(0);
+        _value__unsignedLong = ByteData.view(rawData.buffer).getUint64(0);
         break;
       case string:
-        this._value__string = utf8.decode(rawData);
+        _value__string = utf8.decode(rawData);
         break;
       case timestamp:
-        this._value__timestamp = this.getTimestamp(rawData);
+        _value__timestamp = getTimestamp(rawData);
         break;
       case version:
-        this._value__version = this.getVersion(rawData);
+        _value__version = getVersion(rawData);
         break;
       case container:
-        int chunkStart = 0;
-        while (chunkStart + 8 < this._dataLength) {
+        var chunkStart = 0;
+        while (chunkStart + 8 < _dataLength) {
           // including (code + data length) offset
-          DaapObject obj = DaapObject(this.rawData.sublist(chunkStart));
+          var obj = DaapObject(rawData.sublist(chunkStart));
           chunkStart = chunkStart +
               obj.rawData.lengthInBytes +
               8; // including (code + data length) offset
-          this._value__container.add(obj);
+          _value__container.add(obj);
         }
         break;
     }
@@ -190,13 +198,12 @@ class DaapObject {
   /// Get and return appropriate DMAP code object.
   /// Throws [DmapDecodeException] in case of unknown code.
   DmapCode getCode(Uint8List data) {
-    String code =
-        utf8.decode(data.sublist(0, 4)); // first 4 bytes is object code
+    var code = utf8.decode(data.sublist(0, 4)); // first 4 bytes is object code
     if (dmapCodeTypes.containsKey(code)) {
-      return dmapCodeTypes[code];
+      return dmapCodeTypes[code]!;
     } else {
-      throw new DmapDecodeException(
-          "'${code}' was not found in actual DMAP codes list.");
+      throw DmapDecodeException(
+          "'$code' was not found in actual DMAP codes list.");
     }
   }
 
@@ -209,13 +216,13 @@ class DaapObject {
   /// Get DAAP protocol version.
   String getVersion(Uint8List data) {
     // generally version is two short unsigned integers
+    // ignore: lines_longer_than_80_chars
     return "${ByteData.view(data.buffer, 0, 2).getUint16(0)}.${ByteData.view(data.buffer, 2, 2).getUint16(0)}";
   }
 
   /// Get DAAP timestamp data type value.
   DateTime getTimestamp(Uint8List data) {
-    int millisecondsTimestamp =
-        ByteData.view(rawData.buffer).getInt32(0) * 1000;
+    var millisecondsTimestamp = ByteData.view(data.buffer).getInt32(0) * 1000;
     return DateTime.fromMillisecondsSinceEpoch(millisecondsTimestamp).toUtc();
   }
 }

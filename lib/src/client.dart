@@ -4,42 +4,48 @@
 import "dart:io";
 import "dart:typed_data";
 
-import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
+import "package:http/http.dart";
 import "package:interpolator/interpolator.dart";
 
-import "objects.dart";
 import "constants.dart";
 import "exceptions.dart";
+import "objects.dart";
 
 /// DAAP client.
 class DaapClient {
-  String host;
-  int port;
-  String _password;
-  Client _connection;
-  Uri _baseUrl;
+  /// Host to connect to.
+  String host = "";
+
+  /// Port to use.
+  int port = 3689;
+  String? _password;
+  Client? _connection;
+  Uri _baseUrl = Uri(scheme: "http"); // ignore: prefer_final_fields
   int _requestId = 0;
 
-  DaapObject serverInfo;
-  DaapObject contentCodes;
-  DaapObject sessionInfo;
+  /// server info data
+  DaapObject? serverInfo;
+
+  /// content codes data
+  DaapObject? contentCodes;
+
+  /// session info data
+  DaapObject? sessionInfo;
 
   /// DAAP client constructor.
   ///
   /// Sets default port value.
   /// Hides password value.
   /// Creates base connection URL.
-  DaapClient(String host, {int port = 3689, String password}) {
-    this.host = host;
-    this.port = port;
-    this._password = password;
+  DaapClient(String host, {int port = 3689, String? password}) {
+    this.host = host; // ignore: prefer_initializing_formals
+    this.port = port; // ignore: prefer_initializing_formals
+    if (password != null) {
+      _password = password;
+    }
 
-    this._baseUrl = new Uri(
-      scheme: "http",
-      host: this.host,
-      port: this.port,
-    );
+    _baseUrl = _baseUrl.replace(host: this.host, port: this.port);
   }
 
   /// Creates client class string representation.
@@ -48,10 +54,11 @@ class DaapClient {
   /// to indicate this client is connected to the server with authorization.
   @override
   String toString() {
-    if (this._password != null) {
-      return "<DaapClient: {host: ${this.host}, port: ${this.port}, password: ${"*" * this._password.length}}>";
+    if (_password != null) {
+      // ignore: lines_longer_than_80_chars
+      return "<DaapClient: {host: $host, port: $port, password: ${"*" * _password!.length}}>";
     } else {
-      return "<DaapClient: {host: ${this.host}, port: ${this.port}}>";
+      return "<DaapClient: {host: $host, port: $port}>";
     }
   }
 
@@ -61,47 +68,50 @@ class DaapClient {
   /// Connect to DAAP server.
   ///
   /// Get DAAP content codes/server info/session info.
-  void connect() async {
-    this.serverInfo = await this.getServerInfo();
-    this.contentCodes = await this.getContentCodes();
-    this.sessionInfo = await this.login();
+  Future<void> connect() async {
+    serverInfo = await getServerInfo();
+    contentCodes = await getContentCodes();
+    sessionInfo = await login();
   }
 
   /// Shared HTTP connection getter.
   ///
   /// If connection does not exists creates new one.
-  Client get connection {
-    if (this._connection == null) {
-      if (this._password == null) {
-        this._connection = Client();
-      } else {
+  Client? get connection {
+    if (_connection == null) {
+      if (_password != null) {
         // DAAP does not require username, so use empty.
-        this._connection = BasicAuthClient("", this._password);
+        _connection = BasicAuthClient("", _password!);
+      } else {
+        _connection = Client();
       }
     }
-    return this._connection;
+    return _connection;
   }
 
   /// Get custom HTTP headers.
   ///
   /// Return HTTP connection headers with dynamic request ID.
   Map<String, String> get headers {
-    this._headers.update(
-        "Client-DAAP-Request-ID", (dynamic val) => this._requestId.toString(),
-        ifAbsent: () => this._requestId.toString());
-    this._requestId++;
-    return this._headers;
+    _headers.update(
+        "Client-DAAP-Request-ID", (dynamic val) => _requestId.toString(),
+        ifAbsent: () => _requestId.toString());
+    _requestId++;
+    return _headers;
   }
 
   /// Make a GET HTTP request to DAAP server.
   ///
   /// Throws [DaapAuthRequiredException] in case of server auth required.
-  /// Throws [DaapAuthenticationFailureException] in case of wrong credentials provided.
-  /// Throws [DaapTooManyConnectionsException] in case of server overload.
-  /// Throws [DaapException] in case of unexpected response status code or network error.
-  Future<Uint8List> request(String url) async {
+  /// Throws [DaapAuthenticationFailureException]
+  /// in case of wrong credentials provided.
+  /// Throws [DaapTooManyConnectionsException]
+  /// in case of server overload.
+  /// Throws [DaapException]
+  /// in case of unexpected response status code or network error.
+  Future<Uint8List> request(Uri url) async {
     try {
-      var response = await this.connection.get(url, headers: this.headers);
+      var response = await connection!.get(url, headers: headers);
 
       if (response.statusCode == HttpStatus.unauthorized) {
         throw DaapAuthRequiredException();
@@ -110,7 +120,7 @@ class DaapClient {
       } else if (response.statusCode == HttpStatus.serviceUnavailable) {
         throw DaapTooManyConnectionsException();
       } else if (response.statusCode == HttpStatus.noContent) {
-        return null;
+        return Uint8List.fromList([]);
       } else if (response.statusCode != HttpStatus.ok) {
         throw DaapException("Response status: '${response.statusCode}'");
       } else {
@@ -127,46 +137,47 @@ class DaapClient {
   ///
   /// Look useless but practically required.
   Future<DaapObject> getContentCodes() async {
-    var url = this._baseUrl;
+    var url = _baseUrl;
     url = url.replace(path: contentCodesUrlPath);
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Get server info.
   Future<DaapObject> getServerInfo() async {
-    var url = this._baseUrl;
+    var url = _baseUrl;
     url = url.replace(path: serverInfoUrlPath);
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Login to the server.
   Future<DaapObject> login() async {
-    var url = this._baseUrl;
+    var url = _baseUrl;
     url = url.replace(path: loginUrlPath);
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Get databases from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
-  Future<DaapObject> getDatabases({int sessionId}) async {
-    var url = this._baseUrl;
+  Future<DaapObject> getDatabases({int? sessionId}) async {
+    var url = _baseUrl;
     if (sessionId != null) {
       url = url.replace(
           path: databasesUrlPath,
           queryParameters: {"session-id": sessionId.toString()});
     } else {
-      if (this.sessionInfo != null) {
-        return await this.getDatabases(
-            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+      if (sessionInfo != null) {
+        return await getDatabases(
+            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
       } else {
         // TODO: test it.
-        throw new DaapImproperlyConfiguredException(
+        throw DaapImproperlyConfiguredException(
+            // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
     }
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Get database from the server.
@@ -174,9 +185,9 @@ class DaapClient {
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getDatabase(int databaseId,
-      {int sessionId,
+      {int? sessionId,
       List<String> metaCodes = databaseQueryDefaultMetaCodes}) async {
-    var url = this._baseUrl;
+    var url = _baseUrl;
     if (sessionId != null) {
       url = url.replace(
           path: Interpolator(databaseUrlPath)(
@@ -184,20 +195,21 @@ class DaapClient {
           queryParameters: {
             "type": "music",
             "session-id": sessionId.toString(),
-            "meta": this.getRequestMeta(metaCodes),
+            "meta": getRequestMeta(metaCodes),
           });
     } else {
-      if (this.sessionInfo != null) {
-        return await this.getDatabase(databaseId,
-            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+      if (sessionInfo != null) {
+        return await getDatabase(databaseId,
+            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
         // TODO: test it.
-        throw new DaapImproperlyConfiguredException(
+        throw DaapImproperlyConfiguredException(
+            // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
     }
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Get database playlists from the server.
@@ -205,29 +217,30 @@ class DaapClient {
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getPlaylists(int databaseId,
-      {int sessionId,
+      {int? sessionId,
       List<String> metaCodes = playlistsQueryDefaultMetaCodes}) async {
-    var url = this._baseUrl;
+    var url = _baseUrl;
     if (sessionId != null) {
       url = url.replace(
           path: Interpolator(playlistsUrlPath)(
               {"databaseId": databaseId.toString()}),
           queryParameters: {
             "session-id": sessionId.toString(),
-            "meta": this.getRequestMeta(metaCodes),
+            "meta": getRequestMeta(metaCodes),
           });
     } else {
-      if (this.sessionInfo != null) {
-        return await this.getPlaylists(databaseId,
-            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+      if (sessionInfo != null) {
+        return await getPlaylists(databaseId,
+            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
         // TODO: test it.
-        throw new DaapImproperlyConfiguredException(
+        throw DaapImproperlyConfiguredException(
+            // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
     }
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Get database playlist from the server.
@@ -235,9 +248,9 @@ class DaapClient {
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
   Future<DaapObject> getPlaylist(int databaseId, int playlistId,
-      {int sessionId,
+      {int? sessionId,
       List<String> metaCodes = playlistQueryDefaultMetaCodes}) async {
-    var url = this._baseUrl;
+    var url = _baseUrl;
     if (sessionId != null) {
       url = url.replace(
           path: Interpolator(playlistUrlPath)({
@@ -246,20 +259,21 @@ class DaapClient {
           }),
           queryParameters: {
             "session-id": sessionId.toString(),
-            "meta": this.getRequestMeta(metaCodes),
+            "meta": getRequestMeta(metaCodes),
           });
     } else {
-      if (this.sessionInfo != null) {
-        return await this.getPlaylist(databaseId, playlistId,
-            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID),
+      if (sessionInfo != null) {
+        return await getPlaylist(databaseId, playlistId,
+            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
         // TODO: test it.
-        throw new DaapImproperlyConfiguredException(
+        throw DaapImproperlyConfiguredException(
+            // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
     }
-    return DaapObject(await this.request(url.toString()));
+    return DaapObject(await request(url));
   }
 
   /// Get song file/stream from the server.
@@ -267,8 +281,8 @@ class DaapClient {
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
   Future<Uint8List> getSong(int databaseId, int songId, String songFormat,
-      {int sessionId}) async {
-    var url = this._baseUrl;
+      {int? sessionId}) async {
+    var url = _baseUrl;
     if (sessionId != null) {
       url = url.replace(
           path: Interpolator(songUrlPath)({
@@ -278,16 +292,18 @@ class DaapClient {
           }),
           queryParameters: {"session-id": sessionId.toString()});
     } else {
-      if (this.sessionInfo != null) {
+      if (sessionInfo != null) {
         // TODO: test it.
-        return await this.getSong(databaseId, songId, songFormat,
-            sessionId: this.sessionInfo.getAtom(DMAP_CODE_DMAP_SESSIONID));
+        return await getSong(databaseId, songId, songFormat,
+            // ignore: unnecessary_this
+            sessionId: this.sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
       } else {
-        throw new DaapImproperlyConfiguredException(
+        throw DaapImproperlyConfiguredException(
+            // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
       }
     }
-    return await this.request(url.toString());
+    return await request(url);
   }
 
   /// Create request meta key value from DMAP codes list.
@@ -295,12 +311,12 @@ class DaapClient {
   /// Throws [DmapEncodeException] in case of unknown code in [metaCodes].
   String getRequestMeta(List<String> metaCodes) {
     var meta = <String>[];
-    for (String code in metaCodes) {
+    for (var code in metaCodes) {
       if (dmapCodeTypes.containsKey(code)) {
-        meta.add(dmapCodeTypes[code].name);
+        meta.add(dmapCodeTypes[code]!.name);
       } else {
-        throw new DmapEncodeException(
-            "'${code}' was not found in actual DMAP codes list.");
+        throw DmapEncodeException(
+            "'$code' was not found in actual DMAP codes list.");
       }
     }
     return meta.join(",");
