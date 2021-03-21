@@ -5,7 +5,7 @@
 .ONESHELL:
 PHONY: dartfmt test clean help
 TRASH_DIRS ?= .dart_tool coverage
-TRASH_FILES ?= .coverage pubspec.lock
+TRASH_FILES ?= .coverage pubspec.lock .packages
 
 
 dartfmt:
@@ -13,7 +13,7 @@ dartfmt:
 
 
 test:
-	pub run test $(TESTS);\
+	pub run test $(TESTS) --coverage=coverage;\
 
 
 clean:

@@ -53,9 +53,9 @@ import "package:daapc/daapc.dart";
 /// 3. Login to server
 /// and saves all server responses to future use.
 void main() async {
-  Map<String, String> envVars = Platform.environment;
-  DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
 }
 ```
@@ -76,13 +76,14 @@ import "package:daapc/daapc.dart";
 /// uses hostname as default if it not configured),
 /// but it may be possible to have multiple.
 void main() async {
-  Map<String, String> envVars = Platform.environment;
-  DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  DaapObject databases = await client.getDatabases();
+  var databases = await client.getDatabases();
   for (DaapObject db in databases.getAtom(DMAP_CODE_DMAP_LISTING).value) {
     stdout.writeln(
+        // ignore: lines_longer_than_80_chars
         '${db.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${db.getAtom(DMAP_CODE_DMAP_ITEMNAME)}');
   }
 }
@@ -112,13 +113,14 @@ import "package:daapc/daapc.dart";
 /// (for example "Rhythmbox" "DAAP Music Sharing"
 /// plugin uses database name (host name) as default).
 void main() async {
-  Map<String, String> envVars = Platform.environment;
-  DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  DaapObject playlists = await client.getPlaylists(1);
+  var playlists = await client.getPlaylists(1);
   for (DaapObject playlist in playlists.getAtom(DMAP_CODE_DMAP_LISTING).value) {
     stdout.writeln(
+        // ignore: lines_longer_than_80_chars
         '${playlist.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${playlist.getAtom(DMAP_CODE_DMAP_ITEMNAME)} (${playlist.getAtom(DMAP_CODE_DMAP_ITEMCOUNT)})');
   }
 }
@@ -149,22 +151,24 @@ import "package:daapc/daapc.dart";
 /// only necessary songs attributes and reduce memory usage.
 /// By default equals to [playlistQueryDefaultMetaCodes].
 void main() async {
-  Map<String, String> envVars = Platform.environment;
-  DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  DaapObject playlist = await client.getPlaylist(1, 1, metaCodes: [
+  var playlist = await client.getPlaylist(1, 1, metaCodes: [
     DMAP_CODE_DAAP_SONGTRACKNUMBER,
     DMAP_CODE_DMAP_ITEMNAME,
     DMAP_CODE_DAAP_SONGARTIST,
     DMAP_CODE_DAAP_SONGALBUM,
-    DMAP_CODE_DAAP_SONGYEAR
+    DMAP_CODE_DAAP_SONGYEAR,
+    DMAP_CODE_DAAP_SONGTIME,
   ]);
   for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
-    Duration songTime =
+    var songTime =
         Duration(milliseconds: song.getAtom(DMAP_CODE_DAAP_SONGTIME));
     stdout.writeln(
-        '${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}: ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)} / ${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)} / ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)} / ${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - ${songTime}');
+        // ignore: lines_longer_than_80_chars
+        '${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}: ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)} / ${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)} / ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)} / ${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - $songTime');
   }
 }
 ```
@@ -193,21 +197,23 @@ import "package:daapc/daapc.dart";
 /// only necessary songs attributes and reduce memory usage.
 /// By default equals to [databaseQueryDefaultMetaCodes].
 void main() async {
-  Map<String, String> envVars = Platform.environment;
-  DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  DaapObject database = await client.getDatabase(1, metaCodes: [
+  var database = await client.getDatabase(1, metaCodes: [
     DMAP_CODE_DAAP_SONGTRACKNUMBER,
     DMAP_CODE_DMAP_ITEMNAME,
     DMAP_CODE_DAAP_SONGARTIST,
     DMAP_CODE_DAAP_SONGALBUM,
-    DMAP_CODE_DAAP_SONGYEAR
+    DMAP_CODE_DAAP_SONGYEAR,
+    DMAP_CODE_DAAP_SONGTIME,
   ]);
   for (DaapObject song in database.getAtom(DMAP_CODE_DMAP_LISTING).value) {
-    Duration songTime =
+    var songTime =
         Duration(milliseconds: song.getAtom(DMAP_CODE_DAAP_SONGTIME));
     stdout.writeln(
+        // ignore: lines_longer_than_80_chars
         '${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}: ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)} / ${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)} / ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)} / ${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - ${songTime}');
   }
 }
@@ -236,11 +242,11 @@ import "package:daapc/daapc.dart";
 /// directories structure and name songs files formatted as
 /// "{songNumber}. {songName}.{songFormat}".
 void main() async {
-  Map<String, String> envVars = Platform.environment;
-  DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  DaapObject playlist = await client.getPlaylist(1, 3, metaCodes: [
+  var playlist = await client.getPlaylist(1, 3, metaCodes: [
     DMAP_CODE_DAAP_SONGTRACKNUMBER,
     DMAP_CODE_DMAP_ITEMNAME,
     DMAP_CODE_DAAP_SONGARTIST,
@@ -250,9 +256,10 @@ void main() async {
     DMAP_CODE_DAAP_SONGFORMAT,
   ]);
   for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
-    String path =
+    var path =
+        // ignore: lines_longer_than_80_chars
         "${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)}/${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)}/${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}. ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)}.${song.getAtom(DMAP_CODE_DAAP_SONGFORMAT)}";
-    new File(path).create(recursive: true).then((File file) async {
+    File(path).create(recursive: true).then((file) async {
       file.writeAsBytes(await client.getSong(
           1,
           song.getAtom(DMAP_CODE_DMAP_ITEMID),
@@ -260,7 +267,6 @@ void main() async {
     });
   }
 }
-
 ```
 ↓
 ```sh
