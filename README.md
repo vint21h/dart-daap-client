@@ -33,9 +33,9 @@ import "package:daapc/daapc.dart";
 /// Just create DAAP client class instance
 /// and provide server host and password if it is necessary.
 void main() async {
-  Map<String, String> envVars = Platform.environment;
+  var envVars = Platform.environment;
   DaapClient client =
-      new DaapClient(envVars["DAAP_HOST"], password: envVars["DAAP_PASSWORD"]);
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
 }
 ```
 

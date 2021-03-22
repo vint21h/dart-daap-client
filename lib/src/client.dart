@@ -24,13 +24,13 @@ class DaapClient {
   Uri _baseUrl = Uri(scheme: "http"); // ignore: prefer_final_fields
   int _requestId = 0;
 
-  /// server info data
+  /// Server info data.
   DaapObject? serverInfo;
 
-  /// content codes data
+  /// Content codes data.
   DaapObject? contentCodes;
 
-  /// session info data
+  /// Session info data.
   DaapObject? sessionInfo;
 
   /// DAAP client constructor.
@@ -293,7 +293,6 @@ class DaapClient {
           queryParameters: {"session-id": sessionId.toString()});
     } else {
       if (sessionInfo != null) {
-        // TODO: test it.
         return await getSong(databaseId, songId, songFormat,
             // ignore: unnecessary_this
             sessionId: this.sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));

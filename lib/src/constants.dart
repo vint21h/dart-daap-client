@@ -69,476 +69,729 @@ const Map<int, String> dmapDataTypesNames = {
 /// than following code name with namespace where parts of name space delimited
 /// by "_" and all that parts is in uppercase.
 
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN =
-    "????"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_BROWSEALBUMLISTING =
-    "abal"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_BROWSEARTISTLISTING =
-    "abar"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_BROWSECOMPOSERLISTING =
-    "abcp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_BROWSEGENRELISTING =
-    "abgn"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_BASEPLAYLIST =
-    "abpl"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_DATABASEBROWSE =
-    "abro"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_DATABASESONGS =
-    "adbs"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ADAM_IDS_ARRAY =
-    "aeAD"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ITMS_ARTISTID =
-    "aeAI"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ITMS_COMPOSERID =
-    "aeCI"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_CONTENT_RATING =
-    "aeCR"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_DRM_PLATFORM_ID =
-    "aeDP"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_DRM_USER_ID =
-    "aeDR"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_DRM_VERSIONS =
-    "aeDV"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_EPISODE_NUM_STR =
-    "aeEN"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_EPISODE_SORT =
-    "aeES"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY =
-    "aeFP"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DR =
-    "aeGD"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DEL =
-    "aeGE"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_HEUR =
-    "aeGH"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ITMS_GENREID =
-    "aeGI"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_RESY =
-    "aeGR"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_DUR =
-    "aeGU"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_IS_HD_VIDEO =
-    "aeHD"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_HAS_VIDEO =
-    "aeHV"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY1_ID =
-    "aeK1"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY2_ID =
-    "aeK2"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_EXTENDED_MEDIA_KIND =
-    "aeMk"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_MEDIAKIND =
-    "aeMK"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_NON_DRM_USER_ID =
-    "aeND"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_NETWORK_NAME =
-    "aeNN"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME =
-    "aeNV"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST =
-    "aePC"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ITMS_PLAYLISTID =
-    "aePI"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST_PLAYLIST =
-    "aePP"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_SPECIAL_PLAYLIST =
-    "aePS"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ITMS_STOREFRONTID =
-    "aeSF"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_SAVED_GENIUS =
-    "aeSG"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_ITMS_SONGID =
-    "aeSI"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_SERIES_NAME =
-    "aeSN"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_SMART_PLAYLIST =
-    "aeSP"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_SEASON_NUM =
-    "aeSU"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_MUSIC_SHARING_VERSION =
-    "aeSV"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGGROUPING =
-    "agrp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_DATABASEPLAYLISTS =
-    "aply"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_PLAYLISTREPEATMODE =
-    "aprm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_PROTOCOLVERSION =
-    "apro"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_PLAYLISTSHUFFLEMODE =
-    "apsm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_PLAYLISTSONGS =
-    "apso"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_RESOLVEINFO =
-    "arif"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_RESOLVE =
-    "arsv"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGALBUMARTIST =
-    "asaa"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGALBUMID =
-    "asai"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGALBUM =
-    "asal"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGARTIST =
-    "asar"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_BOOKMARKABLE =
-    "asbk"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGBOOKMARK =
-    "asbo"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGBITRATE =
-    "asbr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGBEATSPERMINUTE =
-    "asbt"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCODECTYPE =
-    "ascd"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCOMMENT =
-    "ascm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCONTENTDESCRIPTION =
-    "ascn"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCOMPILATION =
-    "asco"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCOMPOSER =
-    "ascp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCONTENTRATING =
-    "ascr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCODECSUBTYPE =
-    "ascs"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGCATEGORY =
-    "asct"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDATEADDED =
-    "asda"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDISABLED =
-    "asdb"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDISCCOUNT =
-    "asdc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDATAKIND =
-    "asdk"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDATEMODIFIED =
-    "asdm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDISCKNUMBER =
-    "asdn"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDATEPURCHASED =
-    "asdp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDATERELEASED =
-    "asdr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDESCRIPTION =
-    "asdt"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGEXTRADATA =
-    "ased"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGEQPRESET =
-    "aseq"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGFORMAT =
-    "asfm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGGENRE =
-    "asgn"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGGAPLESS =
-    "asgp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGHASBEENPLAYED =
-    "ashp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGKEYWORDS =
-    "asky"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGLONGCONTENTDESCRIPTION =
-    "aslc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGLONGSIZE =
-    "asls"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGSONPODCASTURL =
-    "aspu"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGRELATIVEVOLUME =
-    "asrv"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SORTARTIST =
-    "assa"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SORTCOMPOSER =
-    "assc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SORTALBUMARTIST =
-    "assl"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SORTNAME =
-    "assn"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGSTOPTIME =
-    "assp"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGSAMPLERATE =
-    "assr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGSERIESNAME =
-    "asss"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGSTARTTIME =
-    "asst"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SORTALBUM =
-    "assu"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGSIZE =
-    "assz"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGTRACKCOUNT =
-    "astc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGTIME =
-    "astm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGTRACKNUMBER =
-    "astn"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGDATAURL =
-    "asul"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGUSERRATING =
-    "asur"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SONGYEAR =
-    "asyr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SUPPORTSEXTRADATA =
-    "ated"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DAAP_SERVERDATABASES =
-    "avdb"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CLIENT_VOTE =
-    "ceJC"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CURRENT =
-    "ceJI"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_VOTE =
-    "ceJV"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_HASCHILDCONTAINERS =
-    "f?ch"; // ignore: constant_identifier_names
-/// DMAP code '' type.
+/// DMAP code 'com.apple.itunes.req-fplay' type.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN = // ignore: constant_identifier_names
+    "????";
+
+/// DMAP code 'daap.browsealbumlisting"' type.
+const String
+    DMAP_CODE_DAAP_BROWSEALBUMLISTING = // ignore: constant_identifier_names
+    "abal";
+
+/// DMAP 'daap.browseartistlisting' code.
+const String
+    DMAP_CODE_DAAP_BROWSEARTISTLISTING = // ignore: constant_identifier_names
+    "abar";
+
+/// DMAP 'daap.browsecomposerlisting' code.
+const String
+    DMAP_CODE_DAAP_BROWSECOMPOSERLISTING = // ignore: constant_identifier_names
+    "abcp";
+
+/// DMAP 'daap.browsegenrelisting' code.
+const String
+    DMAP_CODE_DAAP_BROWSEGENRELISTING = // ignore: constant_identifier_names
+    "abgn";
+
+/// DMAP 'daap.baseplaylist' code.
+const String DMAP_CODE_DAAP_BASEPLAYLIST = // ignore: constant_identifier_names
+    "abpl";
+
+/// DMAP 'daap.databasebrowse' code.
+const String
+    DMAP_CODE_DAAP_DATABASEBROWSE = // ignore: constant_identifier_names
+    "abro";
+
+/// DMAP 'daap.databasesongs' code.
+const String DMAP_CODE_DAAP_DATABASESONGS = // ignore: constant_identifier_names
+    "adbs";
+
+/// DMAP 'com.apple.itunes.adam-ids-array' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ADAM_IDS_ARRAY = // ignore: constant_identifier_names
+    "aeAD";
+
+/// DMAP 'com.apple.itunes.itms-artistid' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ITMS_ARTISTID = // ignore: constant_identifier_names
+    "aeAI";
+
+/// DMAP 'com.apple.itunes.itms-composerid' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ITMS_COMPOSERID = // ignore: constant_identifier_names
+    "aeCI";
+
+/// DMAP 'com.apple.itunes.content-rating' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_CONTENT_RATING = // ignore: constant_identifier_names
+    "aeCR";
+
+/// DMAP 'com.apple.itunes.drm-platform-id' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_DRM_PLATFORM_ID = // ignore: constant_identifier_names
+    "aeDP";
+
+/// DMAP 'com.apple.itunes.drm-user-id' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_DRM_USER_ID = // ignore: constant_identifier_names
+    "aeDR";
+
+/// DMAP 'com.apple.itunes.drm-versions' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_DRM_VERSIONS = // ignore: constant_identifier_names
+    "aeDV";
+
+/// DMAP 'com.apple.itunes.episode-num-str' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_EPISODE_NUM_STR = // ignore: constant_identifier_names
+    "aeEN";
+
+/// DMAP 'com.apple.itunes.episode-sort' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_EPISODE_SORT = // ignore: constant_identifier_names
+    "aeES";
+
+/// DMAP 'com.apple.itunes.req-fplay' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY = // ignore: constant_identifier_names
+    "aeFP";
+
+/// DMAP 'com.apple.itunes.gapless-enc-dr' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DR = // ignore: constant_identifier_names
+    "aeGD";
+
+/// DMAP 'com.apple.itunes.gapless-enc-del' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DEL = // ignore: constant_identifier_names
+    "aeGE";
+
+/// DMAP 'com.apple.itunes.gapless-heur' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_HEUR = // ignore: constant_identifier_names
+    "aeGH";
+
+/// DMAP 'com.apple.itunes.itms-genreid' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ITMS_GENREID = // ignore: constant_identifier_names
+    "aeGI";
+
+/// DMAP 'com.apple.itunes.gapless-resy' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_RESY = // ignore: constant_identifier_names
+    "aeGR";
+
+/// DMAP 'com.apple.itunes.gapless-dur' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_DUR = // ignore: constant_identifier_names
+    "aeGU";
+
+/// DMAP 'com.apple.itunes.is-hd-video"' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_IS_HD_VIDEO = // ignore: constant_identifier_names
+    "aeHD";
+
+/// DMAP 'com.apple.itunes.has-video' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_HAS_VIDEO = // ignore: constant_identifier_names
+    "aeHV";
+
+/// DMAP 'com.apple.itunes.drm-key1-id' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY1_ID = // ignore: constant_identifier_names
+    "aeK1";
+
+/// DMAP 'com.apple.itunes.drm-key2-id' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY2_ID = // ignore: constant_identifier_names
+    "aeK2";
+
+/// DMAP 'com.apple.itunes.extended-media-kind' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_EXTENDED_MEDIA_KIND = // ignore: constant_identifier_names
+    "aeMk";
+
+/// DMAP 'com.apple.itunes.mediakind' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_MEDIAKIND = // ignore: constant_identifier_names
+    "aeMK";
+
+/// DMAP 'com.apple.itunes.non-drm-user-id' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_NON_DRM_USER_ID = // ignore: constant_identifier_names
+    "aeND";
+
+/// DMAP 'com.apple.itunes.network-name' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_NETWORK_NAME = // ignore: constant_identifier_names
+    "aeNN";
+
+/// DMAP 'com.apple.itunes.norm-volume' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME = // ignore: constant_identifier_names
+    "aeNV";
+
+/// DMAP 'com.apple.itunes.is-podcast' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST = // ignore: constant_identifier_names
+    "aePC";
+
+/// DMAP 'com.apple.itunes.itms-playlistid' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ITMS_PLAYLISTID = // ignore: constant_identifier_names
+    "aePI";
+
+/// DMAP 'com.apple.itunes.is-podcast-playlist' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST_PLAYLIST = // ignore: constant_identifier_names
+    "aePP";
+
+/// DMAP 'com.apple.itunes.special-playlist' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_SPECIAL_PLAYLIST = // ignore: constant_identifier_names
+    "aePS";
+
+/// DMAP 'com.apple.itunes.itms-storefrontid' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ITMS_STOREFRONTID = // ignore: constant_identifier_names
+    "aeSF";
+
+/// DMAP 'com.apple.itunes.saved-genius' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_SAVED_GENIUS = // ignore: constant_identifier_names
+    "aeSG";
+
+/// DMAP 'com.apple.itunes.itms-songid' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_ITMS_SONGID = // ignore: constant_identifier_names
+    "aeSI";
+
+/// DMAP 'com.apple.itunes.series-name' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_SERIES_NAME = // ignore: constant_identifier_names
+    "aeSN";
+
+/// DMAP 'com.apple.itunes.smart-playlist' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_SMART_PLAYLIST = // ignore: constant_identifier_names
+    "aeSP";
+
+/// DMAP 'com.apple.itunes.season-num' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_SEASON_NUM = // ignore: constant_identifier_names
+    "aeSU";
+
+/// DMAP 'com.apple.itunes.music-sharing-version' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_MUSIC_SHARING_VERSION = // ignore: constant_identifier_names
+    "aeSV";
+
+/// DMAP 'daap.songgrouping' code.
+const String DMAP_CODE_DAAP_SONGGROUPING = // ignore: constant_identifier_names
+    "agrp";
+
+/// DMAP 'daap.databaseplaylists' code.
+const String
+    DMAP_CODE_DAAP_DATABASEPLAYLISTS = // ignore: constant_identifier_names
+    "aply";
+
+/// DMAP 'daap.playlistrepeatmode' code.
+const String
+    DMAP_CODE_DAAP_PLAYLISTREPEATMODE = // ignore: constant_identifier_names
+    "aprm";
+
+/// DMAP 'daap.protocolversion' code.
+const String
+    DMAP_CODE_DAAP_PROTOCOLVERSION = // ignore: constant_identifier_names
+    "apro";
+
+/// DMAP 'daap.playlistshufflemode' code.
+const String
+    DMAP_CODE_DAAP_PLAYLISTSHUFFLEMODE = // ignore: constant_identifier_names
+    "apsm";
+
+/// DMAP 'daap.playlistsongs' code.
+const String DMAP_CODE_DAAP_PLAYLISTSONGS = // ignore: constant_identifier_names
+    "apso";
+
+/// DMAP 'daap.resolveinfo' code.
+const String DMAP_CODE_DAAP_RESOLVEINFO = // ignore: constant_identifier_names
+    "arif";
+
+/// DMAP 'daap.resolve' code.
+const String DMAP_CODE_DAAP_RESOLVE = // ignore: constant_identifier_names
+    "arsv";
+
+/// DMAP 'daap.songalbumartist' code.
+const String
+    DMAP_CODE_DAAP_SONGALBUMARTIST = // ignore: constant_identifier_names
+    "asaa";
+
+/// DMAP 'daap.songalbumid' code.
+const String DMAP_CODE_DAAP_SONGALBUMID = // ignore: constant_identifier_names
+    "asai";
+
+/// DMAP 'daap.songalbum' code.
+const String DMAP_CODE_DAAP_SONGALBUM = // ignore: constant_identifier_names
+    "asal";
+
+/// DMAP 'daap.songartist' code.
+const String DMAP_CODE_DAAP_SONGARTIST = // ignore: constant_identifier_names
+    "asar";
+
+/// DMAP 'daap.bookmarkable' code.
+const String DMAP_CODE_DAAP_BOOKMARKABLE = // ignore: constant_identifier_names
+    "asbk";
+
+/// DMAP 'daap.songbookmark' code.
+const String DMAP_CODE_DAAP_SONGBOOKMARK = // ignore: constant_identifier_names
+    "asbo";
+
+/// DMAP 'daap.songbitrate' code.
+const String DMAP_CODE_DAAP_SONGBITRATE = // ignore: constant_identifier_names
+    "asbr";
+
+/// DMAP 'daap.songbeatsperminute' code.
+const String
+    DMAP_CODE_DAAP_SONGBEATSPERMINUTE = // ignore: constant_identifier_names
+    "asbt";
+
+/// DMAP 'daap.songcodectype' code.
+const String DMAP_CODE_DAAP_SONGCODECTYPE = // ignore: constant_identifier_names
+    "ascd";
+
+/// DMAP 'daap.songcomment' code.
+const String DMAP_CODE_DAAP_SONGCOMMENT = // ignore: constant_identifier_names
+    "ascm";
+
+/// DMAP 'daap.songcontentdescription' code.
+const String
+    DMAP_CODE_DAAP_SONGCONTENTDESCRIPTION = // ignore: constant_identifier_names
+    "ascn";
+
+/// DMAP 'daap.songcompilation' code.
+const String
+    DMAP_CODE_DAAP_SONGCOMPILATION = // ignore: constant_identifier_names
+    "asco";
+
+/// DMAP 'daap.songcomposer' code.
+const String DMAP_CODE_DAAP_SONGCOMPOSER = // ignore: constant_identifier_names
+    "ascp";
+
+/// DMAP 'daap.songcontentrating' code.
+const String
+    DMAP_CODE_DAAP_SONGCONTENTRATING = // ignore: constant_identifier_names
+    "ascr";
+
+/// DMAP 'daap.songcodecsubtype' code.
+const String
+    DMAP_CODE_DAAP_SONGCODECSUBTYPE = // ignore: constant_identifier_names
+    "ascs";
+
+/// DMAP 'daap.songcategory' code.
+const String DMAP_CODE_DAAP_SONGCATEGORY = // ignore: constant_identifier_names
+    "asct";
+
+/// DMAP 'daap.songdateadded' code.
+const String DMAP_CODE_DAAP_SONGDATEADDED = // ignore: constant_identifier_names
+    "asda";
+
+/// DMAP 'daap.songdisabled' code.
+const String DMAP_CODE_DAAP_SONGDISABLED = // ignore: constant_identifier_names
+    "asdb";
+
+/// DMAP 'daap.songdisccount' code.
+const String DMAP_CODE_DAAP_SONGDISCCOUNT = // ignore: constant_identifier_names
+    "asdc";
+
+/// DMAP 'daap.songdatakind' code.
+const String DMAP_CODE_DAAP_SONGDATAKIND = // ignore: constant_identifier_names
+    "asdk";
+
+/// DMAP 'daap.songdatemodified' code.
+const String
+    DMAP_CODE_DAAP_SONGDATEMODIFIED = // ignore: constant_identifier_names
+    "asdm";
+
+/// DMAP 'daap.songdiscnumber' code.
+const String
+    DMAP_CODE_DAAP_SONGDISCKNUMBER = // ignore: constant_identifier_names
+    "asdn";
+
+/// DMAP 'daap.songdatepurchased' code.
+const String
+    DMAP_CODE_DAAP_SONGDATEPURCHASED = // ignore: constant_identifier_names
+    "asdp";
+
+/// DMAP 'daap.songdatereleased' code.
+const String
+    DMAP_CODE_DAAP_SONGDATERELEASED = // ignore: constant_identifier_names
+    "asdr";
+
+/// DMAP 'daap.songdescription' code.
+const String
+    DMAP_CODE_DAAP_SONGDESCRIPTION = // ignore: constant_identifier_names
+    "asdt";
+
+/// DMAP 'daap.songextradata' code.
+const String DMAP_CODE_DAAP_SONGEXTRADATA = // ignore: constant_identifier_names
+    "ased";
+
+/// DMAP 'daap.songeqpreset' code.
+const String DMAP_CODE_DAAP_SONGEQPRESET = // ignore: constant_identifier_names
+    "aseq";
+
+/// DMAP 'daap.songformat' code.
+const String DMAP_CODE_DAAP_SONGFORMAT = // ignore: constant_identifier_names
+    "asfm";
+
+/// DMAP 'daap.songgenre' code.
+const String DMAP_CODE_DAAP_SONGGENRE = // ignore: constant_identifier_names
+    "asgn";
+
+/// DMAP 'daap.songgapless' code.
+const String DMAP_CODE_DAAP_SONGGAPLESS = // ignore: constant_identifier_names
+    "asgp";
+
+/// DMAP 'daap.songhasbeenplayed' code.
+const String
+    DMAP_CODE_DAAP_SONGHASBEENPLAYED = // ignore: constant_identifier_names
+    "ashp";
+
+/// DMAP 'daap.songkeywords' code.
+const String DMAP_CODE_DAAP_SONGKEYWORDS = // ignore: constant_identifier_names
+    "asky";
+
+/// DMAP 'daap.songlongcontentdescription' code.
+const String
+    DMAP_CODE_DAAP_SONGLONGCONTENTDESCRIPTION = // ignore: constant_identifier_names
+    "aslc";
+
+/// DMAP 'daap.songlongsize' code.
+const String DMAP_CODE_DAAP_SONGLONGSIZE = // ignore: constant_identifier_names
+    "asls";
+
+/// DMAP 'daap.songsonpodcasturl' code.
+const String
+    DMAP_CODE_DAAP_SONGSONPODCASTURL = // ignore: constant_identifier_names
+    "aspu";
+
+/// DMAP 'daap.songrelativevolume' code.
+const String
+    DMAP_CODE_DAAP_SONGRELATIVEVOLUME = // ignore: constant_identifier_names
+    "asrv";
+
+/// DMAP 'daap.sortartist' code.
+const String DMAP_CODE_DAAP_SORTARTIST = // ignore: constant_identifier_names
+    "assa";
+
+/// DMAP 'daap.sortcomposer' code.
+const String DMAP_CODE_DAAP_SORTCOMPOSER = // ignore: constant_identifier_names
+    "assc";
+
+/// DMAP 'daap.sortalbumartist' code.
+const String
+    DMAP_CODE_DAAP_SORTALBUMARTIST = // ignore: constant_identifier_names
+    "assl";
+
+/// DMAP 'daap.sortname' code.
+const String DMAP_CODE_DAAP_SORTNAME = // ignore: constant_identifier_names
+    "assn";
+
+/// DMAP 'daap.songstoptime' code.
+const String DMAP_CODE_DAAP_SONGSTOPTIME = // ignore: constant_identifier_names
+    "assp";
+
+/// DMAP 'daap.songsamplerate' code.
+const String
+    DMAP_CODE_DAAP_SONGSAMPLERATE = // ignore: constant_identifier_names
+    "assr";
+
+/// DMAP 'daap.sortseriesname' code.
+const String
+    DMAP_CODE_DAAP_SONGSERIESNAME = // ignore: constant_identifier_names
+    "asss";
+
+/// DMAP 'daap.songstarttime' code.
+const String DMAP_CODE_DAAP_SONGSTARTTIME = // ignore: constant_identifier_names
+    "asst";
+
+/// DMAP 'daap.sortalbum' code.
+const String DMAP_CODE_DAAP_SORTALBUM = // ignore: constant_identifier_names
+    "assu";
+
+/// DMAP 'daap.songsize' code.
+const String DMAP_CODE_DAAP_SONGSIZE = // ignore: constant_identifier_names
+    "assz";
+
+/// DMAP 'daap.songtrackcount' code.
+const String
+    DMAP_CODE_DAAP_SONGTRACKCOUNT = // ignore: constant_identifier_names
+    "astc";
+
+/// DMAP 'daap.songtime' code.
+const String DMAP_CODE_DAAP_SONGTIME = // ignore: constant_identifier_names
+    "astm";
+
+/// DMAP 'daap.songtracknumber' code.
+const String
+    DMAP_CODE_DAAP_SONGTRACKNUMBER = // ignore: constant_identifier_names
+    "astn";
+
+/// DMAP 'daap.songdataurl' code.
+const String DMAP_CODE_DAAP_SONGDATAURL = // ignore: constant_identifier_names
+    "asul";
+
+/// DMAP 'daap.songuserrating' code.
+const String
+    DMAP_CODE_DAAP_SONGUSERRATING = // ignore: constant_identifier_names
+    "asur";
+
+/// DMAP 'daap.songyear' code.
+const String DMAP_CODE_DAAP_SONGYEAR = // ignore: constant_identifier_names
+    "asyr";
+
+/// DMAP 'daap.supportsextradata' code.
+const String
+    DMAP_CODE_DAAP_SUPPORTSEXTRADATA = // ignore: constant_identifier_names
+    "ated";
+
+/// DMAP 'daap.serverdatabases' code.
+const String
+    DMAP_CODE_DAAP_SERVERDATABASES = // ignore: constant_identifier_names
+    "avdb";
+
+/// DMAP 'com.apple.itunes.jukebox-client-vote' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CLIENT_VOTE = // ignore: constant_identifier_names
+    "ceJC";
+
+/// DMAP 'com.apple.itunes.jukebox-current' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CURRENT = // ignore: constant_identifier_names
+    "ceJI";
+
+/// DMAP 'com.apple.itunes.jukebox-vote' code.
+const String
+    DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_VOTE = // ignore: constant_identifier_names
+    "ceJV";
+
+/// DMAP 'dmap.haschildcontainers' code.
+const String
+    DMAP_CODE_DMAP_HASCHILDCONTAINERS = // ignore: constant_identifier_names
+    "f?ch";
+
+/// DMAP 'dmap.bag' code.
 const String DMAP_CODE_DMAP_BAG = "mbcl"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTENTCODESRESPONSE =
-    "mccr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTENTCODESNAME =
-    "mcna"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTENTCODESNUMBER =
-    "mcnm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTAINER =
-    "mcon"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTAINERCOUNT =
-    "mctc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTAINERITEMID =
-    "mcti"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_CONTENTCODESTYPE =
-    "mcty"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_DICTIONARY =
-    "mdcl"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_EDITCOMMANDSUPPORTED =
-    "meds"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_ITEMID =
-    "miid"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_ITEMKIND =
-    "mikd"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_ITEMCOUNT =
-    "mimc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_ITEMNAME =
-    "minm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_LISTING =
-    "mlcl"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SESSIONID =
-    "mlid"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_LISTINGITEM =
-    "mlit"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_LOGINRESPONSE =
-    "mlog"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_PARENTCONTAINERID =
-    "mpco"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_PERSISTENTID =
-    "mper"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_PROTOCOLVERSION =
-    "mpro"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_RETURNEDCOUNT =
-    "mrco"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSAUTOLOGOUT =
-    "msal"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_AUTHENTICATIONSCHEMES =
-    "msas"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_AUTHENTICATIONMETHOD =
-    "msau"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSBROWSE =
-    "msbr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_DATABASESCOUNT =
-    "msdc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSEXTENSIONS =
-    "msex"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSINDEX =
-    "msix"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_LOGINREQUIRED =
-    "mslr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSPERSISTENTIDS =
-    "mspi"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSQUERY =
-    "msqy"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSRESOLVE =
-    "msrs"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SERVERINFORESPONSE =
-    "msrv"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_UTCTIME =
-    "mstc"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_TIMEOUTINTERVAL =
-    "mstm"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_UTCOFFSET =
-    "msto"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_STATUSSTRING =
-    "msts"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_STATUS =
-    "mstt"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SUPPORTSUPDATE =
-    "msup"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SPECIFIEDTOTALCOUNT =
-    "mtco"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_DELETEDIDLISTING =
-    "mudl"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_UPDATERESPONSE =
-    "mupd"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_SERVERREVISION =
-    "musr"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DMAP_UPDATETYPE =
-    "muty"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DPAP_PROTOCOLVERSION =
-    "ppro"; // ignore: constant_identifier_names
-/// DMAP code '' type.
-const String DMAP_CODE_DPAP_UNKNOWN =
-    "pret"; // ignore: constant_identifier_names
+/// DMAP 'dmap.contentcodesresponse' code.
+const String
+    DMAP_CODE_DMAP_CONTENTCODESRESPONSE = // ignore: constant_identifier_names
+    "mccr";
+
+/// DMAP 'dmap.contentcodesname' code.
+const String
+    DMAP_CODE_DMAP_CONTENTCODESNAME = // ignore: constant_identifier_names
+    "mcna";
+
+/// DMAP 'dmap.contentcodesnumber' code.
+const String
+    DMAP_CODE_DMAP_CONTENTCODESNUMBER = // ignore: constant_identifier_names
+    "mcnm";
+
+/// DMAP 'dmap.container' code.
+const String DMAP_CODE_DMAP_CONTAINER = // ignore: constant_identifier_names
+    "mcon";
+
+/// DMAP 'dmap.containercount' code.
+const String
+    DMAP_CODE_DMAP_CONTAINERCOUNT = // ignore: constant_identifier_names
+    "mctc";
+
+/// DMAP 'dmap.containeritemid' code.
+const String
+    DMAP_CODE_DMAP_CONTAINERITEMID = // ignore: constant_identifier_names
+    "mcti";
+
+/// DMAP 'dmap.contentcodestype' code.
+const String
+    DMAP_CODE_DMAP_CONTENTCODESTYPE = // ignore: constant_identifier_names
+    "mcty";
+
+/// DMAP 'dmap.dictionary' code.
+const String DMAP_CODE_DMAP_DICTIONARY = // ignore: constant_identifier_names
+    "mdcl";
+
+/// DMAP 'dmap.editcommandssupported' code.
+const String
+    DMAP_CODE_DMAP_EDITCOMMANDSUPPORTED = // ignore: constant_identifier_names
+    "meds";
+
+/// DMAP 'dmap.itemid' code.
+const String DMAP_CODE_DMAP_ITEMID = // ignore: constant_identifier_names
+    "miid";
+
+/// DMAP 'dmap.itemkind' code.
+const String DMAP_CODE_DMAP_ITEMKIND = // ignore: constant_identifier_names
+    "mikd";
+
+/// DMAP 'dmap.itemcount' code.
+const String DMAP_CODE_DMAP_ITEMCOUNT = // ignore: constant_identifier_names
+    "mimc";
+
+/// DMAP 'dmap.itemname' code.
+const String DMAP_CODE_DMAP_ITEMNAME = // ignore: constant_identifier_names
+    "minm";
+
+/// DMAP 'dmap.listing' code.
+const String DMAP_CODE_DMAP_LISTING = // ignore: constant_identifier_names
+    "mlcl";
+
+/// DMAP 'dmap.sessionid' code.
+const String DMAP_CODE_DMAP_SESSIONID = // ignore: constant_identifier_names
+    "mlid";
+
+/// DMAP 'dmap.listingitem' code.
+const String DMAP_CODE_DMAP_LISTINGITEM = // ignore: constant_identifier_names
+    "mlit";
+
+/// DMAP 'dmap.loginresponse' code.
+const String DMAP_CODE_DMAP_LOGINRESPONSE = // ignore: constant_identifier_names
+    "mlog";
+
+/// DMAP 'dmap.parentcontainerid' code.
+const String
+    DMAP_CODE_DMAP_PARENTCONTAINERID = // ignore: constant_identifier_names
+    "mpco";
+
+/// DMAP 'dmap.persistentid' code.
+const String DMAP_CODE_DMAP_PERSISTENTID = // ignore: constant_identifier_names
+    "mper";
+
+/// DMAP 'dmap.protocolversion' code.
+const String
+    DMAP_CODE_DMAP_PROTOCOLVERSION = // ignore: constant_identifier_names
+    "mpro";
+
+/// DMAP 'dmap.returnedcount' code.
+const String DMAP_CODE_DMAP_RETURNEDCOUNT = // ignore: constant_identifier_names
+    "mrco";
+
+/// DMAP 'dmap.supportsautologout' code.
+const String
+    DMAP_CODE_DMAP_SUPPORTSAUTOLOGOUT = // ignore: constant_identifier_names
+    "msal";
+
+/// DMAP 'dmap.authenticationschemes' code.
+const String
+    DMAP_CODE_DMAP_AUTHENTICATIONSCHEMES = // ignore: constant_identifier_names
+    "msas";
+
+/// DMAP 'dmap.authenticationmethod' code.
+const String
+    DMAP_CODE_DMAP_AUTHENTICATIONMETHOD = // ignore: constant_identifier_names
+    "msau";
+
+/// DMAP 'dmap.supportsbrowse' code.
+const String
+    DMAP_CODE_DMAP_SUPPORTSBROWSE = // ignore: constant_identifier_names
+    "msbr";
+
+/// DMAP 'dmap.databasescount' code.
+const String
+    DMAP_CODE_DMAP_DATABASESCOUNT = // ignore: constant_identifier_names
+    "msdc";
+
+/// DMAP 'dmap.supportsextensions' code.
+const String
+    DMAP_CODE_DMAP_SUPPORTSEXTENSIONS = // ignore: constant_identifier_names
+    "msex";
+
+/// DMAP 'dmap.supportsindex' code.
+const String DMAP_CODE_DMAP_SUPPORTSINDEX = // ignore: constant_identifier_names
+    "msix";
+
+/// DMAP 'dmap.loginrequired' code.
+const String DMAP_CODE_DMAP_LOGINREQUIRED = // ignore: constant_identifier_names
+    "mslr";
+
+/// DMAP 'dmap.supportspersistentids' code.
+const String
+    DMAP_CODE_DMAP_SUPPORTSPERSISTENTIDS = // ignore: constant_identifier_names
+    "mspi";
+
+/// DMAP 'dmap.supportsquery' code.
+const String DMAP_CODE_DMAP_SUPPORTSQUERY = // ignore: constant_identifier_names
+    "msqy";
+
+/// DMAP 'dmap.supportsresolve' code.
+const String
+    DMAP_CODE_DMAP_SUPPORTSRESOLVE = // ignore: constant_identifier_names
+    "msrs";
+
+/// DMAP 'dmap.serverinforesponse' code.
+const String
+    DMAP_CODE_DMAP_SERVERINFORESPONSE = // ignore: constant_identifier_names
+    "msrv";
+
+/// DMAP 'dmap.utctime' code.
+const String DMAP_CODE_DMAP_UTCTIME = // ignore: constant_identifier_names
+    "mstc";
+
+/// DMAP 'dmap.timeoutinterval' code.
+const String
+    DMAP_CODE_DMAP_TIMEOUTINTERVAL = // ignore: constant_identifier_names
+    "mstm";
+
+/// DMAP 'dmap.utcoffset' code.
+const String DMAP_CODE_DMAP_UTCOFFSET = // ignore: constant_identifier_names
+    "msto";
+
+/// DMAP 'dmap.statusstring' code.
+const String DMAP_CODE_DMAP_STATUSSTRING = // ignore: constant_identifier_names
+    "msts";
+
+/// DMAP 'dmap.status' code.
+const String DMAP_CODE_DMAP_STATUS = // ignore: constant_identifier_names
+    "mstt";
+
+/// DMAP 'dmap.supportsupdate' code.
+const String
+    DMAP_CODE_DMAP_SUPPORTSUPDATE = // ignore: constant_identifier_names
+    "msup";
+
+/// DMAP 'dmap.specifiedtotalcount' code.
+const String
+    DMAP_CODE_DMAP_SPECIFIEDTOTALCOUNT = // ignore: constant_identifier_names
+    "mtco";
+
+/// DMAP 'dmap.deletedidlisting' code.
+const String
+    DMAP_CODE_DMAP_DELETEDIDLISTING = // ignore: constant_identifier_names
+    "mudl";
+
+/// DMAP 'dmap.updateresponse' code.
+const String
+    DMAP_CODE_DMAP_UPDATERESPONSE = // ignore: constant_identifier_names
+    "mupd";
+
+/// DMAP 'dmap.serverrevision' code.
+const String
+    DMAP_CODE_DMAP_SERVERREVISION = // ignore: constant_identifier_names
+    "musr";
+
+/// DMAP 'dmap.updatetype' code.
+const String DMAP_CODE_DMAP_UPDATETYPE = // ignore: constant_identifier_names
+    "muty";
+
+/// DMAP 'dpap.protocolversion' code.
+const String
+    DMAP_CODE_DPAP_PROTOCOLVERSION = // ignore: constant_identifier_names
+    "ppro";
+
+/// DMAP 'dpap.unknown' code.
+const String DMAP_CODE_DPAP_UNKNOWN = // ignore: constant_identifier_names
+    "pret";
 
 /// DMAP codes mapping.
 final Map<String, DmapCode> dmapCodeTypes = {

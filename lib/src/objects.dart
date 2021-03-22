@@ -54,8 +54,9 @@ class DaapObject {
   String _value__string = ""; // ignore: non_constant_identifier_names
   DateTime? _value__timestamp; // ignore: non_constant_identifier_names
   String _value__version = ""; // ignore: non_constant_identifier_names
-  List<DaapObject> _value__container =
-      []; // ignore: non_constant_identifier_names, prefer_final_fields
+  List<DaapObject>
+      _value__container = // ignore: non_constant_identifier_names, prefer_final_fields
+      [];
 
   /// DAAP object constructor.
   DaapObject(Uint8List data) {
