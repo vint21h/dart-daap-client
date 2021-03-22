@@ -1,0 +1,42 @@
+# dart-daap-client
+# .pre-commit-config.yaml
+
+
+repos:
+- repo: local
+  hooks:
+    - id: dartfmt
+      name: dartfmt
+      stages: [commit]
+      language: system
+      pass_filenames: false
+      entry: make dartfmt
+      types: [dart]
+    - id: analyze
+      name: analyze
+      stages: [commit]
+      language: system
+      pass_filenames: false
+      entry: make analyze
+      types: [dart]
+    - id: dotenv-linter
+      name: dotenv-linter
+      entry: pipenv run dotenv-linter
+      language: system
+      stages: [commit]
+      types: [text]
+      files: \.env*
+      exclude: .envrc
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: forbid-new-submodules
+      - id: trailing-whitespace
