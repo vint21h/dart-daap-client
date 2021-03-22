@@ -3,9 +3,10 @@
 
 
 .ONESHELL:
-PHONY: dartfmt test clean analyze check pipenv-install pub-install coveralls help
+PHONY: dartfmt test clean analyze check pipenv-install pub-install coveralls bumpversion help
 TRASH_DIRS ?= .dart_tool coverage
 TRASH_FILES ?= .coverage pubspec.lock .packages
+VERSION=`python -c "from yaml import load, Loader; config = load(open('pubspec.yaml'), Loader=Loader); print(config['version']);"`
 
 
 dartfmt:
@@ -46,6 +47,10 @@ coveralls:
 	coveralls;\
 
 
+bumpversion:
+	git tag -a $(VERSION) -m "v$(VERSION)";\
+
+
 help:
 	@echo "    help:"
 	@echo "        Show this help."
@@ -65,3 +70,5 @@ help:
 	@echo "        Install Dart requirements."
 	@echo "    coveralls:"
 	@echo "        Upload coverage report to Coveralls."
+	@echo "    bumpversion:"
+	@echo "        Tag current code revision with version."
