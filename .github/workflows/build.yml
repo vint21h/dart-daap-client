@@ -14,11 +14,20 @@ on:
       - "*"
 env:
   PYTHON_VERSION: "3.9"
-  DART_VERSION: "2.12.0"
 jobs:
   check:
     name: Run checks
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        sdk:
+          - stable
+          - beta
+          - dev
     steps:
       - name: Git clone
         uses: actions/checkout@v2
@@ -36,13 +45,14 @@ jobs:
       - name: Set up Dart ${{ env.DART_VERSION }}
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: ${{ env.DART_VERSION }}
+          sdk: ${{ matrix.sdk }}
       - name: Pub cache
         uses: actions/cache@v2
         with:
           path: ~/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.yaml') }}
+          key: ${{ runner.os }}-pub-${{ matrix.sdk }}-${{ hashFiles('pubspec.yaml') }}
           restore-keys: |
+            ${{ runner.os }}-pub-${{ matrix.sdk }}-
             ${{ runner.os }}-pub-
       - name: Install dependencies
         run: |
@@ -53,7 +63,17 @@ jobs:
         run: pipenv run make check
   test:
     name: Run tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        sdk:
+          - stable
+          - beta
+          - dev
     if: success()
     needs: [check]
     steps:
@@ -62,13 +82,14 @@ jobs:
       - name: Set up Dart ${{ env.DART_VERSION }}
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: ${{ env.DART_VERSION }}
+          sdk: ${{ matrix.sdk }}
       - name: Pub cache
         uses: actions/cache@v2
         with:
           path: ~/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.yaml') }}
+          key: ${{ runner.os }}-pub-${{ matrix.sdk }}-${{ hashFiles('pubspec.yaml') }}
           restore-keys: |
+            ${{ runner.os }}-pub-${{ matrix.sdk }}-
             ${{ runner.os }}-pub-
       - name: Temporarily save coverage statistics
         uses: actions/cache@v2
@@ -111,4 +132,4 @@ jobs:
       - name: Upload coverage report to Coveralls
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        run: make coveralls
+        run: pipenv run make coveralls
