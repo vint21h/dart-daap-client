@@ -17,13 +17,9 @@ env:
 jobs:
   check:
     name: Run checks
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
         sdk:
           - stable
           - beta
@@ -42,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
           restore-keys: |
             ${{ runner.os }}-pipenv-
-      - name: Set up Dart ${{ env.DART_VERSION }}
+      - name: Set up Dart ${{ matrix.sdk }}
         uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ matrix.sdk }}
@@ -63,13 +59,9 @@ jobs:
         run: pipenv run make check
   test:
     name: Run tests
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
         sdk:
           - stable
           - beta
@@ -79,7 +71,7 @@ jobs:
     steps:
       - name: Git clone
         uses: actions/checkout@v2
-      - name: Set up Dart ${{ env.DART_VERSION }}
+      - name: Set up Dart ${{ matrix.sdk }}
         uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ matrix.sdk }}
