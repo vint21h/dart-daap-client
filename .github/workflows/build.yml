@@ -1,0 +1,125 @@
+# dart-daap-client
+# .github/workflows/build.yml
+
+
+name: build
+on:
+  push:
+    branches:
+      - "*"
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+env:
+  PYTHON_VERSION: "3.9"
+  DART_VERSION: "2.12"
+jobs:
+  check:
+    name: Run checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Pipenv cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
+          restore-keys: |
+            ${{ runner.os }}-pipenv-
+      - name: Set up Dart ${{ env.DART_VERSION }}
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.DART_VERSION }}
+      - name: Pub cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      - name: Install dependencies
+        run: |
+          pip install pipenv
+          make pipenv-install
+          make pub-install
+      - name: Run checks
+        run: make check
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    if: success()
+    needs: [check]
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Pipenv cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
+          restore-keys: |
+            ${{ runner.os }}-pipenv-
+      - name: Set up Dart ${{ env.DART_VERSION }}
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ env.DART_VERSION }}
+      - name: Pub cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      - name: Temporarily save coverage statistics
+        uses: actions/cache@v2
+        with:
+          path: coverage
+          key: coverage-${{ github.run_id }}-${{ github.run_number }}
+      - name: Install dependencies
+        run: |
+          make pub-install
+      - name: Run tests
+        run: make test -B
+  coveralls:
+    name: coveralls
+    runs-on: ubuntu-latest
+    if: success()
+    needs: [test, check]
+    steps:
+      - name: Git clone
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Pipenv cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pipenv
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
+          restore-keys: |
+            ${{ runner.os }}-pipenv-
+      - name: Temporarily save coverage statistics
+        uses: actions/cache@v2
+        with:
+          path: coverage
+          key: coverage-${{ github.run_id }}-${{ github.run_number }}
+      - name: Install dependencies
+        run: |
+          pip install pipenv
+          make pipenv-install
+      - name: Upload coverage report to Coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: make coveralls

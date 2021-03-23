@@ -1,13 +1,20 @@
 [//]: # (dart-daap-client)
 [//]: # (README.md)
 
+# A dart-daap-client documentation
 
-# dart-daap-client is a Dart [DAAP (Digital Audio Access Protocol)](https://en.wikipedia.org/wiki/DAAP) client library
+*dart-daap-client is a Dart [DAAP (Digital Audio Access Protocol)](https://en.wikipedia.org/wiki/DAAP) client library*
 
 [![GitHub](https://github.com/vint21h/dart-daap-client/workflows/build/badge.svg)](https://github.com/vint21h/dart-daap-client/actions/)
 [![Coveralls](https://coveralls.io/repos/github/vint21h/dart-daap-client/badge.svg?branch=master)](https://coveralls.io/github/vint21h/dart-daap-client?branch=master)
 [![Version](https://img.shields.io/pub/v/daapc.svg)](https://pub.dartlang.org/packages/daapc/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT/)
+
+Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Licensing](#licensing)
+* [Contacts](#contacts)
 
 ## Installation
 
