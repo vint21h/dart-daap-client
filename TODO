@@ -7,5 +7,6 @@
  - Add logging.
  - Mb write console client example program.
  - Write tests marked as TODOs.
- - Add github actions.
  - Add range header support in getSong client method.
+ - Add acknowledgements to README.
+ - Automate package publishing.
