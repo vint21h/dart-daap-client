@@ -50,7 +50,7 @@ jobs:
           make pipenv-install
           make pub-install
       - name: Run checks
-        run: make check
+        run: pipenv run make check
   test:
     name: Run tests
     runs-on: ubuntu-latest
@@ -59,17 +59,6 @@ jobs:
     steps:
       - name: Git clone
         uses: actions/checkout@v2
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-      - name: Pipenv cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pipenv
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
-          restore-keys: |
-            ${{ runner.os }}-pipenv-
       - name: Set up Dart ${{ env.DART_VERSION }}
         uses: dart-lang/setup-dart@v1
         with:
