@@ -14,6 +14,7 @@
 Contents
 * [Installation](#installation)
 * [Usage](#usage)
+* [Acknowledgments](#acknowledgments)
 * [Licensing](#licensing)
 * [Contacts](#contacts)
 
@@ -297,6 +298,14 @@ $ tree
         ├── [...]
         └── 22. Finale.mp3
 ```
+
+## Acknowledgments
+* [Digital Audio Access Protocol (DAAP) Protocol documentation v0.2](http://tapjam.net/daap/)
+* [Digital Audio Access Protocol (DAAP) Protocol documentation Version 0.3](https://github.com/bjoernricks/daap-protocol/)
+* [DAAP client library implemented in Python](https://github.com/tominsam/PythonDaap/)
+* [spydaap: a simple DAAP server for python](https://github.com/egh/spydaap/)
+* [nodejs DAAP parser](https://github.com/roblan/daap-parser/)
+* [A C/C++ library to share digital audio between computers on a network, reverse engineered from and compatible with Apple's iTunes 4.0 implementation](https://sourceforge.net/projects/daap/)
 
 ## Licensing
 dart-daap-client uses the MIT license. Please check the MIT-LICENSE file for more details.
