@@ -260,7 +260,7 @@ void main() async {
   var client =
       DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
-  var playlist = await client.getPlaylist(1, 3, metaCodes: [
+  var playlist = await client.getPlaylist(1, 1, metaCodes: [
     DMAP_CODE_DAAP_SONGTRACKNUMBER,
     DMAP_CODE_DMAP_ITEMNAME,
     DMAP_CODE_DAAP_SONGARTIST,
@@ -297,6 +297,68 @@ $ tree
         ├── 1. Overture.mp3
         ├── [...]
         └── 22. Finale.mp3
+```
+
+* Get song artwork
+```yaml
+# pubspec.yaml
+
+[...]
+dependencies:
+  mime: "^1.0.0"
+[...]
+```
+↓
+```dart
+// main.dart
+
+import "dart:io" show Platform, File;
+
+import "package:daapc/daapc.dart";
+import "package:mime/mime.dart";
+
+/// Recursively download playlist songs artworks with creating
+/// "{artistName}" directories structure
+/// and name songs artwork files as "{albumName}" with corresponding MIME type
+/// extension.
+void main() async {
+  var envVars = Platform.environment;
+  var client =
+      DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
+  await client.connect();
+  var playlist = await client.getPlaylist(1, 1, metaCodes: [
+    DMAP_CODE_DAAP_SONGARTIST,
+    DMAP_CODE_DAAP_SONGALBUM,
+    DMAP_CODE_DMAP_ITEMID,
+  ]);
+  for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+    // bad idea to get artwork for every song in the playlist, but
+    // it is only example
+    var path =
+        // ignore: lines_longer_than_80_chars
+        "${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)}/${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)}";
+    File(path).create(recursive: true).then((file) async {
+      file.writeAsBytes(
+          await client.getSongArtwork(1, song.getAtom(DMAP_CODE_DMAP_ITEMID)));
+      // bad idea to rename file after creation, but it is only example
+      file.rename(
+          "$path.${extensionFromMime(lookupMimeType(path).toString())}");
+    });
+  }
+}
+```
+↓
+```sh
+$ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart main.dart
+$ tree
+```
+=
+```text
+.
+├── main.dart
+├── pubspec.yaml
+└── Daft Punk
+    └── Tron: Legacy (Original Motion Picture Soundtrack).jpg
 ```
 
 ## Acknowledgments

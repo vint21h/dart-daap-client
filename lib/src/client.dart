@@ -1,9 +1,9 @@
 // dart-daap-client
 // lib/src/client.dart
 
+import "dart:convert";
 import "dart:io";
 import "dart:typed_data";
-import "dart:convert";
 
 import "package:http_auth/http_auth.dart";
 import "package:http/http.dart";
