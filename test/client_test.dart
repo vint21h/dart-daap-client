@@ -662,7 +662,94 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getPlaylist"]);
+    }, tags: ["client", "DaapClient", "getSong"]);
+    test(
+        "'getSongArtwork' method must return song artwork data from the server",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final songArtworkData = Uint8List.fromList([0, 0, 0, 0]);
+      final contentCodesData =
+          Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
+      final serverInfoData =
+          Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
+      final sessionInfoData = Uint8List.fromList([
+        109,
+        108,
+        111,
+        103,
+        0,
+        0,
+        0,
+        24,
+        109,
+        115,
+        116,
+        116,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        200,
+        109,
+        108,
+        105,
+        100,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ]);
+      nock("http://127.0.0.1:3689/databases/1/items/42/extra_data/artwork?session-id=0")
+          .get("")
+            ..reply(HttpStatus.ok, songArtworkData);
+      nock("http://127.0.0.1:3689/content-codes").get("")
+        ..reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info").get("")
+        ..reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login").get("")
+        ..reply(HttpStatus.ok, sessionInfoData);
+      await client.connect();
+      var result = await client.getSongArtwork(1, 42);
+      expect(result, Uint8List.fromList([0, 0, 0, 0]));
+    }, tags: ["client", "DaapClient", "getSongArtwork"]);
+    test(
+        // ignore: lines_longer_than_80_chars
+        "'getSongArtwork' method must return song artwork data from the server (with sessionId arg case)",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      final songArtworkData = Uint8List.fromList([0, 0, 0, 0]);
+      nock("http://127.0.0.1:3689/databases/1/items/42/extra_data/artwork?session-id=0")
+          .get("")
+            ..reply(HttpStatus.ok, songArtworkData);
+      var result = await client.getSongArtwork(1, 42, sessionId: 0);
+      expect(result, Uint8List.fromList([0, 0, 0, 0]));
+    }, tags: ["client", "DaapClient", "getSongArtwork"]);
+    test(
+        // ignore: lines_longer_than_80_chars
+        "'getSongArtwork' method must raise 'DaapImproperlyConfiguredException' in case of calling without 'sessionId' param before 'connect' call",
+        () async {
+      final client = DaapClient("127.0.0.1");
+      try {
+        await client.getSongArtwork(1, 42);
+      } on DaapImproperlyConfiguredException catch (error) {
+        expect(
+            error,
+            TypeMatcher<DaapImproperlyConfiguredException>().having(
+                (error) => error.toString(),
+                "message",
+                // ignore: lines_longer_than_80_chars
+                "DaapClient: improperly configured. Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server."));
+        return;
+      }
+      throw Exception("Expected DaapImproperlyConfiguredException");
+    }, tags: ["client", "DaapClient", "getSongArtwork"]);
     test("'getRequestMeta' method must return request meta key value", () {
       final client = DaapClient("127.0.0.1");
       expect(client.getRequestMeta(["asaa", "asar"]),
