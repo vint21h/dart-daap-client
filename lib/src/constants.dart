@@ -3,7 +3,7 @@
 
 import "objects.dart";
 
-/// DMAP data types.
+// DMAP data types.
 
 /// DMAP byte data type.
 const int byte = 1; // Int8
@@ -64,12 +64,14 @@ const Map<int, String> dmapDataTypesNames = {
 
 /// DMAP codes.
 ///
-/// Yes, they named used next convention:
-/// has "DMAP_CODE_" prefix,
-/// than following code name with namespace where parts of name space delimited
-/// by "_" and all that parts is in uppercase.
+/// Yep, they named using dart bad practice next convention:
+/// all have "DMAP_CODE_" prefix,
+/// than following code name with namespace where parts of the
+/// namespace delimited by "_" and all of that parts is in uppercase.
 
 /// DMAP code 'com.apple.itunes.req-fplay' type.
+///
+/// Caught it in the wild instead of 'aeFP'.
 const String
     DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN = // ignore: constant_identifier_names
     "????";
@@ -1225,7 +1227,7 @@ const String playlistsUrlPath = "databases/{databaseId}/containers";
 const String playlistUrlPath =
     "databases/{databaseId}/containers/{playlistId}/items";
 
-/// Serveer info URL.
+/// Server info URL.
 const String serverInfoUrlPath = "server-info";
 
 /// Update URL.
@@ -1234,7 +1236,11 @@ const String updateUrlPath = "update";
 /// Song URL.
 const String songUrlPath = "databases/{databaseId}/items/{songId}.{songFormat}";
 
-/// Queries meta's defaults.
+/// Song artwork URL.
+const String songArtworkUrlPath =
+    "databases/{databaseId}/items/{songId}/extra_data/artwork";
+
+// Queries meta's defaults.
 
 /// Default database query meta codes.
 const List<String> databaseQueryDefaultMetaCodes = [

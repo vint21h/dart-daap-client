@@ -3,6 +3,7 @@
 
 import "dart:io";
 import "dart:typed_data";
+import "dart:convert";
 
 import "package:http_auth/http_auth.dart";
 import "package:http/http.dart";
@@ -122,7 +123,9 @@ class DaapClient {
       } else if (response.statusCode == HttpStatus.noContent) {
         return Uint8List.fromList([]);
       } else if (response.statusCode != HttpStatus.ok) {
-        throw DaapException("Response status: '${response.statusCode}'");
+        throw DaapException(
+            // ignore: lines_longer_than_80_chars
+            "Response status: '${response.statusCode}'. Response content: '${utf8.decode(response.bodyBytes)}'.");
       } else {
         return response.bodyBytes;
       }
@@ -276,7 +279,7 @@ class DaapClient {
     return DaapObject(await request(url));
   }
 
-  /// Get song file/stream from the server.
+  /// Get song from the server.
   ///
   /// Throws [DaapImproperlyConfiguredException] in case of calling without
   /// supplied [sessionId] before [connect] call.
@@ -294,8 +297,34 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getSong(databaseId, songId, songFormat,
-            // ignore: unnecessary_this
-            sessionId: this.sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
+            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
+      } else {
+        throw DaapImproperlyConfiguredException(
+            // ignore: lines_longer_than_80_chars
+            "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
+      }
+    }
+    return await request(url);
+  }
+
+  /// Get song artwork from the server.
+  ///
+  /// Throws [DaapImproperlyConfiguredException] in case of calling without
+  /// supplied [sessionId] before [connect] call.
+  Future<Uint8List> getSongArtwork(int databaseId, int songId,
+      {int? sessionId}) async {
+    var url = _baseUrl;
+    if (sessionId != null) {
+      url = url.replace(
+          path: Interpolator(songArtworkUrlPath)({
+            "databaseId": databaseId.toString(),
+            "songId": songId.toString(),
+          }),
+          queryParameters: {"session-id": sessionId.toString()});
+    } else {
+      if (sessionInfo != null) {
+        return await getSongArtwork(databaseId, songId,
+            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
       } else {
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars

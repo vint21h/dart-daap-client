@@ -143,7 +143,8 @@ void main() {
           throwsA(isA<DaapException>().having(
               (error) => error.toString(),
               "message",
-              "DaapClient: making request error. Response status: '500'")));
+              // ignore: lines_longer_than_80_chars
+              "DaapClient: making request error. Response status: '500'. Response content: '500 Internal Server Error'.")));
     }, tags: ["client", "DaapClient", "request"]);
     test("'getContentCodes' method must return server content codes data",
         () async {

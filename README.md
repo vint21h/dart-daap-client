@@ -305,10 +305,11 @@ $ tree
 * [DAAP client library implemented in Python](https://github.com/tominsam/PythonDaap/)
 * [spydaap: a simple DAAP server for python](https://github.com/egh/spydaap/)
 * [nodejs DAAP parser](https://github.com/roblan/daap-parser/)
+* [Linux/FreeBSD DAAP (iTunes) and MPD media server with support for AirPlay devices (multiroom), Apple Remote (and compatibles), Chromecast, Spotify and internet radio](https://github.com/ejurgensen/forked-daapd/)
 * [A C/C++ library to share digital audio between computers on a network, reverse engineered from and compatible with Apple's iTunes 4.0 implementation](https://sourceforge.net/projects/daap/)
 
 ## Licensing
-dart-daap-client uses the MIT license. Please check the MIT-LICENSE file for more details.
+dart-daap-client uses the MIT license. Please check the LICENSE file for more details.
 
 ## Contacts
 **Project Website**: https://github.com/vint21h/dart-daap-client/

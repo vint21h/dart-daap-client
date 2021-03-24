@@ -14,7 +14,7 @@ dartfmt:
 
 
 test:
-	dart test $(TESTS) --coverage=coverage;\
+	dart test $(TESTS) --coverage=coverage -r expanded;\
 
 
 clean:
