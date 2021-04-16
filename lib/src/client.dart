@@ -20,6 +20,7 @@ class DaapClient {
 
   /// Port to use.
   int port = 3689;
+
   String? _password;
   Client? _connection;
   Uri _baseUrl = Uri(scheme: "http"); // ignore: prefer_final_fields

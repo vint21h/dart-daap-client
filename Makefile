@@ -3,9 +3,9 @@
 
 
 .ONESHELL:
-PHONY: dartfmt test clean analyze check pipenv-install pub-install coveralls bumpversion release help
+PHONY: dartfmt test clean analyze check pipenv-install pub-install coveralls bumpversion check-upload upload release help
 TRASH_DIRS ?= .dart_tool coverage
-TRASH_FILES ?= .coverage pubspec.lock .packages
+TRASH_FILES ?= .coverage pubspec.lock .packages Pipfile.lock
 VERSION=`python -c "from yaml import load, Loader; config = load(open('pubspec.yaml'), Loader=Loader); print(config['version']);"`
 
 
@@ -51,7 +51,14 @@ bumpversion:
 	git tag -a $(VERSION) -m "v$(VERSION)";\
 
 
-# TODO: complete it!!1
+check-upload:
+	dart pub publish --dry-run;\
+
+
+upload:
+	dart pub publish;\
+
+
 release:
 	make clean && \
 	make bumpversion && \
@@ -60,6 +67,8 @@ release:
 	git co dev && \
 	git push --all && \
 	git push --tags && \
+	make check-upload && \
+	make upload && \
 	make clean;\
 
 
@@ -84,5 +93,9 @@ help:
 	@echo "        Upload coverage report to Coveralls."
 	@echo "    bumpversion:"
 	@echo "        Tag current code revision with version."
+	@echo "    check-upload:"
+	@echo "        Test package upload."
+	@echo "    upload:"
+	@echo "        Upload package to pub.dev"
 	@echo "    release:"
 	@echo "        Release code."

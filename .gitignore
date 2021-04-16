@@ -29,6 +29,6 @@
 build/
 pubspec.lock
 coverage
-doc/api/*
+doc/
 Pipfile.lock
-.direnv
+.direnv/
