@@ -9,4 +9,3 @@
  - Write tests marked as TODOs.
  - Add range header support in getSong client method.
  - Automate package publishing.
- - Rewrite examples using convention https://dart.dev/tools/pub/package-layout#examples.

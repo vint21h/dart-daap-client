@@ -31,3 +31,4 @@ pubspec.lock
 coverage
 doc/api/*
 Pipfile.lock
+.direnv

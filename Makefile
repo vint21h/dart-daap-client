@@ -51,6 +51,7 @@ bumpversion:
 	git tag -a $(VERSION) -m "v$(VERSION)";\
 
 
+# TODO: complete it!!1
 release:
 	make clean && \
 	make bumpversion && \
