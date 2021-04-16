@@ -20,4 +20,4 @@ pyyaml = "==5.4.1"
 
 
 [requires]
-python_version = "3.9.2"
+python_version = "3.9.4"
