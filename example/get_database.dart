@@ -27,7 +27,7 @@ void main() async {
     var songTime =
         Duration(milliseconds: song.getAtom(DMAP_CODE_DAAP_SONGTIME));
     stdout.writeln(
-        // ignore: lines_longer_than_80_chars
+        // ignore: lines_longer_than_80_chars, unnecessary_brace_in_string_interps
         '${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}: ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)} / ${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)} / ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)} / ${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - ${songTime}');
   }
 }

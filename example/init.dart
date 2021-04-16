@@ -9,6 +9,7 @@ import "package:daapc/daapc.dart";
 /// and provide server host and password if it is necessary.
 void main() async {
   var envVars = Platform.environment;
-  DaapClient client =
+  // ignore: unused_local_variable
+  var client =
       DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
 }

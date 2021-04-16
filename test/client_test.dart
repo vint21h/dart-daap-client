@@ -287,7 +287,7 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       try {
-        client.getDatabases();
+        await client.getDatabases();
       } on DaapImproperlyConfiguredException catch (error) {
         expect(
             error,
@@ -299,7 +299,7 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getDatabases"], skip: true);
+    }, tags: ["client", "DaapClient", "getSongArtwork"]);
     test("'getDatabase' method must return database data from the server",
         () async {
       final client = DaapClient("127.0.0.1");
@@ -380,7 +380,7 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       try {
-        client.getDatabases();
+        await client.getDatabase(1);
       } on DaapImproperlyConfiguredException catch (error) {
         expect(
             error,
@@ -392,7 +392,7 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getDatabase"], skip: true);
+    }, tags: ["client", "DaapClient", "getDatabase"]);
     test("'getPlaylists' method must return database playlists from the server",
         () async {
       final client = DaapClient("127.0.0.1");
@@ -473,7 +473,7 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       try {
-        client.getPlaylists(1);
+        await client.getPlaylists(1);
       } on DaapImproperlyConfiguredException catch (error) {
         expect(
             error,
@@ -485,7 +485,7 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getPlaylists"], skip: true);
+    }, tags: ["client", "DaapClient", "getPlaylists"]);
     test("'getPlaylist' method must return playlist from the server", () async {
       final client = DaapClient("127.0.0.1");
       final playlistData = Uint8List.fromList([97, 112, 115, 111, 0, 0, 0, 0]);
@@ -565,7 +565,7 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       try {
-        client.getPlaylist(1, 1);
+        await client.getPlaylist(1, 1);
       } on DaapImproperlyConfiguredException catch (error) {
         expect(
             error,
@@ -577,7 +577,7 @@ void main() {
         return;
       }
       throw Exception("Expected DaapImproperlyConfiguredException");
-    }, tags: ["client", "DaapClient", "getPlaylist"], skip: true);
+    }, tags: ["client", "DaapClient", "getPlaylist"]);
     test("'getSong' method must return song data from the server", () async {
       final client = DaapClient("127.0.0.1");
       final songData = Uint8List.fromList([0, 0, 0, 0]);

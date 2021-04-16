@@ -67,7 +67,7 @@ help:
 	@echo "    help:"
 	@echo "        Show this help."
 	@echo "    dartfmt:"
-	@echo "        Reformats all Dart files."
+	@echo "        Reformat all Dart files."
 	@echo "    test:"
 	@echo "        Run tests, can specify tests with 'TESTS' argument."
 	@echo "    clean:"

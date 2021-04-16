@@ -174,7 +174,6 @@ class DaapClient {
         return await getDatabases(
             sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
       } else {
-        // TODO: test it.
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
@@ -206,7 +205,6 @@ class DaapClient {
             sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
-        // TODO: test it.
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
@@ -237,7 +235,6 @@ class DaapClient {
             sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
-        // TODO: test it.
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
@@ -270,7 +267,6 @@ class DaapClient {
             sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
             metaCodes: metaCodes);
       } else {
-        // TODO: test it.
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars
             "Can't get 'sessionId' from 'sessionInfo'. First, try to connect to the server.");
