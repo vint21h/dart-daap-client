@@ -2,5 +2,5 @@
 [//]: # (CHANGELOG.md)
 
 
-# 0.0.0
-* null
+# 0.1.0
+* Initial release
