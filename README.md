@@ -30,7 +30,7 @@ dependencies:
 [...]
 ```
 * Install it:
-```sh
+```console
 $ pub get
 ```
 

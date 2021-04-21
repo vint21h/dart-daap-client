@@ -12,7 +12,7 @@ verify_ssl = true
 coveralls = "==3.0.1"
 dotenv-linter = "==0.2.0"
 pre-commit-hooks = "==3.4.0"
-pre-commit = "==2.12.0"
+pre-commit = "==2.12.1"
 pyyaml = "==5.4.1"
 
 
