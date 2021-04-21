@@ -51,8 +51,6 @@
   $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_song.dart
   $ tree
   .
-  ├── main.dart
-  ├── pubspec.yaml
   └── Daft Punk
       └── 2010 - Tron: Legacy (Original Motion Picture Soundtrack)
           ├── 1. Overture.mp3
@@ -76,8 +74,6 @@
   $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_artwork.dart
   $ tree
   .
-  ├── main.dart
-  ├── pubspec.yaml
   └── Daft Punk
       └── Tron: Legacy (Original Motion Picture Soundtrack).jpg
   ```
