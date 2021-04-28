@@ -3,7 +3,7 @@
 
 
 name: "daapc"
-version: "0.1.0"
+version: "0.1.1"
 description: >-
   A Dart DAAP (Digital Audio Access Protocol) client library
 homepage: "https://github.com/vint21h/dart-daap-client/"
@@ -19,4 +19,4 @@ dependencies:
 dev_dependencies:
   effective_dart: "1.3.1"
   nock: "1.2.0"
-  test: "1.16.8"
+  test: "1.17.2"
