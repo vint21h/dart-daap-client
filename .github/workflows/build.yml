@@ -114,7 +114,7 @@ jobs:
           key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
           restore-keys: |
             ${{ runner.os }}-pipenv-
-      - name: Set up Dart ${{ matrix.sdk }}
+      - name: Set up Dart ${{ env.DEFAULT_DART_VERSION }}
         uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ env.DEFAULT_DART_VERSION }}
