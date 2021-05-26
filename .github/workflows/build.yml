@@ -12,6 +12,7 @@ on:
   pull_request:
     branches:
       - "*"
+  workflow_dispatch:
 env:
   PYTHON_VERSION: "3.9"
   DEFAULT_DART_VERSION: "stable"
@@ -116,7 +117,7 @@ jobs:
       - name: Set up Dart ${{ matrix.sdk }}
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: ${{ DEFAULT_DART_VERSION }}
+          sdk: ${{ env.DEFAULT_DART_VERSION }}
       - name: Pub cache
         uses: actions/cache@v2
         with:
