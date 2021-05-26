@@ -134,6 +134,7 @@ jobs:
         run: |
           pip install pipenv
           make pipenv-install
+          make pub-install
       - name: Format coverage info
         run: pipenv run make format-coverage
       - name: Upload coverage report to Coveralls
