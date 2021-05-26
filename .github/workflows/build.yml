@@ -121,7 +121,9 @@ jobs:
         run: |
           pip install pipenv
           make pipenv-install
+      - name: Format coverage info
+        run: pipenv run make format-coverage
       - name: Upload coverage report to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        run: pipenv run make coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

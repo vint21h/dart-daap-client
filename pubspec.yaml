@@ -5,7 +5,7 @@
 name: "daapc"
 version: "0.1.1"
 description: >-
-  A Dart DAAP (Digital Audio Access Protocol) client library
+  dart-daap-client is a Dart DAAP (Digital Audio Access Protocol) protocol client library
 homepage: "https://github.com/vint21h/dart-daap-client/"
 repository: "https://github.com/vint21h/dart-daap-client/"
 issue_tracker: "https://github.com/vint21h/dart-daap-client/issues/"
@@ -19,4 +19,5 @@ dependencies:
 dev_dependencies:
   effective_dart: "1.3.1"
   nock: "1.2.0"
-  test: "1.17.2"
+  test: "1.17.4"
+  coverage: "1.0.2"

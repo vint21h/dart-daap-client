@@ -3,7 +3,7 @@
 
 
 .ONESHELL:
-PHONY: dartfmt test clean analyze check pipenv-install pub-install coveralls bumpversion check-upload upload release help
+PHONY: dartfmt test clean analyze check pipenv-install pub-install format-coverage bumpversion check-upload upload release help
 TRASH_DIRS ?= .dart_tool coverage
 TRASH_FILES ?= .coverage pubspec.lock .packages Pipfile.lock
 VERSION=`python -c "from yaml import load, Loader; config = load(open('pubspec.yaml'), Loader=Loader); print(config['version']);"`
@@ -43,8 +43,8 @@ pub-install:
 	pub get;\
 
 
-coveralls:
-	coveralls;\
+format-coverage:
+	pub run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib -b .;\
 
 
 bumpversion:
@@ -89,8 +89,8 @@ help:
 	@echo "        Install Python requirements."
 	@echo "    pub-install:"
 	@echo "        Install Dart requirements."
-	@echo "    coveralls:"
-	@echo "        Upload coverage report to Coveralls."
+	@echo "    format-coverage:"
+	@echo "        Convert coverage info from Dart VM to LCOV format."
 	@echo "    bumpversion:"
 	@echo "        Tag current code revision with version."
 	@echo "    check-upload:"

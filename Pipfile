@@ -9,10 +9,10 @@ verify_ssl = true
 
 
 [dev-packages]
-coveralls = "==3.0.1"
+coveralls = "==3.1.0"
 dotenv-linter = "==0.2.0"
-pre-commit-hooks = "==3.4.0"
-pre-commit = "==2.12.1"
+pre-commit-hooks = "==4.0.1"
+pre-commit = "==2.13.0"
 pyyaml = "==5.4.1"
 
 
@@ -20,4 +20,4 @@ pyyaml = "==5.4.1"
 
 
 [requires]
-python_version = "3.9.4"
+python_version = "3.9.5"
