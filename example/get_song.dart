@@ -23,15 +23,18 @@ void main() async {
     dmapCodeDmapItemId,
     dmapCodeDaapSongFormat,
   ]);
-  for (DaapObject song in playlist.getAtom(dmapCodeDmapListing).value) {
-    var path =
-        // ignore: lines_longer_than_80_chars
-        "${song.getAtom(dmapCodeDaapSongArtist)}/${song.getAtom(dmapCodeDaapSongYear)} - ${song.getAtom(dmapCodeDaapSongAlbum)}/${song.getAtom(dmapCodeDaapSongTrackNumber)}. ${song.getAtom(dmapCodeDmapItemName)}.${song.getAtom(dmapCodeDaapSongFormat)}";
-    File(path).create(recursive: true).then((file) async {
-      file.writeAsBytes(await client.getSong(
-          1,
-          song.getAtom(dmapCodeDmapItemId),
-          song.getAtom(dmapCodeDaapSongFormat)));
-    });
+  var songs = playlist.getAtom(dmapCodeDmapListing);
+  if (songs != null) {
+    for (DaapObject song in playlist.getAtom(dmapCodeDmapListing).value) {
+      var path =
+          // ignore: lines_longer_than_80_chars
+          "${song.getAtom(dmapCodeDaapSongArtist)}/${song.getAtom(dmapCodeDaapSongYear)} - ${song.getAtom(dmapCodeDaapSongAlbum)}/${song.getAtom(dmapCodeDaapSongTrackNumber)}. ${song.getAtom(dmapCodeDmapItemName)}.${song.getAtom(dmapCodeDaapSongFormat)}";
+      File(path).create(recursive: true).then((file) async {
+        file.writeAsBytes(await client.getSong(
+            1,
+            song.getAtom(dmapCodeDmapItemId),
+            song.getAtom(dmapCodeDaapSongFormat)));
+      });
+    }
   }
 }

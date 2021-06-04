@@ -5,7 +5,7 @@ import "dart:io" show Platform;
 
 import "package:daapc/daapc.dart";
 
-/// Connect to server:
+/// Connect to the server:
 /// 1. Get server info
 /// 2. Get server content codes data
 /// 3. Login to server

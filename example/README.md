@@ -9,7 +9,7 @@
 
   ↓
   ```console
-  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_databases.dart
+  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart example/get_databases.dart
   1: test
   ```
 
@@ -17,7 +17,7 @@
 
   ↓
   ```console
-  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_database_playlists.dart
+  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart example/get_database_playlists.dart
   1: example.com (22)
   2: My Top Rated (0)
   3: Recently Added (0)
@@ -28,7 +28,7 @@
 
   ↓
   ```console
-  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_playlist.dart
+  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart example/get_playlist.dart
   1: Overture / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:2:28.000000
   [...]
   22: Finale / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:4:23.000000
@@ -38,7 +38,7 @@
 
   ↓
   ```console
-  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_database.dart
+  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart example/get_database.dart
   1: Overture / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:2:28.000000
   [...]
   22: Finale / Daft Punk / Tron: Legacy (Original Motion Picture Soundtrack) / 2010 - 0:4:23.000000
@@ -48,7 +48,7 @@
 
   ↓
   ```console
-  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_song.dart
+  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart example/get_song.dart
   $ tree
   .
   └── Daft Punk
@@ -71,7 +71,7 @@
   ↓
   ```console
   $ pub get
-  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart get_artwork.dart
+  $ DAAP_HOST=localhost DAAP_PASSWORD=secretpassword dart example/get_artwork.dart
   $ tree
   .
   └── Daft Punk

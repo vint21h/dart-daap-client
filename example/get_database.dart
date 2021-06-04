@@ -23,10 +23,13 @@ void main() async {
     dmapCodeDaapSongYear,
     dmapCodeDaapSongTime,
   ]);
-  for (DaapObject song in database.getAtom(dmapCodeDmapListing).value) {
-    var songTime = Duration(milliseconds: song.getAtom(dmapCodeDaapSongTime));
-    stdout.writeln(
-        // ignore: lines_longer_than_80_chars, unnecessary_brace_in_string_interps
-        '${song.getAtom(dmapCodeDaapSongTrackNumber)}: ${song.getAtom(dmapCodeDmapItemName)} / ${song.getAtom(dmapCodeDaapSongArtist)} / ${song.getAtom(dmapCodeDaapSongAlbum)} / ${song.getAtom(dmapCodeDaapSongYear)} - ${songTime}');
+  var songs = database.getAtom(dmapCodeDmapListing);
+  if (songs != null) {
+    for (DaapObject song in database.getAtom(dmapCodeDmapListing).value) {
+      var songTime = Duration(milliseconds: song.getAtom(dmapCodeDaapSongTime));
+      stdout.writeln(
+          // ignore: lines_longer_than_80_chars, unnecessary_brace_in_string_interps
+          '${song.getAtom(dmapCodeDaapSongTrackNumber)}: ${song.getAtom(dmapCodeDmapItemName)} / ${song.getAtom(dmapCodeDaapSongArtist)} / ${song.getAtom(dmapCodeDaapSongAlbum)} / ${song.getAtom(dmapCodeDaapSongYear)} - ${songTime}');
+    }
   }
 }
