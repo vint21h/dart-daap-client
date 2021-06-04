@@ -16,19 +16,19 @@ void main() async {
       DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
   var playlist = await client.getPlaylist(1, 1, metaCodes: [
-    DMAP_CODE_DAAP_SONGARTIST,
-    DMAP_CODE_DAAP_SONGALBUM,
-    DMAP_CODE_DMAP_ITEMID,
+    dmapCodeDaapSongArtist,
+    dmapCodeDaapSongAlbum,
+    dmapCodeDmapItemId,
   ]);
-  for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  for (DaapObject song in playlist.getAtom(dmapCodeDmapListing).value) {
     // bad idea to get artwork for every song in the playlist, but
     // it is only example
     var path =
         // ignore: lines_longer_than_80_chars
-        "${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)}/${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)}";
+        "${song.getAtom(dmapCodeDaapSongArtist)}/${song.getAtom(dmapCodeDaapSongAlbum)}";
     File(path).create(recursive: true).then((file) async {
       file.writeAsBytes(
-          await client.getSongArtwork(1, song.getAtom(DMAP_CODE_DMAP_ITEMID)));
+          await client.getSongArtwork(1, song.getAtom(dmapCodeDmapItemId)));
       // bad idea to rename file after creation, but it is only example
       file.rename(
           "$path.${extensionFromMime(lookupMimeType(path).toString())}");

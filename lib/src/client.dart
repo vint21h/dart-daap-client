@@ -173,7 +173,7 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getDatabases(
-            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
+            sessionId: sessionInfo!.getAtom(dmapCodeDmapSessionId));
       } else {
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars
@@ -203,7 +203,7 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getDatabase(databaseId,
-            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
+            sessionId: sessionInfo!.getAtom(dmapCodeDmapSessionId),
             metaCodes: metaCodes);
       } else {
         throw DaapImproperlyConfiguredException(
@@ -233,7 +233,7 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getPlaylists(databaseId,
-            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
+            sessionId: sessionInfo!.getAtom(dmapCodeDmapSessionId),
             metaCodes: metaCodes);
       } else {
         throw DaapImproperlyConfiguredException(
@@ -265,7 +265,7 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getPlaylist(databaseId, playlistId,
-            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID),
+            sessionId: sessionInfo!.getAtom(dmapCodeDmapSessionId),
             metaCodes: metaCodes);
       } else {
         throw DaapImproperlyConfiguredException(
@@ -294,7 +294,7 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getSong(databaseId, songId, songFormat,
-            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
+            sessionId: sessionInfo!.getAtom(dmapCodeDmapSessionId));
       } else {
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars
@@ -321,7 +321,7 @@ class DaapClient {
     } else {
       if (sessionInfo != null) {
         return await getSongArtwork(databaseId, songId,
-            sessionId: sessionInfo!.getAtom(DMAP_CODE_DMAP_SESSIONID));
+            sessionId: sessionInfo!.getAtom(dmapCodeDmapSessionId));
       } else {
         throw DaapImproperlyConfiguredException(
             // ignore: lines_longer_than_80_chars

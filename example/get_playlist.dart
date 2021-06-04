@@ -16,18 +16,17 @@ void main() async {
       DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
   var playlist = await client.getPlaylist(1, 1, metaCodes: [
-    DMAP_CODE_DAAP_SONGTRACKNUMBER,
-    DMAP_CODE_DMAP_ITEMNAME,
-    DMAP_CODE_DAAP_SONGARTIST,
-    DMAP_CODE_DAAP_SONGALBUM,
-    DMAP_CODE_DAAP_SONGYEAR,
-    DMAP_CODE_DAAP_SONGTIME,
+    dmapCodeDaapSongTrackNumber,
+    dmapCodeDmapItemName,
+    dmapCodeDaapSongArtist,
+    dmapCodeDaapSongAlbum,
+    dmapCodeDaapSongYear,
+    dmapCodeDaapSongTime,
   ]);
-  for (DaapObject song in playlist.getAtom(DMAP_CODE_DMAP_LISTING).value) {
-    var songTime =
-        Duration(milliseconds: song.getAtom(DMAP_CODE_DAAP_SONGTIME));
+  for (DaapObject song in playlist.getAtom(dmapCodeDmapListing).value) {
+    var songTime = Duration(milliseconds: song.getAtom(dmapCodeDaapSongTime));
     stdout.writeln(
         // ignore: lines_longer_than_80_chars
-        '${song.getAtom(DMAP_CODE_DAAP_SONGTRACKNUMBER)}: ${song.getAtom(DMAP_CODE_DMAP_ITEMNAME)} / ${song.getAtom(DMAP_CODE_DAAP_SONGARTIST)} / ${song.getAtom(DMAP_CODE_DAAP_SONGALBUM)} / ${song.getAtom(DMAP_CODE_DAAP_SONGYEAR)} - $songTime');
+        '${song.getAtom(dmapCodeDaapSongTrackNumber)}: ${song.getAtom(dmapCodeDmapItemName)} / ${song.getAtom(dmapCodeDaapSongArtist)} / ${song.getAtom(dmapCodeDaapSongAlbum)} / ${song.getAtom(dmapCodeDaapSongYear)} - $songTime');
   }
 }

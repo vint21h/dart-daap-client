@@ -18,9 +18,9 @@ void main() async {
       DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
   var playlists = await client.getPlaylists(1);
-  for (DaapObject playlist in playlists.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  for (DaapObject playlist in playlists.getAtom(dmapCodeDmapListing).value) {
     stdout.writeln(
         // ignore: lines_longer_than_80_chars
-        '${playlist.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${playlist.getAtom(DMAP_CODE_DMAP_ITEMNAME)} (${playlist.getAtom(DMAP_CODE_DMAP_ITEMCOUNT)})');
+        '${playlist.getAtom(dmapCodeDmapItemId)}: ${playlist.getAtom(dmapCodeDmapItemName)} (${playlist.getAtom(dmapCodeDmapItemCount)})');
   }
 }

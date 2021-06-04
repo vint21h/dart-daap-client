@@ -18,9 +18,9 @@ void main() async {
       DaapClient(envVars["DAAP_HOST"]!, password: envVars["DAAP_PASSWORD"]);
   await client.connect();
   var databases = await client.getDatabases();
-  for (DaapObject db in databases.getAtom(DMAP_CODE_DMAP_LISTING).value) {
+  for (DaapObject db in databases.getAtom(dmapCodeDmapListing).value) {
     stdout.writeln(
         // ignore: lines_longer_than_80_chars
-        '${db.getAtom(DMAP_CODE_DMAP_ITEMID)}: ${db.getAtom(DMAP_CODE_DMAP_ITEMNAME)}');
+        '${db.getAtom(dmapCodeDmapItemId)}: ${db.getAtom(dmapCodeDmapItemName)}');
   }
 }

@@ -71,1131 +71,824 @@ const Map<int, String> dmapDataTypesNames = {
 
 /// DMAP code 'com.apple.itunes.req-fplay' type.
 ///
-/// Caught it in the wild instead of 'aeFP'.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN = // ignore: constant_identifier_names
-    "????";
+/// Was caught it in the wild instead of 'aeFP'.
+const String dmapCodeComAppleItunesReqFplayUnknown = "????";
 
 /// DMAP code 'daap.browsealbumlisting"' type.
-const String
-    DMAP_CODE_DAAP_BROWSEALBUMLISTING = // ignore: constant_identifier_names
-    "abal";
+const String dmapCodeDaapBrowseAlbumListing = "abal";
 
 /// DMAP 'daap.browseartistlisting' code.
-const String
-    DMAP_CODE_DAAP_BROWSEARTISTLISTING = // ignore: constant_identifier_names
-    "abar";
+const String dmapCodeDaapBrowseArtistListing = "abar";
 
 /// DMAP 'daap.browsecomposerlisting' code.
-const String
-    DMAP_CODE_DAAP_BROWSECOMPOSERLISTING = // ignore: constant_identifier_names
-    "abcp";
+const String dmapCodeDaapBrowseComposerListing = "abcp";
 
 /// DMAP 'daap.browsegenrelisting' code.
-const String
-    DMAP_CODE_DAAP_BROWSEGENRELISTING = // ignore: constant_identifier_names
-    "abgn";
+const String dmapCodeDaapBrowseGenreListing = "abgn";
 
 /// DMAP 'daap.baseplaylist' code.
-const String DMAP_CODE_DAAP_BASEPLAYLIST = // ignore: constant_identifier_names
-    "abpl";
+const String dmapCodeDaapBasePlaylist = "abpl";
 
 /// DMAP 'daap.databasebrowse' code.
-const String
-    DMAP_CODE_DAAP_DATABASEBROWSE = // ignore: constant_identifier_names
-    "abro";
+const String dmapCodeDaapDatabaseBrowse = "abro";
 
 /// DMAP 'daap.databasesongs' code.
-const String DMAP_CODE_DAAP_DATABASESONGS = // ignore: constant_identifier_names
-    "adbs";
+const String dmapCodeDaapDatabaseSongs = "adbs";
 
 /// DMAP 'com.apple.itunes.adam-ids-array' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ADAM_IDS_ARRAY = // ignore: constant_identifier_names
-    "aeAD";
+const String dmapCodeComAppleItunesAdamIdsArray = "aeAD";
 
 /// DMAP 'com.apple.itunes.itms-artistid' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ITMS_ARTISTID = // ignore: constant_identifier_names
-    "aeAI";
+const String dmapCodeComAppleItunesItmsArtistId = "aeAI";
 
 /// DMAP 'com.apple.itunes.itms-composerid' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ITMS_COMPOSERID = // ignore: constant_identifier_names
-    "aeCI";
+const String dmapCodeComAppleItunesItmsComposerId = "aeCI";
 
 /// DMAP 'com.apple.itunes.content-rating' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_CONTENT_RATING = // ignore: constant_identifier_names
-    "aeCR";
+const String dmapCodeComAppleItunesContentRating = "aeCR";
 
 /// DMAP 'com.apple.itunes.drm-platform-id' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_DRM_PLATFORM_ID = // ignore: constant_identifier_names
-    "aeDP";
+const String dmapCodeComAppleItunesDrmPlatformId = "aeDP";
 
 /// DMAP 'com.apple.itunes.drm-user-id' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_DRM_USER_ID = // ignore: constant_identifier_names
-    "aeDR";
+const String dmapCodeComAppleItunesDrmUserId = "aeDR";
 
 /// DMAP 'com.apple.itunes.drm-versions' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_DRM_VERSIONS = // ignore: constant_identifier_names
-    "aeDV";
+const String dmapCodeComAppleItunesDrmVersions = "aeDV";
 
 /// DMAP 'com.apple.itunes.episode-num-str' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_EPISODE_NUM_STR = // ignore: constant_identifier_names
-    "aeEN";
+const String dmapCodeComAppleItunesEpisodeNumStr = "aeEN";
 
 /// DMAP 'com.apple.itunes.episode-sort' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_EPISODE_SORT = // ignore: constant_identifier_names
-    "aeES";
+const String dmapCodeComAppleItunesEpisodeSort = "aeES";
 
 /// DMAP 'com.apple.itunes.req-fplay' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY = // ignore: constant_identifier_names
-    "aeFP";
+const String dmapCodeComAppleItunesReqFplay = "aeFP";
 
 /// DMAP 'com.apple.itunes.gapless-enc-dr' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DR = // ignore: constant_identifier_names
-    "aeGD";
+const String dmapCodeComAppleItunesGaplessEncDr = "aeGD";
 
 /// DMAP 'com.apple.itunes.gapless-enc-del' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DEL = // ignore: constant_identifier_names
-    "aeGE";
+const String dmapCodeComAppleItunesGaplessEncDel = "aeGE";
 
 /// DMAP 'com.apple.itunes.gapless-heur' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_HEUR = // ignore: constant_identifier_names
-    "aeGH";
+const String dmapCodeComAppleItunesGaplessHeur = "aeGH";
 
 /// DMAP 'com.apple.itunes.itms-genreid' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ITMS_GENREID = // ignore: constant_identifier_names
-    "aeGI";
+const String dmapCodeComAppleItunesItmsGenreId = "aeGI";
 
 /// DMAP 'com.apple.itunes.gapless-resy' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_RESY = // ignore: constant_identifier_names
-    "aeGR";
+const String dmapCodeComAppleItunesGaplessResy = "aeGR";
 
 /// DMAP 'com.apple.itunes.gapless-dur' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_DUR = // ignore: constant_identifier_names
-    "aeGU";
+const String dmapCodeComAppleItunesGaplessDur = "aeGU";
 
 /// DMAP 'com.apple.itunes.is-hd-video"' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_IS_HD_VIDEO = // ignore: constant_identifier_names
-    "aeHD";
+const String dmapCodeComAppleItunesIsHdVideo = "aeHD";
 
 /// DMAP 'com.apple.itunes.has-video' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_HAS_VIDEO = // ignore: constant_identifier_names
-    "aeHV";
+const String dmapCodeComAppleItunesHasVideo = "aeHV";
 
 /// DMAP 'com.apple.itunes.drm-key1-id' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY1_ID = // ignore: constant_identifier_names
-    "aeK1";
+const String dmapCodeComAppleItunesDrmKey1Id = "aeK1";
 
 /// DMAP 'com.apple.itunes.drm-key2-id' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY2_ID = // ignore: constant_identifier_names
-    "aeK2";
+const String dmapCodeComAppleItunesDrmKey2Id = "aeK2";
 
 /// DMAP 'com.apple.itunes.extended-media-kind' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_EXTENDED_MEDIA_KIND = // ignore: constant_identifier_names
-    "aeMk";
+const String dmapCodeComAppleItunesExtendedMediaKind = "aeMk";
 
 /// DMAP 'com.apple.itunes.mediakind' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_MEDIAKIND = // ignore: constant_identifier_names
-    "aeMK";
+const String dmapCodeComAppleItunesMediaKind = "aeMK";
 
 /// DMAP 'com.apple.itunes.non-drm-user-id' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_NON_DRM_USER_ID = // ignore: constant_identifier_names
-    "aeND";
+const String dmapCodeComAppleItunesNonDrmUserId = "aeND";
 
 /// DMAP 'com.apple.itunes.network-name' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_NETWORK_NAME = // ignore: constant_identifier_names
-    "aeNN";
+const String dmapCodeComAppleItunesNetworkName = "aeNN";
 
 /// DMAP 'com.apple.itunes.norm-volume' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME = // ignore: constant_identifier_names
-    "aeNV";
+const String dmapCodeComAppleItunesNormVolume = "aeNV";
 
 /// DMAP 'com.apple.itunes.is-podcast' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST = // ignore: constant_identifier_names
-    "aePC";
+const String dmapCodeComAppleItunesIsPodcast = "aePC";
 
 /// DMAP 'com.apple.itunes.itms-playlistid' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ITMS_PLAYLISTID = // ignore: constant_identifier_names
-    "aePI";
+const String dmapCodeComAppleItunesItmsPlaylistId = "aePI";
 
 /// DMAP 'com.apple.itunes.is-podcast-playlist' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST_PLAYLIST = // ignore: constant_identifier_names
-    "aePP";
+const String dmapCodeComAppleItunesIsPodcastPlaylist = "aePP";
 
 /// DMAP 'com.apple.itunes.special-playlist' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_SPECIAL_PLAYLIST = // ignore: constant_identifier_names
-    "aePS";
+const String dmapCodeComAppleItunesSpecialPlaylist = "aePS";
 
 /// DMAP 'com.apple.itunes.itms-storefrontid' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ITMS_STOREFRONTID = // ignore: constant_identifier_names
-    "aeSF";
+const String dmapCodeComAppleItunesStoreFrontId = "aeSF";
 
 /// DMAP 'com.apple.itunes.saved-genius' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_SAVED_GENIUS = // ignore: constant_identifier_names
-    "aeSG";
+const String dmapCodeComAppleItunesSavedGenius = "aeSG";
 
 /// DMAP 'com.apple.itunes.itms-songid' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_ITMS_SONGID = // ignore: constant_identifier_names
-    "aeSI";
+const String dmapCodeComAppleItunesItmsSongId = "aeSI";
 
 /// DMAP 'com.apple.itunes.series-name' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_SERIES_NAME = // ignore: constant_identifier_names
-    "aeSN";
+const String dmapCodeComAppleItunesSeriesName = "aeSN";
 
 /// DMAP 'com.apple.itunes.smart-playlist' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_SMART_PLAYLIST = // ignore: constant_identifier_names
-    "aeSP";
+const String dmapCodeComAppleItunesSmartPlaylist = "aeSP";
 
 /// DMAP 'com.apple.itunes.season-num' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_SEASON_NUM = // ignore: constant_identifier_names
-    "aeSU";
+const String dmapCodeComAppleItunesSeasonNum = "aeSU";
 
 /// DMAP 'com.apple.itunes.music-sharing-version' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_MUSIC_SHARING_VERSION = // ignore: constant_identifier_names
-    "aeSV";
+const String dmapCodeComAppleItunesMusicSharingVersion = "aeSV";
 
 /// DMAP 'daap.songgrouping' code.
-const String DMAP_CODE_DAAP_SONGGROUPING = // ignore: constant_identifier_names
-    "agrp";
+const String dmapCodeDaapSongGrouping = "agrp";
 
 /// DMAP 'daap.databaseplaylists' code.
-const String
-    DMAP_CODE_DAAP_DATABASEPLAYLISTS = // ignore: constant_identifier_names
-    "aply";
+const String dmapCodeDaapDatabasePlaylists = "aply";
 
 /// DMAP 'daap.playlistrepeatmode' code.
-const String
-    DMAP_CODE_DAAP_PLAYLISTREPEATMODE = // ignore: constant_identifier_names
-    "aprm";
+const String dmapCodeDaapPlaylistRepeatMode = "aprm";
 
 /// DMAP 'daap.protocolversion' code.
-const String
-    DMAP_CODE_DAAP_PROTOCOLVERSION = // ignore: constant_identifier_names
-    "apro";
+const String dmapCodeDaapProtocolVersion = "apro";
 
 /// DMAP 'daap.playlistshufflemode' code.
-const String
-    DMAP_CODE_DAAP_PLAYLISTSHUFFLEMODE = // ignore: constant_identifier_names
-    "apsm";
+const String dmapCodeDaapPlaylistsShuffleMode = "apsm";
 
 /// DMAP 'daap.playlistsongs' code.
-const String DMAP_CODE_DAAP_PLAYLISTSONGS = // ignore: constant_identifier_names
-    "apso";
+const String dmapCodeDaapPlaylistSongs = "apso";
 
 /// DMAP 'daap.resolveinfo' code.
-const String DMAP_CODE_DAAP_RESOLVEINFO = // ignore: constant_identifier_names
-    "arif";
+const String dmapCodeDaapResolveInfo = "arif";
 
 /// DMAP 'daap.resolve' code.
-const String DMAP_CODE_DAAP_RESOLVE = // ignore: constant_identifier_names
-    "arsv";
+const String dmapCodeDaapResolve = "arsv";
 
 /// DMAP 'daap.songalbumartist' code.
-const String
-    DMAP_CODE_DAAP_SONGALBUMARTIST = // ignore: constant_identifier_names
-    "asaa";
+const String dmapCodeDaapSongAlbumArtist = "asaa";
 
 /// DMAP 'daap.songalbumid' code.
-const String DMAP_CODE_DAAP_SONGALBUMID = // ignore: constant_identifier_names
-    "asai";
+const String dmapCodeDaapSongAlbumId = "asai";
 
 /// DMAP 'daap.songalbum' code.
-const String DMAP_CODE_DAAP_SONGALBUM = // ignore: constant_identifier_names
-    "asal";
+const String dmapCodeDaapSongAlbum = "asal";
 
 /// DMAP 'daap.songartist' code.
-const String DMAP_CODE_DAAP_SONGARTIST = // ignore: constant_identifier_names
-    "asar";
+const String dmapCodeDaapSongArtist = "asar";
 
 /// DMAP 'daap.bookmarkable' code.
-const String DMAP_CODE_DAAP_BOOKMARKABLE = // ignore: constant_identifier_names
-    "asbk";
+const String dmapCodeDaapBookmarkable = "asbk";
 
 /// DMAP 'daap.songbookmark' code.
-const String DMAP_CODE_DAAP_SONGBOOKMARK = // ignore: constant_identifier_names
-    "asbo";
+const String dmapCodeDaapSongBookmark = "asbo";
 
 /// DMAP 'daap.songbitrate' code.
-const String DMAP_CODE_DAAP_SONGBITRATE = // ignore: constant_identifier_names
-    "asbr";
+const String dmapCodeDaapSongBitrate = "asbr";
 
 /// DMAP 'daap.songbeatsperminute' code.
-const String
-    DMAP_CODE_DAAP_SONGBEATSPERMINUTE = // ignore: constant_identifier_names
-    "asbt";
+const String dmapCodeDaapSongBeatsPerMinute = "asbt";
 
 /// DMAP 'daap.songcodectype' code.
-const String DMAP_CODE_DAAP_SONGCODECTYPE = // ignore: constant_identifier_names
-    "ascd";
+const String dmapCodeDaapSongCodecType = "ascd";
 
 /// DMAP 'daap.songcomment' code.
-const String DMAP_CODE_DAAP_SONGCOMMENT = // ignore: constant_identifier_names
-    "ascm";
+const String dmapCodeDaapSongComment = "ascm";
 
 /// DMAP 'daap.songcontentdescription' code.
-const String
-    DMAP_CODE_DAAP_SONGCONTENTDESCRIPTION = // ignore: constant_identifier_names
-    "ascn";
+const String dmapCodeDaapSongContentDescription = "ascn";
 
 /// DMAP 'daap.songcompilation' code.
-const String
-    DMAP_CODE_DAAP_SONGCOMPILATION = // ignore: constant_identifier_names
-    "asco";
+const String dmapCodeDaapSongCompilation = "asco";
 
 /// DMAP 'daap.songcomposer' code.
-const String DMAP_CODE_DAAP_SONGCOMPOSER = // ignore: constant_identifier_names
-    "ascp";
+const String dmapCodeDaapSongComposer = "ascp";
 
 /// DMAP 'daap.songcontentrating' code.
-const String
-    DMAP_CODE_DAAP_SONGCONTENTRATING = // ignore: constant_identifier_names
-    "ascr";
+const String dmapCodeDaapSongContentRating = "ascr";
 
 /// DMAP 'daap.songcodecsubtype' code.
-const String
-    DMAP_CODE_DAAP_SONGCODECSUBTYPE = // ignore: constant_identifier_names
-    "ascs";
+const String dmapCodeDaapSongCodecSubtype = "ascs";
 
 /// DMAP 'daap.songcategory' code.
-const String DMAP_CODE_DAAP_SONGCATEGORY = // ignore: constant_identifier_names
-    "asct";
+const String dmapCodeDaapSongCategory = "asct";
 
 /// DMAP 'daap.songdateadded' code.
-const String DMAP_CODE_DAAP_SONGDATEADDED = // ignore: constant_identifier_names
-    "asda";
+const String dmapCodeDaapSongDateAdded = "asda";
 
 /// DMAP 'daap.songdisabled' code.
-const String DMAP_CODE_DAAP_SONGDISABLED = // ignore: constant_identifier_names
-    "asdb";
+const String dmapCodeDaapSongDisabled = "asdb";
 
 /// DMAP 'daap.songdisccount' code.
-const String DMAP_CODE_DAAP_SONGDISCCOUNT = // ignore: constant_identifier_names
-    "asdc";
+const String dmapCodeDaapSongDiscCount = "asdc";
 
 /// DMAP 'daap.songdatakind' code.
-const String DMAP_CODE_DAAP_SONGDATAKIND = // ignore: constant_identifier_names
-    "asdk";
+const String dmapCodeDaapSongDataKind = "asdk";
 
 /// DMAP 'daap.songdatemodified' code.
-const String
-    DMAP_CODE_DAAP_SONGDATEMODIFIED = // ignore: constant_identifier_names
-    "asdm";
+const String dmapCodeDaapSongDateModified = "asdm";
 
 /// DMAP 'daap.songdiscnumber' code.
-const String
-    DMAP_CODE_DAAP_SONGDISCKNUMBER = // ignore: constant_identifier_names
-    "asdn";
+const String dmapCodeDaapSongDiscNumber = "asdn";
 
 /// DMAP 'daap.songdatepurchased' code.
-const String
-    DMAP_CODE_DAAP_SONGDATEPURCHASED = // ignore: constant_identifier_names
-    "asdp";
+const String dmapCodeDaapSongDatePurchased = "asdp";
 
 /// DMAP 'daap.songdatereleased' code.
-const String
-    DMAP_CODE_DAAP_SONGDATERELEASED = // ignore: constant_identifier_names
-    "asdr";
+const String dmapCodeDaapSongDateReleased = "asdr";
 
 /// DMAP 'daap.songdescription' code.
-const String
-    DMAP_CODE_DAAP_SONGDESCRIPTION = // ignore: constant_identifier_names
-    "asdt";
+const String dmapCodeDaapSongDescription = "asdt";
 
 /// DMAP 'daap.songextradata' code.
-const String DMAP_CODE_DAAP_SONGEXTRADATA = // ignore: constant_identifier_names
-    "ased";
+const String dmapCodeDaapSongExtraData = "ased";
 
 /// DMAP 'daap.songeqpreset' code.
-const String DMAP_CODE_DAAP_SONGEQPRESET = // ignore: constant_identifier_names
-    "aseq";
+const String dmapCodeDaapSongEqPreset = "aseq";
 
 /// DMAP 'daap.songformat' code.
-const String DMAP_CODE_DAAP_SONGFORMAT = // ignore: constant_identifier_names
-    "asfm";
+const String dmapCodeDaapSongFormat = "asfm";
 
 /// DMAP 'daap.songgenre' code.
-const String DMAP_CODE_DAAP_SONGGENRE = // ignore: constant_identifier_names
-    "asgn";
+const String dmapCodeDaapSongGenre = "asgn";
 
 /// DMAP 'daap.songgapless' code.
-const String DMAP_CODE_DAAP_SONGGAPLESS = // ignore: constant_identifier_names
-    "asgp";
+const String dmapCodeDaapSongGapless = "asgp";
 
 /// DMAP 'daap.songhasbeenplayed' code.
-const String
-    DMAP_CODE_DAAP_SONGHASBEENPLAYED = // ignore: constant_identifier_names
-    "ashp";
+const String dmapCodeDaapSongHasBeenPlayed = "ashp";
 
 /// DMAP 'daap.songkeywords' code.
-const String DMAP_CODE_DAAP_SONGKEYWORDS = // ignore: constant_identifier_names
-    "asky";
+const String dmapCodeDaapSongKeywords = "asky";
 
 /// DMAP 'daap.songlongcontentdescription' code.
-const String
-    DMAP_CODE_DAAP_SONGLONGCONTENTDESCRIPTION = // ignore: constant_identifier_names
-    "aslc";
+const String dmapCodeDaapSongLongContentDescription = "aslc";
 
 /// DMAP 'daap.songlongsize' code.
-const String DMAP_CODE_DAAP_SONGLONGSIZE = // ignore: constant_identifier_names
-    "asls";
+const String dmapCodeDaapSongLongSize = "asls";
 
 /// DMAP 'daap.songsonpodcasturl' code.
-const String
-    DMAP_CODE_DAAP_SONGSONPODCASTURL = // ignore: constant_identifier_names
-    "aspu";
+const String dmapCodeDaapSongPodcastUrl = "aspu";
 
 /// DMAP 'daap.songrelativevolume' code.
-const String
-    DMAP_CODE_DAAP_SONGRELATIVEVOLUME = // ignore: constant_identifier_names
-    "asrv";
+const String dmapCodeDaapSongRelativeVolume = "asrv";
 
 /// DMAP 'daap.sortartist' code.
-const String DMAP_CODE_DAAP_SORTARTIST = // ignore: constant_identifier_names
-    "assa";
+const String dmapCodeDaapSortArtist = "assa";
 
 /// DMAP 'daap.sortcomposer' code.
-const String DMAP_CODE_DAAP_SORTCOMPOSER = // ignore: constant_identifier_names
-    "assc";
+const String dmapCodeDaapSortComposer = "assc";
 
 /// DMAP 'daap.sortalbumartist' code.
-const String
-    DMAP_CODE_DAAP_SORTALBUMARTIST = // ignore: constant_identifier_names
-    "assl";
+const String dmapCodeDaapSortAlbumArtist = "assl";
 
 /// DMAP 'daap.sortname' code.
-const String DMAP_CODE_DAAP_SORTNAME = // ignore: constant_identifier_names
-    "assn";
+const String dmapCodeDaapSortName = "assn";
 
 /// DMAP 'daap.songstoptime' code.
-const String DMAP_CODE_DAAP_SONGSTOPTIME = // ignore: constant_identifier_names
-    "assp";
+const String dmapCodeDaapSongStopTime = "assp";
 
 /// DMAP 'daap.songsamplerate' code.
-const String
-    DMAP_CODE_DAAP_SONGSAMPLERATE = // ignore: constant_identifier_names
-    "assr";
+const String dmapCodeDaapSongSampleRate = "assr";
 
 /// DMAP 'daap.sortseriesname' code.
-const String
-    DMAP_CODE_DAAP_SONGSERIESNAME = // ignore: constant_identifier_names
-    "asss";
+const String dmapCodeDaapSongSeriesName = "asss";
 
 /// DMAP 'daap.songstarttime' code.
-const String DMAP_CODE_DAAP_SONGSTARTTIME = // ignore: constant_identifier_names
-    "asst";
+const String dmapCodeDaapSongStartTime = "asst";
 
 /// DMAP 'daap.sortalbum' code.
-const String DMAP_CODE_DAAP_SORTALBUM = // ignore: constant_identifier_names
-    "assu";
+const String dmapCodeDaapSongSortAlbum = "assu";
 
 /// DMAP 'daap.songsize' code.
-const String DMAP_CODE_DAAP_SONGSIZE = // ignore: constant_identifier_names
-    "assz";
+const String dmapCodeDaapSongSize = "assz";
 
 /// DMAP 'daap.songtrackcount' code.
-const String
-    DMAP_CODE_DAAP_SONGTRACKCOUNT = // ignore: constant_identifier_names
-    "astc";
+const String dmapCodeDaapSongTrackCount = "astc";
 
 /// DMAP 'daap.songtime' code.
-const String DMAP_CODE_DAAP_SONGTIME = // ignore: constant_identifier_names
-    "astm";
+const String dmapCodeDaapSongTime = "astm";
 
 /// DMAP 'daap.songtracknumber' code.
-const String
-    DMAP_CODE_DAAP_SONGTRACKNUMBER = // ignore: constant_identifier_names
-    "astn";
+const String dmapCodeDaapSongTrackNumber = "astn";
 
 /// DMAP 'daap.songdataurl' code.
-const String DMAP_CODE_DAAP_SONGDATAURL = // ignore: constant_identifier_names
-    "asul";
+const String dmapCodeDaapSongDataUrl = "asul";
 
 /// DMAP 'daap.songuserrating' code.
-const String
-    DMAP_CODE_DAAP_SONGUSERRATING = // ignore: constant_identifier_names
-    "asur";
+const String dmapCodeDaapSongUserRating = "asur";
 
 /// DMAP 'daap.songyear' code.
-const String DMAP_CODE_DAAP_SONGYEAR = // ignore: constant_identifier_names
-    "asyr";
+const String dmapCodeDaapSongYear = "asyr";
 
 /// DMAP 'daap.supportsextradata' code.
-const String
-    DMAP_CODE_DAAP_SUPPORTSEXTRADATA = // ignore: constant_identifier_names
-    "ated";
+const String dmapCodeDaapSupportsExtraData = "ated";
 
 /// DMAP 'daap.serverdatabases' code.
-const String
-    DMAP_CODE_DAAP_SERVERDATABASES = // ignore: constant_identifier_names
-    "avdb";
+const String dmapCodeDaapServerDatabases = "avdb";
 
 /// DMAP 'com.apple.itunes.jukebox-client-vote' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CLIENT_VOTE = // ignore: constant_identifier_names
-    "ceJC";
+const String dmapCodeComAppleItunesJukeboxClientVote = "ceJC";
 
 /// DMAP 'com.apple.itunes.jukebox-current' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CURRENT = // ignore: constant_identifier_names
-    "ceJI";
+const String dmapCodeComAppleItunesJukeboxCurrent = "ceJI";
 
 /// DMAP 'com.apple.itunes.jukebox-vote' code.
-const String
-    DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_VOTE = // ignore: constant_identifier_names
-    "ceJV";
+const String dmapCodeComAppleItunesJukeboxVote = "ceJV";
 
 /// DMAP 'dmap.haschildcontainers' code.
-const String
-    DMAP_CODE_DMAP_HASCHILDCONTAINERS = // ignore: constant_identifier_names
-    "f?ch";
+const String dmapCodeDmapHasChildContainers = "f?ch";
 
 /// DMAP 'dmap.bag' code.
-const String DMAP_CODE_DMAP_BAG = "mbcl"; // ignore: constant_identifier_names
+const String dmapCodeDmapBag = "mbcl";
+
 /// DMAP 'dmap.contentcodesresponse' code.
-const String
-    DMAP_CODE_DMAP_CONTENTCODESRESPONSE = // ignore: constant_identifier_names
-    "mccr";
+const String dmapCodeDmapContentCodesResponse = "mccr";
 
 /// DMAP 'dmap.contentcodesname' code.
-const String
-    DMAP_CODE_DMAP_CONTENTCODESNAME = // ignore: constant_identifier_names
-    "mcna";
+const String dmapCodeDmapContentCodesName = "mcna";
 
 /// DMAP 'dmap.contentcodesnumber' code.
-const String
-    DMAP_CODE_DMAP_CONTENTCODESNUMBER = // ignore: constant_identifier_names
-    "mcnm";
+const String dmapCodeDmapContentCodesNumber = "mcnm";
 
 /// DMAP 'dmap.container' code.
-const String DMAP_CODE_DMAP_CONTAINER = // ignore: constant_identifier_names
-    "mcon";
+const String dmapCodeDmapContainer = "mcon";
 
 /// DMAP 'dmap.containercount' code.
-const String
-    DMAP_CODE_DMAP_CONTAINERCOUNT = // ignore: constant_identifier_names
-    "mctc";
+const String dmapCodeDmapContainerCount = "mctc";
 
 /// DMAP 'dmap.containeritemid' code.
-const String
-    DMAP_CODE_DMAP_CONTAINERITEMID = // ignore: constant_identifier_names
-    "mcti";
+const String dmapCodeDmapContainerItemId = "mcti";
 
 /// DMAP 'dmap.contentcodestype' code.
-const String
-    DMAP_CODE_DMAP_CONTENTCODESTYPE = // ignore: constant_identifier_names
-    "mcty";
+const String dmapCodeDmapContentCodesType = "mcty";
 
 /// DMAP 'dmap.dictionary' code.
-const String DMAP_CODE_DMAP_DICTIONARY = // ignore: constant_identifier_names
-    "mdcl";
+const String dmapCodeDmapDictionary = "mdcl";
 
 /// DMAP 'dmap.editcommandssupported' code.
-const String
-    DMAP_CODE_DMAP_EDITCOMMANDSUPPORTED = // ignore: constant_identifier_names
-    "meds";
+const String dmapCodeDmapEditCommandSupported = "meds";
 
 /// DMAP 'dmap.itemid' code.
-const String DMAP_CODE_DMAP_ITEMID = // ignore: constant_identifier_names
-    "miid";
+const String dmapCodeDmapItemId = "miid";
 
 /// DMAP 'dmap.itemkind' code.
-const String DMAP_CODE_DMAP_ITEMKIND = // ignore: constant_identifier_names
-    "mikd";
+const String dmapCodeDmapItemKind = "mikd";
 
 /// DMAP 'dmap.itemcount' code.
-const String DMAP_CODE_DMAP_ITEMCOUNT = // ignore: constant_identifier_names
-    "mimc";
+const String dmapCodeDmapItemCount = "mimc";
 
 /// DMAP 'dmap.itemname' code.
-const String DMAP_CODE_DMAP_ITEMNAME = // ignore: constant_identifier_names
-    "minm";
+const String dmapCodeDmapItemName = "minm";
 
 /// DMAP 'dmap.listing' code.
-const String DMAP_CODE_DMAP_LISTING = // ignore: constant_identifier_names
-    "mlcl";
+const String dmapCodeDmapListing = "mlcl";
 
 /// DMAP 'dmap.sessionid' code.
-const String DMAP_CODE_DMAP_SESSIONID = // ignore: constant_identifier_names
-    "mlid";
+const String dmapCodeDmapSessionId = "mlid";
 
 /// DMAP 'dmap.listingitem' code.
-const String DMAP_CODE_DMAP_LISTINGITEM = // ignore: constant_identifier_names
-    "mlit";
+const String dmapCodeDmapListingItem = "mlit";
 
 /// DMAP 'dmap.loginresponse' code.
-const String DMAP_CODE_DMAP_LOGINRESPONSE = // ignore: constant_identifier_names
-    "mlog";
+const String dmapCodeDmapLoginResponse = "mlog";
 
 /// DMAP 'dmap.parentcontainerid' code.
-const String
-    DMAP_CODE_DMAP_PARENTCONTAINERID = // ignore: constant_identifier_names
-    "mpco";
+const String dmapCodeDmapParentContainerId = "mpco";
 
 /// DMAP 'dmap.persistentid' code.
-const String DMAP_CODE_DMAP_PERSISTENTID = // ignore: constant_identifier_names
-    "mper";
+const String dmapCodeDmapPersistentId = "mper";
 
 /// DMAP 'dmap.protocolversion' code.
-const String
-    DMAP_CODE_DMAP_PROTOCOLVERSION = // ignore: constant_identifier_names
-    "mpro";
+const String dmapCodeDmapProtocolVersion = "mpro";
 
 /// DMAP 'dmap.returnedcount' code.
-const String DMAP_CODE_DMAP_RETURNEDCOUNT = // ignore: constant_identifier_names
-    "mrco";
+const String dmapCodeDmapReturnedCount = "mrco";
 
 /// DMAP 'dmap.supportsautologout' code.
-const String
-    DMAP_CODE_DMAP_SUPPORTSAUTOLOGOUT = // ignore: constant_identifier_names
-    "msal";
+const String dmapCodeDmapSupportsAutoLogout = "msal";
 
 /// DMAP 'dmap.authenticationschemes' code.
-const String
-    DMAP_CODE_DMAP_AUTHENTICATIONSCHEMES = // ignore: constant_identifier_names
-    "msas";
+const String dmapCodeDmapAuthenticationSchemes = "msas";
 
 /// DMAP 'dmap.authenticationmethod' code.
-const String
-    DMAP_CODE_DMAP_AUTHENTICATIONMETHOD = // ignore: constant_identifier_names
-    "msau";
+const String dmapCodeDmapAuthenticationMethod = "msau";
 
 /// DMAP 'dmap.supportsbrowse' code.
-const String
-    DMAP_CODE_DMAP_SUPPORTSBROWSE = // ignore: constant_identifier_names
-    "msbr";
+const String dmapCodeDmapSupportsBrowse = "msbr";
 
 /// DMAP 'dmap.databasescount' code.
-const String
-    DMAP_CODE_DMAP_DATABASESCOUNT = // ignore: constant_identifier_names
-    "msdc";
+const String dmapCodeDmapDatabasesCount = "msdc";
 
 /// DMAP 'dmap.supportsextensions' code.
-const String
-    DMAP_CODE_DMAP_SUPPORTSEXTENSIONS = // ignore: constant_identifier_names
-    "msex";
+const String dmapCodeDmapSupportsExtension = "msex";
 
 /// DMAP 'dmap.supportsindex' code.
-const String DMAP_CODE_DMAP_SUPPORTSINDEX = // ignore: constant_identifier_names
-    "msix";
+const String dmapCodeDmapSupportsIndex = "msix";
 
 /// DMAP 'dmap.loginrequired' code.
-const String DMAP_CODE_DMAP_LOGINREQUIRED = // ignore: constant_identifier_names
-    "mslr";
+const String dmapCodeDmapLoginRequired = "mslr";
 
 /// DMAP 'dmap.supportspersistentids' code.
-const String
-    DMAP_CODE_DMAP_SUPPORTSPERSISTENTIDS = // ignore: constant_identifier_names
-    "mspi";
+const String dmapCodeDmapSupportsPersistentIds = "mspi";
 
 /// DMAP 'dmap.supportsquery' code.
-const String DMAP_CODE_DMAP_SUPPORTSQUERY = // ignore: constant_identifier_names
-    "msqy";
+const String dmapCodeDmapSupportsQuery = "msqy";
 
 /// DMAP 'dmap.supportsresolve' code.
-const String
-    DMAP_CODE_DMAP_SUPPORTSRESOLVE = // ignore: constant_identifier_names
-    "msrs";
+const String dmapCodeDmapSupportsResolve = "msrs";
 
 /// DMAP 'dmap.serverinforesponse' code.
-const String
-    DMAP_CODE_DMAP_SERVERINFORESPONSE = // ignore: constant_identifier_names
-    "msrv";
+const String dmapCodeDmapServerInfoResponse = "msrv";
 
 /// DMAP 'dmap.utctime' code.
-const String DMAP_CODE_DMAP_UTCTIME = // ignore: constant_identifier_names
-    "mstc";
+const String dmapCodeDmapUtcTime = "mstc";
 
 /// DMAP 'dmap.timeoutinterval' code.
-const String
-    DMAP_CODE_DMAP_TIMEOUTINTERVAL = // ignore: constant_identifier_names
-    "mstm";
+const String dmapCodeDmapTimeoutInterval = "mstm";
 
 /// DMAP 'dmap.utcoffset' code.
-const String DMAP_CODE_DMAP_UTCOFFSET = // ignore: constant_identifier_names
-    "msto";
+const String dmapCodeDmapUtcOffset = "msto";
 
 /// DMAP 'dmap.statusstring' code.
-const String DMAP_CODE_DMAP_STATUSSTRING = // ignore: constant_identifier_names
-    "msts";
+const String dmapCodeDmapStatusString = "msts";
 
 /// DMAP 'dmap.status' code.
-const String DMAP_CODE_DMAP_STATUS = // ignore: constant_identifier_names
-    "mstt";
+const String dmapCodeDmapStatus = "mstt";
 
 /// DMAP 'dmap.supportsupdate' code.
-const String
-    DMAP_CODE_DMAP_SUPPORTSUPDATE = // ignore: constant_identifier_names
-    "msup";
+const String dmapCodeDmapSupportsUpdate = "msup";
 
 /// DMAP 'dmap.specifiedtotalcount' code.
-const String
-    DMAP_CODE_DMAP_SPECIFIEDTOTALCOUNT = // ignore: constant_identifier_names
-    "mtco";
+const String dmapCodeDmapSpecifiedTotalCount = "mtco";
 
 /// DMAP 'dmap.deletedidlisting' code.
-const String
-    DMAP_CODE_DMAP_DELETEDIDLISTING = // ignore: constant_identifier_names
-    "mudl";
+const String dmapCodeDmapDeletedIdListing = "mudl";
 
 /// DMAP 'dmap.updateresponse' code.
-const String
-    DMAP_CODE_DMAP_UPDATERESPONSE = // ignore: constant_identifier_names
-    "mupd";
+const String dmapCodeDmapUpdateResponse = "mupd";
 
 /// DMAP 'dmap.serverrevision' code.
-const String
-    DMAP_CODE_DMAP_SERVERREVISION = // ignore: constant_identifier_names
-    "musr";
+const String dmapCodeDmapServerRevision = "musr";
 
 /// DMAP 'dmap.updatetype' code.
-const String DMAP_CODE_DMAP_UPDATETYPE = // ignore: constant_identifier_names
-    "muty";
+const String dmapCodeDmapUpdateType = "muty";
 
 /// DMAP 'dpap.protocolversion' code.
-const String
-    DMAP_CODE_DPAP_PROTOCOLVERSION = // ignore: constant_identifier_names
-    "ppro";
+const String dmapCodeDpapProtocolVersion = "ppro";
 
 /// DMAP 'dpap.unknown' code.
-const String DMAP_CODE_DPAP_UNKNOWN = // ignore: constant_identifier_names
-    "pret";
+const String dmapCodeDpapUnknown = "pret";
 
 /// DMAP codes mapping.
 final Map<String, DmapCode> dmapCodeTypes = {
-  DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY_UNKNOWN,
+  dmapCodeComAppleItunesReqFplayUnknown: DmapCode(
+      dmapCodeComAppleItunesReqFplayUnknown,
       "com.apple.itunes.req-fplay",
       byte),
-  DMAP_CODE_DAAP_BROWSEALBUMLISTING: DmapCode(
-      DMAP_CODE_DAAP_BROWSEALBUMLISTING, "daap.browsealbumlisting", container),
-  DMAP_CODE_DAAP_BROWSEARTISTLISTING: DmapCode(
-      DMAP_CODE_DAAP_BROWSEARTISTLISTING,
-      "daap.browseartistlisting",
-      container),
-  DMAP_CODE_DAAP_BROWSECOMPOSERLISTING: DmapCode(
-      DMAP_CODE_DAAP_BROWSECOMPOSERLISTING,
-      "daap.browsecomposerlisting",
-      container),
-  DMAP_CODE_DAAP_BROWSEGENRELISTING: DmapCode(
-      DMAP_CODE_DAAP_BROWSEGENRELISTING, "daap.browsegenrelisting", container),
-  DMAP_CODE_DAAP_BASEPLAYLIST:
-      DmapCode(DMAP_CODE_DAAP_BASEPLAYLIST, "daap.baseplaylist", byte),
-  DMAP_CODE_DAAP_DATABASEBROWSE:
-      DmapCode(DMAP_CODE_DAAP_DATABASEBROWSE, "daap.databasebrowse", container),
-  DMAP_CODE_DAAP_DATABASESONGS:
-      DmapCode(DMAP_CODE_DAAP_DATABASESONGS, "daap.databasesongs", container),
-  DMAP_CODE_COM_APPLE_ITUNES_ADAM_IDS_ARRAY: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ADAM_IDS_ARRAY,
+  dmapCodeDaapBrowseAlbumListing: DmapCode(
+      dmapCodeDaapBrowseAlbumListing, "daap.browsealbumlisting", container),
+  dmapCodeDaapBrowseArtistListing: DmapCode(
+      dmapCodeDaapBrowseArtistListing, "daap.browseartistlisting", container),
+  dmapCodeDaapBrowseComposerListing: DmapCode(dmapCodeDaapBrowseComposerListing,
+      "daap.browsecomposerlisting", container),
+  dmapCodeDaapBrowseGenreListing: DmapCode(
+      dmapCodeDaapBrowseGenreListing, "daap.browsegenrelisting", container),
+  dmapCodeDaapBasePlaylist:
+      DmapCode(dmapCodeDaapBasePlaylist, "daap.baseplaylist", byte),
+  dmapCodeDaapDatabaseBrowse:
+      DmapCode(dmapCodeDaapDatabaseBrowse, "daap.databasebrowse", container),
+  dmapCodeDaapDatabaseSongs:
+      DmapCode(dmapCodeDaapDatabaseSongs, "daap.databasesongs", container),
+  dmapCodeComAppleItunesAdamIdsArray: DmapCode(
+      dmapCodeComAppleItunesAdamIdsArray,
       "com.apple.itunes.adam-ids-array",
       container),
-  DMAP_CODE_COM_APPLE_ITUNES_ITMS_ARTISTID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ITMS_ARTISTID,
+  dmapCodeComAppleItunesItmsArtistId: DmapCode(
+      dmapCodeComAppleItunesItmsArtistId,
       "com.apple.itunes.itms-artistid",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_ITMS_COMPOSERID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ITMS_COMPOSERID,
+  dmapCodeComAppleItunesItmsComposerId: DmapCode(
+      dmapCodeComAppleItunesItmsComposerId,
       "com.apple.itunes.itms-composerid",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_CONTENT_RATING: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_CONTENT_RATING,
+  dmapCodeComAppleItunesContentRating: DmapCode(
+      dmapCodeComAppleItunesContentRating,
       "com.apple.itunes.content-rating",
       string),
-  DMAP_CODE_COM_APPLE_ITUNES_DRM_PLATFORM_ID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_DRM_PLATFORM_ID,
+  dmapCodeComAppleItunesDrmPlatformId: DmapCode(
+      dmapCodeComAppleItunesDrmPlatformId,
       "com.apple.itunes.drm-platform-id",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_DRM_USER_ID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_DRM_USER_ID,
-      "com.apple.itunes.drm-user-id",
-      long),
-  DMAP_CODE_COM_APPLE_ITUNES_DRM_VERSIONS: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_DRM_VERSIONS,
-      "com.apple.itunes.drm-versions",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_EPISODE_NUM_STR: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_EPISODE_NUM_STR,
+  dmapCodeComAppleItunesDrmUserId: DmapCode(
+      dmapCodeComAppleItunesDrmUserId, "com.apple.itunes.drm-user-id", long),
+  dmapCodeComAppleItunesDrmVersions: DmapCode(dmapCodeComAppleItunesDrmVersions,
+      "com.apple.itunes.drm-versions", integer),
+  dmapCodeComAppleItunesEpisodeNumStr: DmapCode(
+      dmapCodeComAppleItunesEpisodeNumStr,
       "com.apple.itunes.episode-num-str",
       string),
-  DMAP_CODE_COM_APPLE_ITUNES_EPISODE_SORT: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_EPISODE_SORT,
-      "com.apple.itunes.episode-sort",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_REQ_FPLAY, "com.apple.itunes.req-fplay", byte),
-  DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DR: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DR,
+  dmapCodeComAppleItunesEpisodeSort: DmapCode(dmapCodeComAppleItunesEpisodeSort,
+      "com.apple.itunes.episode-sort", integer),
+  dmapCodeComAppleItunesReqFplay: DmapCode(
+      dmapCodeComAppleItunesReqFplay, "com.apple.itunes.req-fplay", byte),
+  dmapCodeComAppleItunesGaplessEncDr: DmapCode(
+      dmapCodeComAppleItunesGaplessEncDr,
       "com.apple.itunes.gapless-enc-dr",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DEL: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_ENC_DEL,
+  dmapCodeComAppleItunesGaplessEncDel: DmapCode(
+      dmapCodeComAppleItunesGaplessEncDel,
       "com.apple.itunes.gapless-enc-del",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_HEUR: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_HEUR,
-      "com.apple.itunes.gapless-heur",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_ITMS_GENREID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ITMS_GENREID,
-      "com.apple.itunes.itms-genreid",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_RESY: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_RESY,
-      "com.apple.itunes.gapless-resy",
-      long),
-  DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_DUR: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_GAPLESS_DUR,
-      "com.apple.itunes.gapless-dur",
-      long),
-  DMAP_CODE_COM_APPLE_ITUNES_IS_HD_VIDEO: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_IS_HD_VIDEO,
-      "com.apple.itunes.is-hd-video",
-      byte),
-  DMAP_CODE_COM_APPLE_ITUNES_HAS_VIDEO: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_HAS_VIDEO, "com.apple.itunes.has-video", byte),
-  DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY1_ID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY1_ID,
-      "com.apple.itunes.drm-key1-id",
-      long),
-  DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY2_ID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_DRM_KEY2_ID,
-      "com.apple.itunes.drm-key2-id",
-      long),
-  DMAP_CODE_COM_APPLE_ITUNES_EXTENDED_MEDIA_KIND: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_EXTENDED_MEDIA_KIND,
+  dmapCodeComAppleItunesGaplessHeur: DmapCode(dmapCodeComAppleItunesGaplessHeur,
+      "com.apple.itunes.gapless-heur", integer),
+  dmapCodeComAppleItunesItmsGenreId: DmapCode(dmapCodeComAppleItunesItmsGenreId,
+      "com.apple.itunes.itms-genreid", integer),
+  dmapCodeComAppleItunesGaplessResy: DmapCode(
+      dmapCodeComAppleItunesGaplessResy, "com.apple.itunes.gapless-resy", long),
+  dmapCodeComAppleItunesGaplessDur: DmapCode(
+      dmapCodeComAppleItunesGaplessDur, "com.apple.itunes.gapless-dur", long),
+  dmapCodeComAppleItunesIsHdVideo: DmapCode(
+      dmapCodeComAppleItunesIsHdVideo, "com.apple.itunes.is-hd-video", byte),
+  dmapCodeComAppleItunesHasVideo: DmapCode(
+      dmapCodeComAppleItunesHasVideo, "com.apple.itunes.has-video", byte),
+  dmapCodeComAppleItunesDrmKey1Id: DmapCode(
+      dmapCodeComAppleItunesDrmKey1Id, "com.apple.itunes.drm-key1-id", long),
+  dmapCodeComAppleItunesDrmKey2Id: DmapCode(
+      dmapCodeComAppleItunesDrmKey2Id, "com.apple.itunes.drm-key2-id", long),
+  dmapCodeComAppleItunesExtendedMediaKind: DmapCode(
+      dmapCodeComAppleItunesExtendedMediaKind,
       "com.apple.itunes.extended-media-kind",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_MEDIAKIND: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_MEDIAKIND, "com.apple.itunes.mediakind", byte),
-  DMAP_CODE_COM_APPLE_ITUNES_NON_DRM_USER_ID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_NON_DRM_USER_ID,
+  dmapCodeComAppleItunesMediaKind: DmapCode(
+      dmapCodeComAppleItunesMediaKind, "com.apple.itunes.mediakind", byte),
+  dmapCodeComAppleItunesNonDrmUserId: DmapCode(
+      dmapCodeComAppleItunesNonDrmUserId,
       "com.apple.itunes.non-drm-user-id",
       long),
-  DMAP_CODE_COM_APPLE_ITUNES_NETWORK_NAME: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_NETWORK_NAME,
-      "com.apple.itunes.network-name",
-      string),
-  DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME,
-      "com.apple.itunes.norm-volume",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST,
-      "com.apple.itunes.is-podcast",
-      byte),
-  DMAP_CODE_COM_APPLE_ITUNES_ITMS_PLAYLISTID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ITMS_PLAYLISTID,
+  dmapCodeComAppleItunesNetworkName: DmapCode(dmapCodeComAppleItunesNetworkName,
+      "com.apple.itunes.network-name", string),
+  dmapCodeComAppleItunesNormVolume: DmapCode(dmapCodeComAppleItunesNormVolume,
+      "com.apple.itunes.norm-volume", integer),
+  dmapCodeComAppleItunesIsPodcast: DmapCode(
+      dmapCodeComAppleItunesIsPodcast, "com.apple.itunes.is-podcast", byte),
+  dmapCodeComAppleItunesItmsPlaylistId: DmapCode(
+      dmapCodeComAppleItunesItmsPlaylistId,
       "com.apple.itunes.itms-playlistid",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST_PLAYLIST: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST_PLAYLIST,
+  dmapCodeComAppleItunesIsPodcastPlaylist: DmapCode(
+      dmapCodeComAppleItunesIsPodcastPlaylist,
       "com.apple.itunes.is-podcast-playlist",
       byte),
-  DMAP_CODE_COM_APPLE_ITUNES_SPECIAL_PLAYLIST: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_SPECIAL_PLAYLIST,
+  dmapCodeComAppleItunesSpecialPlaylist: DmapCode(
+      dmapCodeComAppleItunesSpecialPlaylist,
       "com.apple.itunes.special-playlist",
       byte),
-  DMAP_CODE_COM_APPLE_ITUNES_ITMS_STOREFRONTID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ITMS_STOREFRONTID,
+  dmapCodeComAppleItunesStoreFrontId: DmapCode(
+      dmapCodeComAppleItunesStoreFrontId,
       "com.apple.itunes.itms-storefrontid",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_SAVED_GENIUS: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_SAVED_GENIUS,
-      "com.apple.itunes.saved-genius",
-      byte),
-  DMAP_CODE_COM_APPLE_ITUNES_ITMS_SONGID: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_ITMS_SONGID,
-      "com.apple.itunes.itms-songid",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_SERIES_NAME: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_SERIES_NAME,
-      "com.apple.itunes.series-name",
-      string),
-  DMAP_CODE_COM_APPLE_ITUNES_SMART_PLAYLIST: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_SMART_PLAYLIST,
+  dmapCodeComAppleItunesSavedGenius: DmapCode(
+      dmapCodeComAppleItunesSavedGenius, "com.apple.itunes.saved-genius", byte),
+  dmapCodeComAppleItunesItmsSongId: DmapCode(dmapCodeComAppleItunesItmsSongId,
+      "com.apple.itunes.itms-songid", integer),
+  dmapCodeComAppleItunesSeriesName: DmapCode(
+      dmapCodeComAppleItunesSeriesName, "com.apple.itunes.series-name", string),
+  dmapCodeComAppleItunesSmartPlaylist: DmapCode(
+      dmapCodeComAppleItunesSmartPlaylist,
       "com.apple.itunes.smart-playlist",
       byte),
-  DMAP_CODE_COM_APPLE_ITUNES_SEASON_NUM: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_SEASON_NUM,
-      "com.apple.itunes.season-num",
-      integer),
-  DMAP_CODE_COM_APPLE_ITUNES_MUSIC_SHARING_VERSION: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_MUSIC_SHARING_VERSION,
+  dmapCodeComAppleItunesSeasonNum: DmapCode(
+      dmapCodeComAppleItunesSeasonNum, "com.apple.itunes.season-num", integer),
+  dmapCodeComAppleItunesMusicSharingVersion: DmapCode(
+      dmapCodeComAppleItunesMusicSharingVersion,
       "com.apple.itunes.music-sharing-version",
       integer),
-  DMAP_CODE_DAAP_SONGGROUPING:
-      DmapCode(DMAP_CODE_DAAP_SONGGROUPING, "daap.songgrouping", string),
-  DMAP_CODE_DAAP_DATABASEPLAYLISTS: DmapCode(
-      DMAP_CODE_DAAP_DATABASEPLAYLISTS, "daap.databaseplaylists", container),
-  DMAP_CODE_DAAP_PLAYLISTREPEATMODE: DmapCode(
-      DMAP_CODE_DAAP_PLAYLISTREPEATMODE, "daap.playlistrepeatmode", byte),
-  DMAP_CODE_DAAP_PROTOCOLVERSION:
-      DmapCode(DMAP_CODE_DAAP_PROTOCOLVERSION, "daap.protocolversion", version),
-  DMAP_CODE_DAAP_PLAYLISTSHUFFLEMODE: DmapCode(
-      DMAP_CODE_DAAP_PLAYLISTSHUFFLEMODE, "daap.playlistshufflemode", byte),
-  DMAP_CODE_DAAP_PLAYLISTSONGS:
-      DmapCode(DMAP_CODE_DAAP_PLAYLISTSONGS, "daap.playlistsongs", container),
-  DMAP_CODE_DAAP_RESOLVEINFO:
-      DmapCode(DMAP_CODE_DAAP_RESOLVEINFO, "daap.resolveinfo", container),
-  DMAP_CODE_DAAP_RESOLVE:
-      DmapCode(DMAP_CODE_DAAP_RESOLVE, "daap.resolve", container),
-  DMAP_CODE_DAAP_SONGALBUMARTIST:
-      DmapCode(DMAP_CODE_DAAP_SONGALBUMARTIST, "daap.songalbumartist", string),
-  DMAP_CODE_DAAP_SONGALBUMID:
-      DmapCode(DMAP_CODE_DAAP_SONGALBUMID, "daap.songalbumid", long),
-  DMAP_CODE_DAAP_SONGALBUM:
-      DmapCode(DMAP_CODE_DAAP_SONGALBUM, "daap.songalbum", string),
-  DMAP_CODE_DAAP_SONGARTIST:
-      DmapCode(DMAP_CODE_DAAP_SONGARTIST, "daap.songartist", string),
-  DMAP_CODE_DAAP_BOOKMARKABLE:
-      DmapCode(DMAP_CODE_DAAP_BOOKMARKABLE, "daap.bookmarkable", byte),
-  DMAP_CODE_DAAP_SONGBOOKMARK:
-      DmapCode(DMAP_CODE_DAAP_SONGBOOKMARK, "daap.songbookmark", integer),
-  DMAP_CODE_DAAP_SONGBITRATE:
-      DmapCode(DMAP_CODE_DAAP_SONGBITRATE, "daap.songbitrate", short),
-  DMAP_CODE_DAAP_SONGBEATSPERMINUTE: DmapCode(
-      DMAP_CODE_DAAP_SONGBEATSPERMINUTE, "daap.songbeatsperminute", short),
-  DMAP_CODE_DAAP_SONGCODECTYPE:
-      DmapCode(DMAP_CODE_DAAP_SONGCODECTYPE, "daap.songcodectype", integer),
-  DMAP_CODE_DAAP_SONGCOMMENT:
-      DmapCode(DMAP_CODE_DAAP_SONGCOMMENT, "daap.songcomment", string),
-  DMAP_CODE_DAAP_SONGCONTENTDESCRIPTION: DmapCode(
-      DMAP_CODE_DAAP_SONGCONTENTDESCRIPTION,
+  dmapCodeDaapSongGrouping:
+      DmapCode(dmapCodeDaapSongGrouping, "daap.songgrouping", string),
+  dmapCodeDaapDatabasePlaylists: DmapCode(
+      dmapCodeDaapDatabasePlaylists, "daap.databaseplaylists", container),
+  dmapCodeDaapPlaylistRepeatMode:
+      DmapCode(dmapCodeDaapPlaylistRepeatMode, "daap.playlistrepeatmode", byte),
+  dmapCodeDaapProtocolVersion:
+      DmapCode(dmapCodeDaapProtocolVersion, "daap.protocolversion", version),
+  dmapCodeDaapPlaylistsShuffleMode: DmapCode(
+      dmapCodeDaapPlaylistsShuffleMode, "daap.playlistshufflemode", byte),
+  dmapCodeDaapPlaylistSongs:
+      DmapCode(dmapCodeDaapPlaylistSongs, "daap.playlistsongs", container),
+  dmapCodeDaapResolveInfo:
+      DmapCode(dmapCodeDaapResolveInfo, "daap.resolveinfo", container),
+  dmapCodeDaapResolve: DmapCode(dmapCodeDaapResolve, "daap.resolve", container),
+  dmapCodeDaapSongAlbumArtist:
+      DmapCode(dmapCodeDaapSongAlbumArtist, "daap.songalbumartist", string),
+  dmapCodeDaapSongAlbumId:
+      DmapCode(dmapCodeDaapSongAlbumId, "daap.songalbumid", long),
+  dmapCodeDaapSongAlbum:
+      DmapCode(dmapCodeDaapSongAlbum, "daap.songalbum", string),
+  dmapCodeDaapSongArtist:
+      DmapCode(dmapCodeDaapSongArtist, "daap.songartist", string),
+  dmapCodeDaapBookmarkable:
+      DmapCode(dmapCodeDaapBookmarkable, "daap.bookmarkable", byte),
+  dmapCodeDaapSongBookmark:
+      DmapCode(dmapCodeDaapSongBookmark, "daap.songbookmark", integer),
+  dmapCodeDaapSongBitrate:
+      DmapCode(dmapCodeDaapSongBitrate, "daap.songbitrate", short),
+  dmapCodeDaapSongBeatsPerMinute: DmapCode(
+      dmapCodeDaapSongBeatsPerMinute, "daap.songbeatsperminute", short),
+  dmapCodeDaapSongCodecType:
+      DmapCode(dmapCodeDaapSongCodecType, "daap.songcodectype", integer),
+  dmapCodeDaapSongComment:
+      DmapCode(dmapCodeDaapSongComment, "daap.songcomment", string),
+  dmapCodeDaapSongContentDescription: DmapCode(
+      dmapCodeDaapSongContentDescription,
       "daap.songcontentdescription",
       string),
-  DMAP_CODE_DAAP_SONGCOMPILATION:
-      DmapCode(DMAP_CODE_DAAP_SONGCOMPILATION, "daap.songcompilation", byte),
-  DMAP_CODE_DAAP_SONGCOMPOSER:
-      DmapCode(DMAP_CODE_DAAP_SONGCOMPOSER, "daap.songcomposer", string),
-  DMAP_CODE_DAAP_SONGCONTENTRATING: DmapCode(
-      DMAP_CODE_DAAP_SONGCONTENTRATING, "daap.songcontentrating", byte),
-  DMAP_CODE_DAAP_SONGCODECSUBTYPE: DmapCode(
-      DMAP_CODE_DAAP_SONGCODECSUBTYPE, "daap.songcodecsubtype", integer),
-  DMAP_CODE_DAAP_SONGCATEGORY:
-      DmapCode(DMAP_CODE_DAAP_SONGCATEGORY, "daap.songcategory", string),
-  DMAP_CODE_DAAP_SONGDATEADDED:
-      DmapCode(DMAP_CODE_DAAP_SONGDATEADDED, "daap.songdateadded", timestamp),
-  DMAP_CODE_DAAP_SONGDISABLED:
-      DmapCode(DMAP_CODE_DAAP_SONGDISABLED, "daap.songdisabled", byte),
-  DMAP_CODE_DAAP_SONGDISCCOUNT:
-      DmapCode(DMAP_CODE_DAAP_SONGDISCCOUNT, "daap.songdisccount", short),
-  DMAP_CODE_DAAP_SONGDATAKIND:
-      DmapCode(DMAP_CODE_DAAP_SONGDATAKIND, "daap.songdatakind", byte),
-  DMAP_CODE_DAAP_SONGDATEMODIFIED: DmapCode(
-      DMAP_CODE_DAAP_SONGDATEMODIFIED, "daap.songdatemodified", timestamp),
-  DMAP_CODE_DAAP_SONGDISCKNUMBER:
-      DmapCode(DMAP_CODE_DAAP_SONGDISCKNUMBER, "daap.songdiscnumber", short),
-  DMAP_CODE_DAAP_SONGDATEPURCHASED: DmapCode(
-      DMAP_CODE_DAAP_SONGDATEPURCHASED, "daap.songdatepurchased", timestamp),
-  DMAP_CODE_DAAP_SONGDATERELEASED: DmapCode(
-      DMAP_CODE_DAAP_SONGDATERELEASED, "daap.songdatereleased", timestamp),
-  DMAP_CODE_DAAP_SONGDESCRIPTION:
-      DmapCode(DMAP_CODE_DAAP_SONGDESCRIPTION, "daap.songdescription", string),
-  DMAP_CODE_DAAP_SONGEXTRADATA:
-      DmapCode(DMAP_CODE_DAAP_SONGEXTRADATA, "daap.songextradata", short),
-  DMAP_CODE_DAAP_SONGEQPRESET:
-      DmapCode(DMAP_CODE_DAAP_SONGEQPRESET, "daap.songeqpreset", string),
-  DMAP_CODE_DAAP_SONGFORMAT:
-      DmapCode(DMAP_CODE_DAAP_SONGFORMAT, "daap.songformat", string),
-  DMAP_CODE_DAAP_SONGGENRE:
-      DmapCode(DMAP_CODE_DAAP_SONGGENRE, "daap.songgenre", string),
-  DMAP_CODE_DAAP_SONGGAPLESS:
-      DmapCode(DMAP_CODE_DAAP_SONGGAPLESS, "daap.songgapless", byte),
-  DMAP_CODE_DAAP_SONGHASBEENPLAYED: DmapCode(
-      DMAP_CODE_DAAP_SONGHASBEENPLAYED, "daap.songhasbeenplayed", byte),
-  DMAP_CODE_DAAP_SONGKEYWORDS:
-      DmapCode(DMAP_CODE_DAAP_SONGKEYWORDS, "daap.songkeywords", string),
-  DMAP_CODE_DAAP_SONGLONGCONTENTDESCRIPTION: DmapCode(
-      DMAP_CODE_DAAP_SONGLONGCONTENTDESCRIPTION,
+  dmapCodeDaapSongCompilation:
+      DmapCode(dmapCodeDaapSongCompilation, "daap.songcompilation", byte),
+  dmapCodeDaapSongComposer:
+      DmapCode(dmapCodeDaapSongComposer, "daap.songcomposer", string),
+  dmapCodeDaapSongContentRating:
+      DmapCode(dmapCodeDaapSongContentRating, "daap.songcontentrating", byte),
+  dmapCodeDaapSongCodecSubtype:
+      DmapCode(dmapCodeDaapSongCodecSubtype, "daap.songcodecsubtype", integer),
+  dmapCodeDaapSongCategory:
+      DmapCode(dmapCodeDaapSongCategory, "daap.songcategory", string),
+  dmapCodeDaapSongDateAdded:
+      DmapCode(dmapCodeDaapSongDateAdded, "daap.songdateadded", timestamp),
+  dmapCodeDaapSongDisabled:
+      DmapCode(dmapCodeDaapSongDisabled, "daap.songdisabled", byte),
+  dmapCodeDaapSongDiscCount:
+      DmapCode(dmapCodeDaapSongDiscCount, "daap.songdisccount", short),
+  dmapCodeDaapSongDataKind:
+      DmapCode(dmapCodeDaapSongDataKind, "daap.songdatakind", byte),
+  dmapCodeDaapSongDateModified: DmapCode(
+      dmapCodeDaapSongDateModified, "daap.songdatemodified", timestamp),
+  dmapCodeDaapSongDiscNumber:
+      DmapCode(dmapCodeDaapSongDiscNumber, "daap.songdiscnumber", short),
+  dmapCodeDaapSongDatePurchased: DmapCode(
+      dmapCodeDaapSongDatePurchased, "daap.songdatepurchased", timestamp),
+  dmapCodeDaapSongDateReleased: DmapCode(
+      dmapCodeDaapSongDateReleased, "daap.songdatereleased", timestamp),
+  dmapCodeDaapSongDescription:
+      DmapCode(dmapCodeDaapSongDescription, "daap.songdescription", string),
+  dmapCodeDaapSongExtraData:
+      DmapCode(dmapCodeDaapSongExtraData, "daap.songextradata", short),
+  dmapCodeDaapSongEqPreset:
+      DmapCode(dmapCodeDaapSongEqPreset, "daap.songeqpreset", string),
+  dmapCodeDaapSongFormat:
+      DmapCode(dmapCodeDaapSongFormat, "daap.songformat", string),
+  dmapCodeDaapSongGenre:
+      DmapCode(dmapCodeDaapSongGenre, "daap.songgenre", string),
+  dmapCodeDaapSongGapless:
+      DmapCode(dmapCodeDaapSongGapless, "daap.songgapless", byte),
+  dmapCodeDaapSongHasBeenPlayed:
+      DmapCode(dmapCodeDaapSongHasBeenPlayed, "daap.songhasbeenplayed", byte),
+  dmapCodeDaapSongKeywords:
+      DmapCode(dmapCodeDaapSongKeywords, "daap.songkeywords", string),
+  dmapCodeDaapSongLongContentDescription: DmapCode(
+      dmapCodeDaapSongLongContentDescription,
       "daap.songlongcontentdescription",
       string),
-  DMAP_CODE_DAAP_SONGLONGSIZE:
-      DmapCode(DMAP_CODE_DAAP_SONGLONGSIZE, "daap.songlongsize", string),
-  DMAP_CODE_DAAP_SONGSONPODCASTURL: DmapCode(
-      DMAP_CODE_DAAP_SONGSONPODCASTURL, "daap.songsonpodcasturl", string),
-  DMAP_CODE_DAAP_SONGRELATIVEVOLUME: DmapCode(DMAP_CODE_DAAP_SONGRELATIVEVOLUME,
-      "daap.songrelativevolume", unsignedByte),
-  DMAP_CODE_DAAP_SORTARTIST:
-      DmapCode(DMAP_CODE_DAAP_SORTARTIST, "daap.sortartist", string),
-  DMAP_CODE_DAAP_SORTCOMPOSER:
-      DmapCode(DMAP_CODE_DAAP_SORTCOMPOSER, "daap.sortcomposer", string),
-  DMAP_CODE_DAAP_SORTALBUMARTIST:
-      DmapCode(DMAP_CODE_DAAP_SORTALBUMARTIST, "daap.sortalbumartist", string),
-  DMAP_CODE_DAAP_SORTNAME:
-      DmapCode(DMAP_CODE_DAAP_SORTNAME, "daap.sortname", string),
-  DMAP_CODE_DAAP_SONGSTOPTIME:
-      DmapCode(DMAP_CODE_DAAP_SONGSTOPTIME, "daap.songstoptime", integer),
-  DMAP_CODE_DAAP_SONGSAMPLERATE:
-      DmapCode(DMAP_CODE_DAAP_SONGSAMPLERATE, "daap.songsamplerate", integer),
-  DMAP_CODE_DAAP_SONGSERIESNAME:
-      DmapCode(DMAP_CODE_DAAP_SONGSERIESNAME, "daap.sortseriesname", string),
-  DMAP_CODE_DAAP_SONGSTARTTIME:
-      DmapCode(DMAP_CODE_DAAP_SONGSTARTTIME, "daap.songstarttime", integer),
-  DMAP_CODE_DAAP_SORTALBUM:
-      DmapCode(DMAP_CODE_DAAP_SORTALBUM, "daap.sortalbum", string),
-  DMAP_CODE_DAAP_SONGSIZE:
-      DmapCode(DMAP_CODE_DAAP_SONGSIZE, "daap.songsize", integer),
-  DMAP_CODE_DAAP_SONGTRACKCOUNT:
-      DmapCode(DMAP_CODE_DAAP_SONGTRACKCOUNT, "daap.songtrackcount", short),
-  DMAP_CODE_DAAP_SONGTIME:
-      DmapCode(DMAP_CODE_DAAP_SONGTIME, "daap.songtime", integer),
-  DMAP_CODE_DAAP_SONGTRACKNUMBER:
-      DmapCode(DMAP_CODE_DAAP_SONGTRACKNUMBER, "daap.songtracknumber", short),
-  DMAP_CODE_DAAP_SONGDATAURL:
-      DmapCode(DMAP_CODE_DAAP_SONGDATAURL, "daap.songdataurl", string),
-  DMAP_CODE_DAAP_SONGUSERRATING:
-      DmapCode(DMAP_CODE_DAAP_SONGUSERRATING, "daap.songuserrating", byte),
-  DMAP_CODE_DAAP_SONGYEAR:
-      DmapCode(DMAP_CODE_DAAP_SONGYEAR, "daap.songyear", short),
-  DMAP_CODE_DAAP_SUPPORTSEXTRADATA: DmapCode(
-      DMAP_CODE_DAAP_SUPPORTSEXTRADATA, "daap.supportsextradata", short),
-  DMAP_CODE_DAAP_SERVERDATABASES: DmapCode(
-      DMAP_CODE_DAAP_SERVERDATABASES, "daap.serverdatabases", container),
-  DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CLIENT_VOTE: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CLIENT_VOTE,
+  dmapCodeDaapSongLongSize:
+      DmapCode(dmapCodeDaapSongLongSize, "daap.songlongsize", string),
+  dmapCodeDaapSongPodcastUrl:
+      DmapCode(dmapCodeDaapSongPodcastUrl, "daap.songsonpodcasturl", string),
+  dmapCodeDaapSongRelativeVolume: DmapCode(
+      dmapCodeDaapSongRelativeVolume, "daap.songrelativevolume", unsignedByte),
+  dmapCodeDaapSortArtist:
+      DmapCode(dmapCodeDaapSortArtist, "daap.sortartist", string),
+  dmapCodeDaapSortComposer:
+      DmapCode(dmapCodeDaapSortComposer, "daap.sortcomposer", string),
+  dmapCodeDaapSortAlbumArtist:
+      DmapCode(dmapCodeDaapSortAlbumArtist, "daap.sortalbumartist", string),
+  dmapCodeDaapSortName: DmapCode(dmapCodeDaapSortName, "daap.sortname", string),
+  dmapCodeDaapSongStopTime:
+      DmapCode(dmapCodeDaapSongStopTime, "daap.songstoptime", integer),
+  dmapCodeDaapSongSampleRate:
+      DmapCode(dmapCodeDaapSongSampleRate, "daap.songsamplerate", integer),
+  dmapCodeDaapSongSeriesName:
+      DmapCode(dmapCodeDaapSongSeriesName, "daap.sortseriesname", string),
+  dmapCodeDaapSongStartTime:
+      DmapCode(dmapCodeDaapSongStartTime, "daap.songstarttime", integer),
+  dmapCodeDaapSongSortAlbum:
+      DmapCode(dmapCodeDaapSongSortAlbum, "daap.sortalbum", string),
+  dmapCodeDaapSongSize:
+      DmapCode(dmapCodeDaapSongSize, "daap.songsize", integer),
+  dmapCodeDaapSongTrackCount:
+      DmapCode(dmapCodeDaapSongTrackCount, "daap.songtrackcount", short),
+  dmapCodeDaapSongTime:
+      DmapCode(dmapCodeDaapSongTime, "daap.songtime", integer),
+  dmapCodeDaapSongTrackNumber:
+      DmapCode(dmapCodeDaapSongTrackNumber, "daap.songtracknumber", short),
+  dmapCodeDaapSongDataUrl:
+      DmapCode(dmapCodeDaapSongDataUrl, "daap.songdataurl", string),
+  dmapCodeDaapSongUserRating:
+      DmapCode(dmapCodeDaapSongUserRating, "daap.songuserrating", byte),
+  dmapCodeDaapSongYear: DmapCode(dmapCodeDaapSongYear, "daap.songyear", short),
+  dmapCodeDaapSupportsExtraData:
+      DmapCode(dmapCodeDaapSupportsExtraData, "daap.supportsextradata", short),
+  dmapCodeDaapServerDatabases:
+      DmapCode(dmapCodeDaapServerDatabases, "daap.serverdatabases", container),
+  dmapCodeComAppleItunesJukeboxClientVote: DmapCode(
+      dmapCodeComAppleItunesJukeboxClientVote,
       "com.apple.itunes.jukebox-client-vote",
       unsignedByte),
-  DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CURRENT: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_CURRENT,
+  dmapCodeComAppleItunesJukeboxCurrent: DmapCode(
+      dmapCodeComAppleItunesJukeboxCurrent,
       "com.apple.itunes.jukebox-current",
       integer),
-  DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_VOTE: DmapCode(
-      DMAP_CODE_COM_APPLE_ITUNES_JUKEBOX_VOTE,
-      "com.apple.itunes.jukebox-vote",
-      integer),
-  DMAP_CODE_DMAP_HASCHILDCONTAINERS: DmapCode(
-      DMAP_CODE_DMAP_HASCHILDCONTAINERS, "dmap.haschildcontainers", byte),
-  DMAP_CODE_DMAP_BAG: DmapCode(DMAP_CODE_DMAP_BAG, "dmap.bag", container),
-  DMAP_CODE_DMAP_CONTENTCODESRESPONSE: DmapCode(
-      DMAP_CODE_DMAP_CONTENTCODESRESPONSE,
-      "dmap.contentcodesresponse",
-      container),
-  DMAP_CODE_DMAP_CONTENTCODESNAME: DmapCode(
-      DMAP_CODE_DMAP_CONTENTCODESNAME, "dmap.contentcodesname", string),
-  DMAP_CODE_DMAP_CONTENTCODESNUMBER: DmapCode(
-      DMAP_CODE_DMAP_CONTENTCODESNUMBER, "dmap.contentcodesnumber", integer),
-  DMAP_CODE_DMAP_CONTAINER:
-      DmapCode(DMAP_CODE_DMAP_CONTAINER, "dmap.container", container),
-  DMAP_CODE_DMAP_CONTAINERCOUNT:
-      DmapCode(DMAP_CODE_DMAP_CONTAINERCOUNT, "dmap.containercount", integer),
-  DMAP_CODE_DMAP_CONTAINERITEMID:
-      DmapCode(DMAP_CODE_DMAP_CONTAINERITEMID, "dmap.containeritemid", integer),
-  DMAP_CODE_DMAP_CONTENTCODESTYPE:
-      DmapCode(DMAP_CODE_DMAP_CONTENTCODESTYPE, "dmap.contentcodestype", short),
-  DMAP_CODE_DMAP_DICTIONARY:
-      DmapCode(DMAP_CODE_DMAP_DICTIONARY, "dmap.dictionary", container),
-  DMAP_CODE_DMAP_EDITCOMMANDSUPPORTED: DmapCode(
-      DMAP_CODE_DMAP_EDITCOMMANDSUPPORTED, "dmap.editcommandssupported", long),
-  DMAP_CODE_DMAP_ITEMID:
-      DmapCode(DMAP_CODE_DMAP_ITEMID, "dmap.itemid", integer),
-  DMAP_CODE_DMAP_ITEMKIND:
-      DmapCode(DMAP_CODE_DMAP_ITEMKIND, "dmap.itemkind", byte),
-  DMAP_CODE_DMAP_ITEMCOUNT:
-      DmapCode(DMAP_CODE_DMAP_ITEMCOUNT, "dmap.itemcount", integer),
-  DMAP_CODE_DMAP_ITEMNAME:
-      DmapCode(DMAP_CODE_DMAP_ITEMNAME, "dmap.itemname", string),
-  DMAP_CODE_DMAP_LISTING:
-      DmapCode(DMAP_CODE_DMAP_LISTING, "dmap.listing", container),
-  DMAP_CODE_DMAP_SESSIONID:
-      DmapCode(DMAP_CODE_DMAP_SESSIONID, "dmap.sessionid", integer),
-  DMAP_CODE_DMAP_LISTINGITEM:
-      DmapCode(DMAP_CODE_DMAP_LISTINGITEM, "dmap.listingitem", container),
-  DMAP_CODE_DMAP_LOGINRESPONSE:
-      DmapCode(DMAP_CODE_DMAP_LOGINRESPONSE, "dmap.loginresponse", container),
-  DMAP_CODE_DMAP_PARENTCONTAINERID: DmapCode(
-      DMAP_CODE_DMAP_PARENTCONTAINERID, "dmap.parentcontainerid", integer),
-  DMAP_CODE_DMAP_PERSISTENTID:
-      DmapCode(DMAP_CODE_DMAP_PERSISTENTID, "dmap.persistentid", long),
-  DMAP_CODE_DMAP_PROTOCOLVERSION:
-      DmapCode(DMAP_CODE_DMAP_PROTOCOLVERSION, "dmap.protocolversion", version),
-  DMAP_CODE_DMAP_RETURNEDCOUNT:
-      DmapCode(DMAP_CODE_DMAP_RETURNEDCOUNT, "dmap.returnedcount", integer),
-  DMAP_CODE_DMAP_SUPPORTSAUTOLOGOUT: DmapCode(
-      DMAP_CODE_DMAP_SUPPORTSAUTOLOGOUT, "dmap.supportsautologout", byte),
-  DMAP_CODE_DMAP_AUTHENTICATIONSCHEMES: DmapCode(
-      DMAP_CODE_DMAP_AUTHENTICATIONSCHEMES,
-      "dmap.authenticationschemes",
-      integer),
-  DMAP_CODE_DMAP_AUTHENTICATIONMETHOD: DmapCode(
-      DMAP_CODE_DMAP_AUTHENTICATIONMETHOD, "dmap.authenticationmethod", byte),
-  DMAP_CODE_DMAP_SUPPORTSBROWSE:
-      DmapCode(DMAP_CODE_DMAP_SUPPORTSBROWSE, "dmap.supportsbrowse", byte),
-  DMAP_CODE_DMAP_DATABASESCOUNT:
-      DmapCode(DMAP_CODE_DMAP_DATABASESCOUNT, "dmap.databasescount", integer),
-  DMAP_CODE_DMAP_SUPPORTSEXTENSIONS: DmapCode(
-      DMAP_CODE_DMAP_SUPPORTSEXTENSIONS, "dmap.supportsextensions", byte),
-  DMAP_CODE_DMAP_SUPPORTSINDEX:
-      DmapCode(DMAP_CODE_DMAP_SUPPORTSINDEX, "dmap.supportsindex", byte),
-  DMAP_CODE_DMAP_LOGINREQUIRED:
-      DmapCode(DMAP_CODE_DMAP_LOGINREQUIRED, "dmap.loginrequired", byte),
-  DMAP_CODE_DMAP_SUPPORTSPERSISTENTIDS: DmapCode(
-      DMAP_CODE_DMAP_SUPPORTSPERSISTENTIDS, "dmap.supportspersistentids", byte),
-  DMAP_CODE_DMAP_SUPPORTSQUERY:
-      DmapCode(DMAP_CODE_DMAP_SUPPORTSQUERY, "dmap.supportsquery", byte),
-  DMAP_CODE_DMAP_SUPPORTSRESOLVE:
-      DmapCode(DMAP_CODE_DMAP_SUPPORTSRESOLVE, "dmap.supportsresolve", byte),
-  DMAP_CODE_DMAP_SERVERINFORESPONSE: DmapCode(
-      DMAP_CODE_DMAP_SERVERINFORESPONSE, "dmap.serverinforesponse", container),
-  DMAP_CODE_DMAP_UTCTIME:
-      DmapCode(DMAP_CODE_DMAP_UTCTIME, "dmap.utctime", timestamp),
-  DMAP_CODE_DMAP_TIMEOUTINTERVAL:
-      DmapCode(DMAP_CODE_DMAP_TIMEOUTINTERVAL, "dmap.timeoutinterval", integer),
-  DMAP_CODE_DMAP_UTCOFFSET:
-      DmapCode(DMAP_CODE_DMAP_UTCOFFSET, "dmap.utcoffset", unsignedInteger),
-  DMAP_CODE_DMAP_STATUSSTRING:
-      DmapCode(DMAP_CODE_DMAP_STATUSSTRING, "dmap.statusstring", string),
-  DMAP_CODE_DMAP_STATUS:
-      DmapCode(DMAP_CODE_DMAP_STATUS, "dmap.status", integer),
-  DMAP_CODE_DMAP_SUPPORTSUPDATE:
-      DmapCode(DMAP_CODE_DMAP_SUPPORTSUPDATE, "dmap.supportsupdate", byte),
-  DMAP_CODE_DMAP_SPECIFIEDTOTALCOUNT: DmapCode(
-      DMAP_CODE_DMAP_SPECIFIEDTOTALCOUNT, "dmap.specifiedtotalcount", integer),
-  DMAP_CODE_DMAP_DELETEDIDLISTING: DmapCode(
-      DMAP_CODE_DMAP_DELETEDIDLISTING, "dmap.deletedidlisting", container),
-  DMAP_CODE_DMAP_UPDATERESPONSE:
-      DmapCode(DMAP_CODE_DMAP_UPDATERESPONSE, "dmap.updateresponse", container),
-  DMAP_CODE_DMAP_SERVERREVISION:
-      DmapCode(DMAP_CODE_DMAP_SERVERREVISION, "dmap.serverrevision", integer),
-  DMAP_CODE_DMAP_UPDATETYPE:
-      DmapCode(DMAP_CODE_DMAP_UPDATETYPE, "dmap.updatetype", byte),
-  DMAP_CODE_DPAP_PROTOCOLVERSION:
-      DmapCode(DMAP_CODE_DPAP_PROTOCOLVERSION, "dpap.protocolversion", integer),
-  DMAP_CODE_DPAP_UNKNOWN:
-      DmapCode(DMAP_CODE_DPAP_UNKNOWN, "dpap.unknown", container),
+  dmapCodeComAppleItunesJukeboxVote: DmapCode(dmapCodeComAppleItunesJukeboxVote,
+      "com.apple.itunes.jukebox-vote", integer),
+  dmapCodeDmapHasChildContainers:
+      DmapCode(dmapCodeDmapHasChildContainers, "dmap.haschildcontainers", byte),
+  dmapCodeDmapBag: DmapCode(dmapCodeDmapBag, "dmap.bag", container),
+  dmapCodeDmapContentCodesResponse: DmapCode(
+      dmapCodeDmapContentCodesResponse, "dmap.contentcodesresponse", container),
+  dmapCodeDmapContentCodesName:
+      DmapCode(dmapCodeDmapContentCodesName, "dmap.contentcodesname", string),
+  dmapCodeDmapContentCodesNumber: DmapCode(
+      dmapCodeDmapContentCodesNumber, "dmap.contentcodesnumber", integer),
+  dmapCodeDmapContainer:
+      DmapCode(dmapCodeDmapContainer, "dmap.container", container),
+  dmapCodeDmapContainerCount:
+      DmapCode(dmapCodeDmapContainerCount, "dmap.containercount", integer),
+  dmapCodeDmapContainerItemId:
+      DmapCode(dmapCodeDmapContainerItemId, "dmap.containeritemid", integer),
+  dmapCodeDmapContentCodesType:
+      DmapCode(dmapCodeDmapContentCodesType, "dmap.contentcodestype", short),
+  dmapCodeDmapDictionary:
+      DmapCode(dmapCodeDmapDictionary, "dmap.dictionary", container),
+  dmapCodeDmapEditCommandSupported: DmapCode(
+      dmapCodeDmapEditCommandSupported, "dmap.editcommandssupported", long),
+  dmapCodeDmapItemId: DmapCode(dmapCodeDmapItemId, "dmap.itemid", integer),
+  dmapCodeDmapItemKind: DmapCode(dmapCodeDmapItemKind, "dmap.itemkind", byte),
+  dmapCodeDmapItemCount:
+      DmapCode(dmapCodeDmapItemCount, "dmap.itemcount", integer),
+  dmapCodeDmapItemName: DmapCode(dmapCodeDmapItemName, "dmap.itemname", string),
+  dmapCodeDmapListing: DmapCode(dmapCodeDmapListing, "dmap.listing", container),
+  dmapCodeDmapSessionId:
+      DmapCode(dmapCodeDmapSessionId, "dmap.sessionid", integer),
+  dmapCodeDmapListingItem:
+      DmapCode(dmapCodeDmapListingItem, "dmap.listingitem", container),
+  dmapCodeDmapLoginResponse:
+      DmapCode(dmapCodeDmapLoginResponse, "dmap.loginresponse", container),
+  dmapCodeDmapParentContainerId: DmapCode(
+      dmapCodeDmapParentContainerId, "dmap.parentcontainerid", integer),
+  dmapCodeDmapPersistentId:
+      DmapCode(dmapCodeDmapPersistentId, "dmap.persistentid", long),
+  dmapCodeDmapProtocolVersion:
+      DmapCode(dmapCodeDmapProtocolVersion, "dmap.protocolversion", version),
+  dmapCodeDmapReturnedCount:
+      DmapCode(dmapCodeDmapReturnedCount, "dmap.returnedcount", integer),
+  dmapCodeDmapSupportsAutoLogout:
+      DmapCode(dmapCodeDmapSupportsAutoLogout, "dmap.supportsautologout", byte),
+  dmapCodeDmapAuthenticationSchemes: DmapCode(
+      dmapCodeDmapAuthenticationSchemes, "dmap.authenticationschemes", integer),
+  dmapCodeDmapAuthenticationMethod: DmapCode(
+      dmapCodeDmapAuthenticationMethod, "dmap.authenticationmethod", byte),
+  dmapCodeDmapSupportsBrowse:
+      DmapCode(dmapCodeDmapSupportsBrowse, "dmap.supportsbrowse", byte),
+  dmapCodeDmapDatabasesCount:
+      DmapCode(dmapCodeDmapDatabasesCount, "dmap.databasescount", integer),
+  dmapCodeDmapSupportsExtension:
+      DmapCode(dmapCodeDmapSupportsExtension, "dmap.supportsextensions", byte),
+  dmapCodeDmapSupportsIndex:
+      DmapCode(dmapCodeDmapSupportsIndex, "dmap.supportsindex", byte),
+  dmapCodeDmapLoginRequired:
+      DmapCode(dmapCodeDmapLoginRequired, "dmap.loginrequired", byte),
+  dmapCodeDmapSupportsPersistentIds: DmapCode(
+      dmapCodeDmapSupportsPersistentIds, "dmap.supportspersistentids", byte),
+  dmapCodeDmapSupportsQuery:
+      DmapCode(dmapCodeDmapSupportsQuery, "dmap.supportsquery", byte),
+  dmapCodeDmapSupportsResolve:
+      DmapCode(dmapCodeDmapSupportsResolve, "dmap.supportsresolve", byte),
+  dmapCodeDmapServerInfoResponse: DmapCode(
+      dmapCodeDmapServerInfoResponse, "dmap.serverinforesponse", container),
+  dmapCodeDmapUtcTime: DmapCode(dmapCodeDmapUtcTime, "dmap.utctime", timestamp),
+  dmapCodeDmapTimeoutInterval:
+      DmapCode(dmapCodeDmapTimeoutInterval, "dmap.timeoutinterval", integer),
+  dmapCodeDmapUtcOffset:
+      DmapCode(dmapCodeDmapUtcOffset, "dmap.utcoffset", unsignedInteger),
+  dmapCodeDmapStatusString:
+      DmapCode(dmapCodeDmapStatusString, "dmap.statusstring", string),
+  dmapCodeDmapStatus: DmapCode(dmapCodeDmapStatus, "dmap.status", integer),
+  dmapCodeDmapSupportsUpdate:
+      DmapCode(dmapCodeDmapSupportsUpdate, "dmap.supportsupdate", byte),
+  dmapCodeDmapSpecifiedTotalCount: DmapCode(
+      dmapCodeDmapSpecifiedTotalCount, "dmap.specifiedtotalcount", integer),
+  dmapCodeDmapDeletedIdListing: DmapCode(
+      dmapCodeDmapDeletedIdListing, "dmap.deletedidlisting", container),
+  dmapCodeDmapUpdateResponse:
+      DmapCode(dmapCodeDmapUpdateResponse, "dmap.updateresponse", container),
+  dmapCodeDmapServerRevision:
+      DmapCode(dmapCodeDmapServerRevision, "dmap.serverrevision", integer),
+  dmapCodeDmapUpdateType:
+      DmapCode(dmapCodeDmapUpdateType, "dmap.updatetype", byte),
+  dmapCodeDpapProtocolVersion:
+      DmapCode(dmapCodeDpapProtocolVersion, "dpap.protocolversion", integer),
+  dmapCodeDpapUnknown: DmapCode(dmapCodeDpapUnknown, "dpap.unknown", container),
 };
 
 /// HTTP request headers payload.
@@ -1244,71 +937,71 @@ const String songArtworkUrlPath =
 
 /// Default database query meta codes.
 const List<String> databaseQueryDefaultMetaCodes = [
-  DMAP_CODE_COM_APPLE_ITUNES_NORM_VOLUME,
-  DMAP_CODE_DAAP_SONGALBUMARTIST,
-  DMAP_CODE_DAAP_SONGARTIST,
-  DMAP_CODE_DAAP_SONGBITRATE,
-  DMAP_CODE_DAAP_SONGBEATSPERMINUTE,
-  DMAP_CODE_DAAP_SONGCOMMENT,
-  DMAP_CODE_DAAP_SONGCOMPILATION,
-  DMAP_CODE_DAAP_SONGCOMPOSER,
-  DMAP_CODE_DAAP_SONGDATEADDED,
-  DMAP_CODE_DAAP_SONGDISABLED,
-  DMAP_CODE_DAAP_SONGDISCCOUNT,
-  DMAP_CODE_DAAP_SONGDATAKIND,
-  DMAP_CODE_DAAP_SONGDATEMODIFIED,
-  DMAP_CODE_DAAP_SONGDISCKNUMBER,
-  DMAP_CODE_DAAP_SONGDESCRIPTION,
-  DMAP_CODE_DAAP_SONGEQPRESET,
-  DMAP_CODE_DAAP_SONGFORMAT,
-  DMAP_CODE_DAAP_SONGGENRE,
-  DMAP_CODE_DAAP_SONGRELATIVEVOLUME,
-  DMAP_CODE_DAAP_SONGSTOPTIME,
-  DMAP_CODE_DAAP_SONGSAMPLERATE,
-  DMAP_CODE_DAAP_SONGSTARTTIME,
-  DMAP_CODE_DAAP_SONGSIZE,
-  DMAP_CODE_DAAP_SONGTRACKCOUNT,
-  DMAP_CODE_DAAP_SONGTIME,
-  DMAP_CODE_DAAP_SONGTRACKNUMBER,
-  DMAP_CODE_DAAP_SONGDATAURL,
-  DMAP_CODE_DAAP_SONGUSERRATING,
-  DMAP_CODE_DAAP_SONGYEAR,
-  DMAP_CODE_DMAP_ITEMID,
-  DMAP_CODE_DMAP_ITEMKIND,
-  DMAP_CODE_DMAP_ITEMNAME,
-  DMAP_CODE_DMAP_PERSISTENTID,
-  DMAP_CODE_DAAP_SONGALBUM,
+  dmapCodeComAppleItunesNormVolume,
+  dmapCodeDaapSongAlbumArtist,
+  dmapCodeDaapSongArtist,
+  dmapCodeDaapSongBitrate,
+  dmapCodeDaapSongBeatsPerMinute,
+  dmapCodeDaapSongComment,
+  dmapCodeDaapSongCompilation,
+  dmapCodeDaapSongComposer,
+  dmapCodeDaapSongDateAdded,
+  dmapCodeDaapSongDisabled,
+  dmapCodeDaapSongDiscCount,
+  dmapCodeDaapSongDataKind,
+  dmapCodeDaapSongDateModified,
+  dmapCodeDaapSongDiscNumber,
+  dmapCodeDaapSongDescription,
+  dmapCodeDaapSongEqPreset,
+  dmapCodeDaapSongFormat,
+  dmapCodeDaapSongGenre,
+  dmapCodeDaapSongRelativeVolume,
+  dmapCodeDaapSongStopTime,
+  dmapCodeDaapSongSampleRate,
+  dmapCodeDaapSongStartTime,
+  dmapCodeDaapSongSize,
+  dmapCodeDaapSongTrackCount,
+  dmapCodeDaapSongTime,
+  dmapCodeDaapSongTrackNumber,
+  dmapCodeDaapSongDataUrl,
+  dmapCodeDaapSongUserRating,
+  dmapCodeDaapSongYear,
+  dmapCodeDmapItemId,
+  dmapCodeDmapItemKind,
+  dmapCodeDmapItemName,
+  dmapCodeDmapPersistentId,
+  dmapCodeDaapSongAlbum,
 ];
 
 /// Default playlists query meta codes.
 const List<String> playlistsQueryDefaultMetaCodes = [
-  DMAP_CODE_DAAP_BASEPLAYLIST,
-  DMAP_CODE_COM_APPLE_ITUNES_IS_PODCAST_PLAYLIST,
-  DMAP_CODE_COM_APPLE_ITUNES_SPECIAL_PLAYLIST,
-  DMAP_CODE_COM_APPLE_ITUNES_SAVED_GENIUS,
-  DMAP_CODE_COM_APPLE_ITUNES_SMART_PLAYLIST,
-  DMAP_CODE_DMAP_HASCHILDCONTAINERS,
-  DMAP_CODE_DMAP_ITEMID,
-  DMAP_CODE_DMAP_ITEMCOUNT,
-  DMAP_CODE_DMAP_ITEMNAME,
-  DMAP_CODE_DMAP_LISTINGITEM,
-  DMAP_CODE_DMAP_PARENTCONTAINERID,
-  DMAP_CODE_DMAP_PERSISTENTID,
+  dmapCodeDaapBasePlaylist,
+  dmapCodeComAppleItunesIsPodcastPlaylist,
+  dmapCodeComAppleItunesSpecialPlaylist,
+  dmapCodeComAppleItunesSavedGenius,
+  dmapCodeComAppleItunesSmartPlaylist,
+  dmapCodeDmapHasChildContainers,
+  dmapCodeDmapItemId,
+  dmapCodeDmapItemCount,
+  dmapCodeDmapItemName,
+  dmapCodeDmapListingItem,
+  dmapCodeDmapParentContainerId,
+  dmapCodeDmapPersistentId,
 ];
 
 /// Default playlist query meta codes.
 const List<String> playlistQueryDefaultMetaCodes = [
-  DMAP_CODE_DAAP_SONGALBUMARTIST,
-  DMAP_CODE_DAAP_SONGARTIST,
-  DMAP_CODE_DAAP_SONGFORMAT,
-  DMAP_CODE_DAAP_SONGGENRE,
-  DMAP_CODE_DAAP_SONGSIZE,
-  DMAP_CODE_DAAP_SONGTIME,
-  DMAP_CODE_DAAP_SONGTRACKNUMBER,
-  DMAP_CODE_DAAP_SONGYEAR,
-  DMAP_CODE_DMAP_CONTAINERITEMID,
-  DMAP_CODE_DMAP_ITEMID,
-  DMAP_CODE_DMAP_ITEMKIND,
-  DMAP_CODE_DMAP_ITEMNAME,
-  DMAP_CODE_DAAP_SONGALBUM,
+  dmapCodeDaapSongAlbumArtist,
+  dmapCodeDaapSongArtist,
+  dmapCodeDaapSongFormat,
+  dmapCodeDaapSongGenre,
+  dmapCodeDaapSongSize,
+  dmapCodeDaapSongTime,
+  dmapCodeDaapSongTrackNumber,
+  dmapCodeDaapSongYear,
+  dmapCodeDmapContainerItemId,
+  dmapCodeDmapItemId,
+  dmapCodeDmapItemKind,
+  dmapCodeDmapItemName,
+  dmapCodeDaapSongAlbum,
 ];
