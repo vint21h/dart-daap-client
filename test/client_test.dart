@@ -4,12 +4,11 @@
 import "dart:io";
 import "dart:typed_data";
 
+import "package:daapc/daapc.dart";
 import "package:http/http.dart";
 import "package:http_auth/http_auth.dart";
 import "package:nock/nock.dart";
 import "package:test/test.dart";
-
-import "package:daapc/daapc.dart";
 
 void main() {
   setUpAll(nock.init);

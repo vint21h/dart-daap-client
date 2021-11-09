@@ -16,7 +16,7 @@ on:
     - cron: "0 3 * * *"
   workflow_dispatch:
 env:
-  PYTHON_VERSION: "3.9"
+  DEFAULT_PYTHON_VERSION: "3.10"
   DART_VERSION: "stable"
 jobs:
   check-requirements:

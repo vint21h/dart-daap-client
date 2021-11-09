@@ -3,9 +3,8 @@
 
 import "dart:typed_data";
 
-import "package:test/test.dart";
-
 import "package:daapc/daapc.dart";
+import "package:test/test.dart";
 
 void main() {
   group(DmapCode, () {

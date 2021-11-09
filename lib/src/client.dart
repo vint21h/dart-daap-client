@@ -5,8 +5,8 @@ import "dart:convert";
 import "dart:io";
 import "dart:typed_data";
 
-import "package:http_auth/http_auth.dart";
 import "package:http/http.dart";
+import "package:http_auth/http_auth.dart";
 import "package:interpolator/interpolator.dart";
 
 import "constants.dart";

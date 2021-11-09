@@ -4,7 +4,7 @@
 
 # 0.2.0
 * Updated Dart and Python requirements
-* Finally works submitting coverage reports to coveralls.io
+* Finally, works submitting coverage reports to coveralls.io
 * Added check-requirements GitHub action workflow
 * Removed requires.io badge from README
 
