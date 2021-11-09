@@ -43,6 +43,9 @@ pub-install:
 	pub get;\
 
 
+install: pipenv-install pub-install
+
+
 format-coverage:
 	pub run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib -b .;\
 
@@ -89,6 +92,8 @@ help:
 	@echo "        Install Python requirements."
 	@echo "    pub-install:"
 	@echo "        Install Dart requirements."
+	@echo "    install:"
+	@echo "        Install requirements."
 	@echo "    format-coverage:"
 	@echo "        Convert coverage info from Dart VM to LCOV format."
 	@echo "    bumpversion:"
