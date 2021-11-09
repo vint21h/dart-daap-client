@@ -60,10 +60,10 @@ jobs:
       - name: "Install requirements"
         id: "install-requirements"
         run: |
-          "pip install pipenv"
-          "make pipenv-install"
-          "make pub-install"
+          pip install pipenv
+          make install
       - name: "Run checks"
+        id: "run-checks"
         run: "pipenv run make check"
   test:
     name: "Run tests"
@@ -149,9 +149,8 @@ jobs:
       - name: "Install requirements"
         id: "install-requirements"
         run: |
-          "pip install pipenv"
-          "make pipenv-install"
-          "make pub-install"
+          pip install pipenv
+          make install
       - name: "Format coverage info"
         id: "format-coverage-info"
         run: "pipenv run make format-coverage"
