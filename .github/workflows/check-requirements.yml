@@ -56,7 +56,8 @@ jobs:
         id: "install-requirements"
         run: |
           pip install pipenv
-          make install
+          make pipenv-install
+          make pub-install
       - name: "Check Python outdated requirements"
         id: "check-python-outdated-requirents"
         continue-on-error: true

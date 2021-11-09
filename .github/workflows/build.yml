@@ -61,7 +61,8 @@ jobs:
         id: "install-requirements"
         run: |
           pip install pipenv
-          make install
+          make pipenv-install
+          make pub-install
       - name: "Run checks"
         id: "run-checks"
         run: "pipenv run make check"
@@ -150,7 +151,8 @@ jobs:
         id: "install-requirements"
         run: |
           pip install pipenv
-          make install
+          make pipenv-install
+          make pub-install
       - name: "Format coverage info"
         id: "format-coverage-info"
         run: "pipenv run make format-coverage"
