@@ -25,7 +25,7 @@ repos:
       language: "system"
       stages: ["commit"]
       types: ["text"]
-      files: "\.env*"
+      files: '\.env*'
       exclude: ".envrc"
 -   repo: "https://github.com/pre-commit/pre-commit-hooks"
     rev: "v4.0.1"

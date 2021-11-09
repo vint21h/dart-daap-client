@@ -343,7 +343,7 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid")
           .get("")
-            ..reply(HttpStatus.ok, databaseData);
+        ..reply(HttpStatus.ok, databaseData);
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -365,7 +365,7 @@ void main() {
       final databaseData = Uint8List.fromList([97, 100, 98, 115, 0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid")
           .get("")
-            ..reply(HttpStatus.ok, databaseData);
+        ..reply(HttpStatus.ok, databaseData);
       var result =
           await client.getDatabase(1, sessionId: 0, metaCodes: ["miid"]);
       expect(
@@ -436,7 +436,7 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/containers?session-id=0&meta=dmap.itemid")
           .get("")
-            ..reply(HttpStatus.ok, playlistsData);
+        ..reply(HttpStatus.ok, playlistsData);
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -458,7 +458,7 @@ void main() {
       final playlistsData = Uint8List.fromList([97, 112, 108, 121, 0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/containers?session-id=0&meta=dmap.itemid")
           .get("")
-            ..reply(HttpStatus.ok, playlistsData);
+        ..reply(HttpStatus.ok, playlistsData);
       var result =
           await client.getPlaylists(1, sessionId: 0, metaCodes: ["miid"]);
       expect(
@@ -528,7 +528,7 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/containers/1/items?session-id=0&meta=dmap.itemid")
           .get("")
-            ..reply(HttpStatus.ok, playlistData);
+        ..reply(HttpStatus.ok, playlistData);
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -550,7 +550,7 @@ void main() {
       final playlistData = Uint8List.fromList([97, 112, 115, 111, 0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/containers/1/items?session-id=0&meta=dmap.itemid")
           .get("")
-            ..reply(HttpStatus.ok, playlistData);
+        ..reply(HttpStatus.ok, playlistData);
       var result =
           await client.getPlaylist(1, 1, sessionId: 0, metaCodes: ["miid"]);
       expect(
@@ -620,7 +620,7 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/items/42.mp3?session-id=0")
           .get("")
-            ..reply(HttpStatus.ok, songData);
+        ..reply(HttpStatus.ok, songData);
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -639,7 +639,7 @@ void main() {
       final songData = Uint8List.fromList([0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/items/42.mp3?session-id=0")
           .get("")
-            ..reply(HttpStatus.ok, songData);
+        ..reply(HttpStatus.ok, songData);
       var result = await client.getSong(1, 42, "mp3", sessionId: 0);
       expect(result, Uint8List.fromList([0, 0, 0, 0]));
     }, tags: ["client", "DaapClient", "getSong"]);
@@ -707,7 +707,7 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/items/42/extra_data/artwork?session-id=0")
           .get("")
-            ..reply(HttpStatus.ok, songArtworkData);
+        ..reply(HttpStatus.ok, songArtworkData);
       nock("http://127.0.0.1:3689/content-codes").get("")
         ..reply(HttpStatus.ok, contentCodesData);
       nock("http://127.0.0.1:3689/server-info").get("")
@@ -726,7 +726,7 @@ void main() {
       final songArtworkData = Uint8List.fromList([0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/items/42/extra_data/artwork?session-id=0")
           .get("")
-            ..reply(HttpStatus.ok, songArtworkData);
+        ..reply(HttpStatus.ok, songArtworkData);
       var result = await client.getSongArtwork(1, 42, sessionId: 0);
       expect(result, Uint8List.fromList([0, 0, 0, 0]));
     }, tags: ["client", "DaapClient", "getSongArtwork"]);
