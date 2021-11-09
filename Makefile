@@ -10,7 +10,7 @@ VERSION=`python -c "from yaml import load, Loader; config = load(open('pubspec.y
 
 
 dartfmt:
-	pub dartfmt -w .;\
+	dart format --fix --set-exit-if-changed .;\
 
 
 test:

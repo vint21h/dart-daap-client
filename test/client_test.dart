@@ -76,8 +76,9 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final url = Uri(
           scheme: "http", host: "127.0.0.1", port: 3689, path: "/server-info");
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, "");
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, "");
       expect(await client.request(url), []);
     }, tags: ["client", "DaapClient", "request"]);
     test(
@@ -87,8 +88,9 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final url = Uri(
           scheme: "http", host: "127.0.0.1", port: 3689, path: "/server-info");
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.unauthorized, "401 Unauthorized");
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.unauthorized, "401 Unauthorized");
       expect(
           client.request(url),
           throwsA(isA<DaapAuthRequiredException>().having(
@@ -103,8 +105,9 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final url = Uri(
           scheme: "http", host: "127.0.0.1", port: 3689, path: "/server-info");
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.forbidden, "403 Forbidden");
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.forbidden, "403 Forbidden");
       expect(
           client.request(url),
           throwsA(isA<DaapAuthenticationFailureException>().having(
@@ -119,8 +122,9 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final url = Uri(
           scheme: "http", host: "127.0.0.1", port: 3689, path: "/server-info");
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.serviceUnavailable, "503 Service Unavailable");
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.serviceUnavailable, "503 Service Unavailable");
       expect(
           client.request(url),
           throwsA(isA<DaapTooManyConnectionsException>().having(
@@ -135,8 +139,9 @@ void main() {
       final client = DaapClient("127.0.0.1");
       final url = Uri(
           scheme: "http", host: "127.0.0.1", port: 3689, path: "/server-info");
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(500, "500 Internal Server Error");
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(500, "500 Internal Server Error");
       expect(
           client.request(url),
           throwsA(isA<DaapException>().having(
@@ -149,8 +154,9 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       final data = Uint8List.fromList([109, 99, 99, 114, 0, 0, 0, 0]);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, data);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, data);
       var result = await client.getContentCodes();
       expect(
           result.toString(),
@@ -160,8 +166,9 @@ void main() {
     test("'getServerInfo' method must return server info data", () async {
       final client = DaapClient("127.0.0.1");
       final data = Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, data);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, data);
       var result = await client.getServerInfo();
       expect(
           result.toString(),
@@ -171,7 +178,7 @@ void main() {
     test("'login' method must return session info data", () async {
       final client = DaapClient("127.0.0.1");
       final data = Uint8List.fromList([109, 108, 111, 103, 0, 0, 0, 0]);
-      nock("http://127.0.0.1:3689/login").get("")..reply(HttpStatus.ok, data);
+      nock("http://127.0.0.1:3689/login").get("").reply(HttpStatus.ok, data);
       var result = await client.login();
       expect(
           result.toString(),
@@ -189,12 +196,15 @@ void main() {
           Uint8List.fromList([109, 115, 114, 118, 0, 0, 0, 0]);
       final sessionInfoData =
           Uint8List.fromList([109, 108, 111, 103, 0, 0, 0, 0]);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       expect(
           client.contentCodes.toString(),
@@ -251,14 +261,18 @@ void main() {
         0,
         0
       ]);
-      nock("http://127.0.0.1:3689/databases?session-id=0").get("")
-        ..reply(HttpStatus.ok, databasesData);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+      nock("http://127.0.0.1:3689/databases?session-id=0")
+          .get("")
+          .reply(HttpStatus.ok, databasesData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       var result = await client.getDatabases();
       expect(
@@ -272,8 +286,9 @@ void main() {
         () async {
       final client = DaapClient("127.0.0.1");
       final databasesData = Uint8List.fromList([97, 118, 100, 98, 0, 0, 0, 0]);
-      nock("http://127.0.0.1:3689/databases?session-id=0").get("")
-        ..reply(HttpStatus.ok, databasesData);
+      nock("http://127.0.0.1:3689/databases?session-id=0")
+          .get("")
+          .reply(HttpStatus.ok, databasesData);
       var result = await client.getDatabases(sessionId: 0);
       expect(
           result.toString(),
@@ -343,13 +358,16 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid")
           .get("")
-        ..reply(HttpStatus.ok, databaseData);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+          .reply(HttpStatus.ok, databaseData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       var result = await client.getDatabase(1, metaCodes: ["miid"]);
       expect(
@@ -365,7 +383,7 @@ void main() {
       final databaseData = Uint8List.fromList([97, 100, 98, 115, 0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/items?type=music&session-id=0&meta=dmap.itemid")
           .get("")
-        ..reply(HttpStatus.ok, databaseData);
+          .reply(HttpStatus.ok, databaseData);
       var result =
           await client.getDatabase(1, sessionId: 0, metaCodes: ["miid"]);
       expect(
@@ -436,13 +454,16 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/containers?session-id=0&meta=dmap.itemid")
           .get("")
-        ..reply(HttpStatus.ok, playlistsData);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+          .reply(HttpStatus.ok, playlistsData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       var result = await client.getPlaylists(1, metaCodes: ["miid"]);
       expect(
@@ -458,7 +479,7 @@ void main() {
       final playlistsData = Uint8List.fromList([97, 112, 108, 121, 0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/containers?session-id=0&meta=dmap.itemid")
           .get("")
-        ..reply(HttpStatus.ok, playlistsData);
+          .reply(HttpStatus.ok, playlistsData);
       var result =
           await client.getPlaylists(1, sessionId: 0, metaCodes: ["miid"]);
       expect(
@@ -528,13 +549,16 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/containers/1/items?session-id=0&meta=dmap.itemid")
           .get("")
-        ..reply(HttpStatus.ok, playlistData);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+          .reply(HttpStatus.ok, playlistData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       var result = await client.getPlaylist(1, 1, metaCodes: ["miid"]);
       expect(
@@ -550,7 +574,7 @@ void main() {
       final playlistData = Uint8List.fromList([97, 112, 115, 111, 0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/containers/1/items?session-id=0&meta=dmap.itemid")
           .get("")
-        ..reply(HttpStatus.ok, playlistData);
+          .reply(HttpStatus.ok, playlistData);
       var result =
           await client.getPlaylist(1, 1, sessionId: 0, metaCodes: ["miid"]);
       expect(
@@ -620,13 +644,16 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/items/42.mp3?session-id=0")
           .get("")
-        ..reply(HttpStatus.ok, songData);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+          .reply(HttpStatus.ok, songData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       var result = await client.getSong(1, 42, "mp3");
       expect(result, Uint8List.fromList([0, 0, 0, 0]));
@@ -639,7 +666,7 @@ void main() {
       final songData = Uint8List.fromList([0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/items/42.mp3?session-id=0")
           .get("")
-        ..reply(HttpStatus.ok, songData);
+          .reply(HttpStatus.ok, songData);
       var result = await client.getSong(1, 42, "mp3", sessionId: 0);
       expect(result, Uint8List.fromList([0, 0, 0, 0]));
     }, tags: ["client", "DaapClient", "getSong"]);
@@ -707,13 +734,16 @@ void main() {
       ]);
       nock("http://127.0.0.1:3689/databases/1/items/42/extra_data/artwork?session-id=0")
           .get("")
-        ..reply(HttpStatus.ok, songArtworkData);
-      nock("http://127.0.0.1:3689/content-codes").get("")
-        ..reply(HttpStatus.ok, contentCodesData);
-      nock("http://127.0.0.1:3689/server-info").get("")
-        ..reply(HttpStatus.ok, serverInfoData);
-      nock("http://127.0.0.1:3689/login").get("")
-        ..reply(HttpStatus.ok, sessionInfoData);
+          .reply(HttpStatus.ok, songArtworkData);
+      nock("http://127.0.0.1:3689/content-codes")
+          .get("")
+          .reply(HttpStatus.ok, contentCodesData);
+      nock("http://127.0.0.1:3689/server-info")
+          .get("")
+          .reply(HttpStatus.ok, serverInfoData);
+      nock("http://127.0.0.1:3689/login")
+          .get("")
+          .reply(HttpStatus.ok, sessionInfoData);
       await client.connect();
       var result = await client.getSongArtwork(1, 42);
       expect(result, Uint8List.fromList([0, 0, 0, 0]));
@@ -726,7 +756,7 @@ void main() {
       final songArtworkData = Uint8List.fromList([0, 0, 0, 0]);
       nock("http://127.0.0.1:3689/databases/1/items/42/extra_data/artwork?session-id=0")
           .get("")
-        ..reply(HttpStatus.ok, songArtworkData);
+          .reply(HttpStatus.ok, songArtworkData);
       var result = await client.getSongArtwork(1, 42, sessionId: 0);
       expect(result, Uint8List.fromList([0, 0, 0, 0]));
     }, tags: ["client", "DaapClient", "getSongArtwork"]);
