@@ -2,7 +2,7 @@
 # .github/workflows/check-requirements.yml
 
 
-name: check-requirements
+name: "check-requirements"
 on:
   push:
     branches:
@@ -17,44 +17,52 @@ on:
   workflow_dispatch:
 env:
   DEFAULT_PYTHON_VERSION: "3.10"
-  DART_VERSION: "stable"
+  DEFAULT_DART_VERSION: "stable"
 jobs:
   check-requirements:
-    name: check-requirements
-    runs-on: ubuntu-latest
+    name: "check-requirements"
+    runs-on: "ubuntu-latest"
     steps:
-      - name: Git clone
-        uses: actions/checkout@v2
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v2
+      - name: "Git clone"
+        id: "git-clone"
+        uses: "actions/checkout@v2"
+      - name: "Set up Python ${{ env.PYTHON_VERSION }}"
+        id: "set-up-python"
+        uses: "actions/setup-python@v2"
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-      - name: Pipenv cache
-        uses: actions/cache@v2
+          python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
+      - name: "Pipenv cache"
+        id: "pipenv-cache"
+        uses: "actions/cache@v2"
         with:
-          path: ~/.cache/pipenv
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}
+          path: "~/.cache/pipenv"
+          key: "${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}"
           restore-keys: |
-            ${{ runner.os }}-pipenv-
-      - name: Set up Dart ${{ env.DART_VERSION }}
-        uses: dart-lang/setup-dart@v1
+            "${{ runner.os }}-pipenv-"
+      - name: "Set up Dart ${{ env.DEFAULT_DART_VERSION }}"
+        id: "set-up-dart"
+        uses: "dart-lang/setup-dart@v1"
         with:
-          sdk: ${{ env.DART_VERSION }}
-      - name: Pub cache
-        uses: actions/cache@v2
+          sdk: "${{ env.DEFAULT_DART_VERSION }}"
+      - name: "Pub cache"
+        id: "pub-cache"
+        uses: "actions/cache@v2"
         with:
-          path: ~/.pub-cache
-          key: ${{ runner.os }}-${{ hashFiles('pubspec.yaml') }}
+          path: "~/.pub-cache"
+          key: "${{ runner.os }}-${{ hashFiles('pubspec.yaml') }}"
           restore-keys: |
-            ${{ runner.os }}-pub-
-      - name: Install dependencies
+            "${{ runner.os }}-pub-"
+      - name: "Install requirements"
+        id: "install-requirements"
         run: |
-          pip install pipenv
-          make pipenv-install
-          make pub-install
-      - name: Check Python outdated requirements
+          "pip install pipenv"
+          "make pipenv-install"
+          "make pub-install"
+      - name: "Check Python outdated requirements"
+        id: "check-python-outdated-requirents"
         continue-on-error: true
-        run: pipenv update --outdated
-      - name: Check Dart outdated requirements
+        run: "pipenv update --outdated"
+      - name: "Check Dart outdated requirements"
+        id: "check-dart-outdated-requirements"
         continue-on-error: true
-        run: pub outdated
+        run: "pub outdated"
