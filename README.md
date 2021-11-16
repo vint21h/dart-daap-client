@@ -26,7 +26,7 @@ Contents
 
 [...]
 dependencies:
-  daapc: "0.3.0"
+  daapc: "0.3.1"
 [...]
 ```
 * Install it:

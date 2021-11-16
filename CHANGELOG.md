@@ -2,6 +2,9 @@
 [//]: # (CHANGELOG.md)
 
 
+# 0.3.1
+* Fixed dependabot config
+
 # 0.3.0
 * Updated Dart and Python requirements
 * Renamed DMAP code constants following Dart constants naming convention
