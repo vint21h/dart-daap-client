@@ -1,33 +1,28 @@
 # dart-daap-client
-# .github/workflows/check-requirements.yml
+# .github/workflows/check.yml
 
 
-name: "check-requirements"
+name: "check"
 on:
-  push:
-    branches:
-      - "*"
-    tags:
-      - "*"
-  pull_request:
-    branches:
-      - "*"
-  schedule:
-    - cron: "0 3 * * *"
   workflow_dispatch:
   workflow_call:
 env:
   DEFAULT_PYTHON_VERSION: "3.10"
-  DEFAULT_DART_VERSION: "stable"
 jobs:
-  check-requirements:
-    name: "check-requirements"
+  check:
+    name: "Run checks"
     runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        sdk:
+          - "stable"
+          - "beta"
+          - "dev"
     steps:
       - name: "Git clone"
         id: "git-clone"
         uses: "actions/checkout@v2"
-      - name: "Set up Python ${{ env.PYTHON_VERSION }}"
+      - name: "Set up Python ${{ env.DEFAULT_PYTHON_VERSION }}"
         id: "set-up-python"
         uses: "actions/setup-python@v2"
         with:
@@ -40,18 +35,19 @@ jobs:
           key: "${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}"
           restore-keys: |
             "${{ runner.os }}-pipenv-"
-      - name: "Set up Dart ${{ env.DEFAULT_DART_VERSION }}"
+      - name: "Set up Dart ${{ matrix.sdk }}"
         id: "set-up-dart"
         uses: "dart-lang/setup-dart@v1"
         with:
-          sdk: "${{ env.DEFAULT_DART_VERSION }}"
+          sdk: "${{ matrix.sdk }}"
       - name: "Pub cache"
         id: "pub-cache"
         uses: "actions/cache@v2"
         with:
           path: "~/.pub-cache"
-          key: "${{ runner.os }}-${{ hashFiles('pubspec.yaml') }}"
+          key: "${{ runner.os }}-pub-${{ matrix.sdk }}-${{ hashFiles('pubspec.yaml') }}"
           restore-keys: |
+            "${{ runner.os }}-pub-${{ matrix.sdk }}-"
             "${{ runner.os }}-pub-"
       - name: "Install requirements"
         id: "install-requirements"
@@ -59,11 +55,6 @@ jobs:
           pip install pipenv
           make pipenv-install
           make pub-install
-      - name: "Check Python outdated requirements"
-        id: "check-python-outdated-requirents"
-        continue-on-error: true
-        run: "pipenv update --outdated"
-      - name: "Check Dart outdated requirements"
-        id: "check-dart-outdated-requirements"
-        continue-on-error: true
-        run: "pub outdated"
+      - name: "Run checks"
+        id: "run-checks"
+        run: "pipenv run make check"

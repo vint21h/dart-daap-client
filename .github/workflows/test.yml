@@ -1,0 +1,47 @@
+# dart-daap-client
+# .github/workflows/test.yml
+
+
+name: "test"
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  test:
+    name: "Run tests"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        sdk:
+          - "stable"
+          - "beta"
+          - "dev"
+    steps:
+      - name: "Git clone"
+        id: "git-clone"
+        uses: "actions/checkout@v2"
+      - name: "Set up Dart ${{ matrix.sdk }}"
+        id: "set-up-dart"
+        uses: "dart-lang/setup-dart@v1"
+        with:
+          sdk: "${{ matrix.sdk }}"
+      - name: "Pub cache"
+        id: "pub-cache"
+        uses: "actions/cache@v2"
+        with:
+          path: "~/.pub-cache"
+          key: "${{ runner.os }}-pub-${{ matrix.sdk }}-${{ hashFiles('pubspec.yaml') }}"
+          restore-keys: |
+            "${{ runner.os }}-pub-${{ matrix.sdk }}-"
+            "${{ runner.os }}-pub-"
+      - name: "Temporarily save coverage statistics"
+        id: "temporarily-save-coverage-statistics"
+        uses: "actions/cache@v2"
+        with:
+          path: "coverage"
+          key: "coverage-${{ github.run_id }}-${{ github.run_number }}"
+      - name: "Install requirements"
+        id: "install-requirements"
+        run: "make pub-install"
+      - name: "Run tests"
+        run: "make test -B"
