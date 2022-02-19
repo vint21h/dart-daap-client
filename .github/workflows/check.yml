@@ -10,7 +10,7 @@ env:
   DEFAULT_PYTHON_VERSION: "3.10"
 jobs:
   check:
-    name: "Run checks"
+    name: "check"
     runs-on: "ubuntu-latest"
     strategy:
       matrix:
