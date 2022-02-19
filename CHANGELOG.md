@@ -2,6 +2,9 @@
 [//]: # (CHANGELOG.md)
 
 
+# 0.3.3
+* Fixed 'check-requirements' workflow
+
 # 0.3.2
 * Updated Dart and Python requirements
 * Fixed markup
