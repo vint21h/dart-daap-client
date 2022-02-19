@@ -2,6 +2,12 @@
 [//]: # (CHANGELOG.md)
 
 
+# 0.3.2
+* Updated Dart and Python requirements
+* Fixed markup
+* Updated copyright year
+* Refactored GitHub workflows
+
 # 0.3.1
 * Fixed dependabot config
 
