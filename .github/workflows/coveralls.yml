@@ -24,7 +24,7 @@ jobs:
           python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
       - name: "Pipenv cache"
         id: "pipenv-cache"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.0.1"
         with:
           path: "~/.cache/pipenv"
           key: "${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}"
@@ -37,7 +37,7 @@ jobs:
           sdk: "${{ env.DEFAULT_DART_VERSION }}"
       - name: "Pub cache"
         id: "pub-cache"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.0.1"
         with:
           path: "~/.pub-cache"
           key: "${{ runner.os }}-${{ hashFiles('pubspec.yaml') }}"
@@ -45,7 +45,7 @@ jobs:
             "${{ runner.os }}-pub-"
       - name: "Temporarily save coverage statistics"
         id: "temporarily-save-coverage-statistics"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.0.1"
         with:
           path: "coverage"
           key: "coverage-${{ github.run_id }}-${{ github.run_number }}"
