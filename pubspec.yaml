@@ -1,5 +1,5 @@
 name: "daapc"
-version: "0.3.3"
+version: "0.3.4"
 description: >-
   dart-daap-client is a Dart DAAP (Digital Audio Access Protocol) protocol client library
 homepage: "https://github.com/vint21h/dart-daap-client/"
