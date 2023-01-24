@@ -8,6 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT/)
 
 Contents
+
 * [Installation](#installation)
 * [Usage](example/README.md)
 * [Acknowledgments](#acknowledgments)
@@ -18,18 +19,22 @@ Contents
 ## Installation
 
 * Depend on it:
+
 ```yaml
 # pubspec.yaml
 
 dependencies:
   daapc: "0.3.4"
 ```
+
 * Install it:
+
 ```console
-$ dart pub get
+dart pub get
 ```
 
 ## Acknowledgments
+
 * [Digital Audio Access Protocol (DAAP) Protocol documentation Version 0.3](https://github.com/bjoernricks/daap-protocol/)
 * [DAAP client library implemented in Python](https://github.com/tominsam/PythonDaap/)
 * [spydaap: a simple DAAP server for python](https://github.com/egh/spydaap/)
@@ -38,10 +43,12 @@ $ dart pub get
 * [A C/C++ library to share digital audio between computers on a network, reverse engineered from and compatible with Apple's iTunes 4.0 implementation](https://sourceforge.net/projects/daap/)
 
 ## Licensing
+
 dart-daap-client uses the MIT license. Please check the LICENSE file for more details.
 
 ## Contacts
-**Project Website**: https://github.com/vint21h/dart-daap-client/
+
+**Project Website**: <https://github.com/vint21h/dart-daap-client/>
 
 **Author**: Oleksii Andrushevych <vint21h@vint21h.pp.ua>
 

@@ -8,6 +8,7 @@ dotenv-linter = "==0.4.0"
 pre-commit-hooks = "==4.4.0"
 pre-commit = "==2.21.0"
 pyyaml = "==6.0"
+pymarkdownlnt = "==0.9.8"
 
 [packages]
 
