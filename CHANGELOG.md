@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.5
+
+* Fixed markdown files syntax
+* Added new checks
+
 ## 0.3.4
 
 * Copyright update
