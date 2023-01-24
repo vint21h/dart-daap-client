@@ -1,7 +1,3 @@
-<!--- dart-daap-client -->
-<!--- .github/SECURITY.md -->
-
-
 # Security Policy
 
 ## Supported Versions

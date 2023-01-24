@@ -21,7 +21,9 @@ jobs:
     uses: "./.github/workflows/check.yml"
   test:
     uses: "./.github/workflows/test.yml"
+    if: success()
     needs: ["check"]
   coveralls:
     uses: "./.github/workflows/coveralls.yml"
+    if: success()
     needs: ["test", "check"]

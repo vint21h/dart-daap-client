@@ -1,6 +1,3 @@
-// dart-daap-client
-// example/connect.dart
-
 import "dart:io" show Platform;
 
 import "package:daapc/daapc.dart";

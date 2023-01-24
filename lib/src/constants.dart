@@ -1,6 +1,3 @@
-// dart-daap-client
-// lib/src/constants.dart
-
 import "objects.dart";
 
 // DMAP data types.

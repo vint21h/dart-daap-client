@@ -1,6 +1,3 @@
-// dart-daap-client
-// lib/src/exceptions.dart
-
 /// DAAP client auth required exception.
 class DaapAuthRequiredException implements Exception {
   /// Error message method.

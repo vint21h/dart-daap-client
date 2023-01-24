@@ -1,6 +1,3 @@
-// dart-daap-client
-// example/get_artwork.dart
-
 import "dart:io" show Platform, File;
 
 import "package:daapc/daapc.dart";

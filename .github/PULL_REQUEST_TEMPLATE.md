@@ -1,7 +1,3 @@
-<!--- dart-daap-client -->
-<!--- .github/PULL_REQUEST_TEMPLATE.md -->
-
-
 <!--- Provide a general summary of your changes in the Title above -->
 
 ## Description

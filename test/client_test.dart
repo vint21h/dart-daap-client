@@ -1,6 +1,3 @@
-// daap-client
-// test/client_test.dart
-
 import "dart:io";
 import "dart:typed_data";
 

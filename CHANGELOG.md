@@ -1,6 +1,11 @@
-[//]: # (dart-daap-client)
-[//]: # (CHANGELOG.md)
-
+# 0.3.4
+* Copyright update
+* Removed headers from files
+* Removed dead link from README
+* Updated Python requirements
+* Updated "pub" usages with "dart pub"
+* Fixed some small issues
+* Updated GitHub actions and Dependabot config
 
 # 0.3.3
 * Fixed 'check-requirements' workflow

@@ -1,7 +1,3 @@
-# dart-daap-client
-# .github/workflows/test.yml
-
-
 name: "test"
 on:
   workflow_dispatch:
@@ -19,15 +15,15 @@ jobs:
     steps:
       - name: "Git clone"
         id: "git-clone"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v3.3.0"
       - name: "Set up Dart ${{ matrix.sdk }}"
         id: "set-up-dart"
-        uses: "dart-lang/setup-dart@v1"
+        uses: "dart-lang/setup-dart@v1.4"
         with:
           sdk: "${{ matrix.sdk }}"
       - name: "Pub cache"
         id: "pub-cache"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.2.3"
         with:
           path: "~/.pub-cache"
           key: "${{ runner.os }}-pub-${{ matrix.sdk }}-${{ hashFiles('pubspec.yaml') }}"
@@ -36,7 +32,7 @@ jobs:
             "${{ runner.os }}-pub-"
       - name: "Temporarily save coverage statistics"
         id: "temporarily-save-coverage-statistics"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.2.3"
         with:
           path: "coverage"
           key: "coverage-${{ github.run_id }}-${{ github.run_number }}"

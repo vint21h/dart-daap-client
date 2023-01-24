@@ -1,6 +1,3 @@
-// dart-daap-client
-// example/get_databases.dart
-
 import "dart:io" show Platform, stdout;
 
 import "package:daapc/daapc.dart";

@@ -1,7 +1,3 @@
-# dart-daap-client
-# .github/dependabot.yml
-
-
 version: 2
 updates:
   - package-ecosystem: "pip"
@@ -12,6 +8,10 @@ updates:
       - dependency-name: "all"
         dependency-type: "direct"
   - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
     directory: "/"
     schedule:
       interval: "daily"

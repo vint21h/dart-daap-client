@@ -1,6 +1,3 @@
-[//]: # (dart-daap-client)
-[//]: # (example/README.md)
-
 # Usage
 
 1. [Initialize it](init.dart)

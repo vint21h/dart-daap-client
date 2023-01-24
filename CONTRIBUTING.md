@@ -1,7 +1,3 @@
-[//]: # (dart-daap-client)
-[//]: # (CONTRIBUTING.md)
-
-
 ## Contributing
 
 1. [Fork it](https://github.com/vint21h/dart-daap-client/)

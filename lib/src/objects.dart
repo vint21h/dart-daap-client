@@ -1,6 +1,3 @@
-// dart-daap-client
-// lib/src/objects.dart
-
 import "dart:convert";
 import "dart:typed_data";
 

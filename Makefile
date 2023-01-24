@@ -1,7 +1,3 @@
-# dart-daap-client
-# Makefile
-
-
 .ONESHELL:
 PHONY: dartfmt test clean analyze check pipenv-install pub-install format-coverage bumpversion check-upload upload release help
 TRASH_DIRS ?= .dart_tool coverage
@@ -40,14 +36,14 @@ pipenv-install:
 
 
 pub-install:
-	pub get;\
+	dart pub get;\
 
 
 install: pipenv-install pub-install
 
 
 format-coverage:
-	pub run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib -b .;\
+	dart run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib -b .;\
 
 
 bumpversion:

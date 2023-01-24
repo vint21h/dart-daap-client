@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   workflow_call:
 env:
-  DEFAULT_PYTHON_VERSION: "3.10"
+  DEFAULT_PYTHON_VERSION: "3.11"
   DEFAULT_DART_VERSION: "stable"
 jobs:
   check-requirements:
@@ -18,15 +18,15 @@ jobs:
     steps:
       - name: "Git clone"
         id: "git-clone"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v3.3.0"
       - name: "Set up Python ${{ env.PYTHON_VERSION }}"
         id: "set-up-python"
-        uses: "actions/setup-python@v2"
+        uses: "actions/setup-python@v4.5.0"
         with:
           python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
       - name: "Pipenv cache"
         id: "pipenv-cache"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.2.3"
         with:
           path: "~/.cache/pipenv"
           key: "${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}"
@@ -34,12 +34,12 @@ jobs:
             "${{ runner.os }}-pipenv-"
       - name: "Set up Dart ${{ env.DEFAULT_DART_VERSION }}"
         id: "set-up-dart"
-        uses: "dart-lang/setup-dart@v1"
+        uses: "dart-lang/setup-dart@v1.4"
         with:
           sdk: "${{ env.DEFAULT_DART_VERSION }}"
       - name: "Pub cache"
         id: "pub-cache"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3.2.3"
         with:
           path: "~/.pub-cache"
           key: "${{ runner.os }}-${{ hashFiles('pubspec.yaml') }}"
@@ -58,4 +58,4 @@ jobs:
       - name: "Check Dart outdated requirements"
         id: "check-dart-outdated-requirements"
         continue-on-error: true
-        run: "pub outdated"
+        run: "dart pub outdated"

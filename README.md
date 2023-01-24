@@ -1,6 +1,3 @@
-[//]: # (dart-daap-client)
-[//]: # (README.md)
-
 # A dart-daap-client documentation
 
 *dart-daap-client is a Dart [DAAP (Digital Audio Access Protocol)](https://en.wikipedia.org/wiki/Digital_Audio_Access_Protocol/)  protocol client library*
@@ -24,18 +21,15 @@ Contents
 ```yaml
 # pubspec.yaml
 
-[...]
 dependencies:
-  daapc: "0.3.3"
-[...]
+  daapc: "0.3.4"
 ```
 * Install it:
 ```console
-$ pub get
+$ dart pub get
 ```
 
 ## Acknowledgments
-* [Digital Audio Access Protocol (DAAP) Protocol documentation v0.2](http://tapjam.net/daap/)
 * [Digital Audio Access Protocol (DAAP) Protocol documentation Version 0.3](https://github.com/bjoernricks/daap-protocol/)
 * [DAAP client library implemented in Python](https://github.com/tominsam/PythonDaap/)
 * [spydaap: a simple DAAP server for python](https://github.com/egh/spydaap/)
@@ -49,6 +43,6 @@ dart-daap-client uses the MIT license. Please check the LICENSE file for more de
 ## Contacts
 **Project Website**: https://github.com/vint21h/dart-daap-client/
 
-**Author**: Alexei Andrushievich <vint21h@vint21h.pp.ua>
+**Author**: Oleksii Andrushevych <vint21h@vint21h.pp.ua>
 
-For complete authors list see AUTHORS file.
+For contributors list see CONTRIBUTORS file.
