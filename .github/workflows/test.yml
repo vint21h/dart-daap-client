@@ -23,7 +23,7 @@ jobs:
           sdk: "${{ matrix.sdk }}"
       - name: "Pub cache"
         id: "pub-cache"
-        uses: "actions/cache@v3.2.3"
+        uses: "actions/cache@v3.2.4"
         with:
           path: "~/.pub-cache"
           key: "${{ runner.os }}-pub-${{ matrix.sdk }}-${{ hashFiles('pubspec.yaml') }}"
@@ -32,7 +32,7 @@ jobs:
             "${{ runner.os }}-pub-"
       - name: "Temporarily save coverage statistics"
         id: "temporarily-save-coverage-statistics"
-        uses: "actions/cache@v3.2.3"
+        uses: "actions/cache@v3.2.4"
         with:
           path: "coverage"
           key: "coverage-${{ github.run_id }}-${{ github.run_number }}"
