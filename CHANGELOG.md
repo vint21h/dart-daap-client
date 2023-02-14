@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.6
+
+* Some codestyle updates
+* Invalid data cleanings
+* Updated requirements
+
 ## 0.3.5
 
 * Fixed markdown files syntax

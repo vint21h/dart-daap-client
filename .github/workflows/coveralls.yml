@@ -1,7 +1,3 @@
-# dart-daap-client
-# .github/workflows/coveralls.yml
-
-
 name: "coveralls"
 on:
   workflow_dispatch:
@@ -24,7 +20,7 @@ jobs:
           python-version: "${{ env.DEFAULT_PYTHON_VERSION }}"
       - name: "Pipenv cache"
         id: "pipenv-cache"
-        uses: "actions/cache@v3.2.3"
+        uses: "actions/cache@v3.2.5"
         with:
           path: "~/.cache/pipenv"
           key: "${{ runner.os }}-pipenv-${{ hashFiles('Pipfile') }}"
@@ -37,7 +33,7 @@ jobs:
           sdk: "${{ env.DEFAULT_DART_VERSION }}"
       - name: "Pub cache"
         id: "pub-cache"
-        uses: "actions/cache@v3.2.3"
+        uses: "actions/cache@v3.2.5"
         with:
           path: "~/.pub-cache"
           key: "${{ runner.os }}-${{ hashFiles('pubspec.yaml') }}"
@@ -45,7 +41,7 @@ jobs:
             "${{ runner.os }}-pub-"
       - name: "Temporarily save coverage statistics"
         id: "temporarily-save-coverage-statistics"
-        uses: "actions/cache@v3.2.3"
+        uses: "actions/cache@v3.2.5"
         with:
           path: "coverage"
           key: "coverage-${{ github.run_id }}-${{ github.run_number }}"

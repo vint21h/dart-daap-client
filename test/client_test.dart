@@ -35,7 +35,7 @@ void main() {
         "Client-DAAP-Version": "3.0",
         "Client-DAAP-Access-Index": "2",
         "User-Agent":
-            "daapc/0.3.3 (https://github.com/vint21h/dart-daap-client/)",
+            "daapc/0.3.6 (https://github.com/vint21h/dart-daap-client/)",
         "Accept": "application/x-dmap-tagged",
         "Client-DAAP-Request-ID": "0",
       };
@@ -50,7 +50,7 @@ void main() {
         "Client-DAAP-Version": "3.0",
         "Client-DAAP-Access-Index": "2",
         "User-Agent":
-            "daapc/0.3.3 (https://github.com/vint21h/dart-daap-client/)",
+            "daapc/0.3.6 (https://github.com/vint21h/dart-daap-client/)",
         "Accept": "application/x-dmap-tagged",
         "Client-DAAP-Request-ID": "1",
       };

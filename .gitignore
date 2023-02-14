@@ -7,7 +7,6 @@
 .DS_Store
 *.save
 
-
 # IDE's
 .idea/*
 *sublime*
@@ -17,7 +16,6 @@
 .project
 .pydevproject
 .settings/*
-
 
 # Project
 .dart_tool/

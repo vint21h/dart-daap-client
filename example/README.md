@@ -66,7 +66,7 @@
   # pubspec.yaml
 
   dependencies:
-    daapc: "0.3.4"
+    daapc: "0.3.6"
     mime: "^1.0.0"
   ```
 

@@ -24,7 +24,7 @@ Contents
 # pubspec.yaml
 
 dependencies:
-  daapc: "0.3.4"
+  daapc: "0.3.6"
 ```
 
 * Install it:

@@ -1,7 +1,3 @@
-# dart-daap-client
-# .github/workflows/build.yml
-
-
 name: "build"
 on:
   push:

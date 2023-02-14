@@ -60,11 +60,6 @@ const Map<int, String> dmapDataTypesNames = {
 };
 
 /// DMAP codes.
-///
-/// Yep, they named using dart bad practice next convention:
-/// all have "DMAP_CODE_" prefix,
-/// than following code name with namespace where parts of the
-/// namespace delimited by "_" and all of that parts is in uppercase.
 
 /// DMAP code 'com.apple.itunes.req-fplay' type.
 ///
@@ -892,7 +887,7 @@ final Map<String, DmapCode> dmapCodeTypes = {
 final Map<String, String> requestHeaders = {
   "Client-DAAP-Version": "3.0",
   "Client-DAAP-Access-Index": "2",
-  "User-Agent": "daapc/0.3.3 (https://github.com/vint21h/dart-daap-client/)",
+  "User-Agent": "daapc/0.3.6 (https://github.com/vint21h/dart-daap-client/)",
   "Accept": "application/x-dmap-tagged",
 };
 
