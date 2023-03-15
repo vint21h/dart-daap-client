@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: "Git clone"
         id: "git-clone"
-        uses: "actions/checkout@v3.3.0"
+        uses: "actions/checkout@v3.4.0"
       - name: "Set up Dart ${{ matrix.sdk }}"
         id: "set-up-dart"
         uses: "dart-lang/setup-dart@v1.4"
